@@ -1,0 +1,337 @@
+---
+import { Image } from "astro:assets";
+import Metaverse from "../../public/Metaverse.webp";
+import invorbit from "../../public/invorbit.webp";
+import orbix from "../../public/orbix.webp";
+import skirtz from "../../public/skirtzmockup.webp";
+import synconfs from "../../public/synconfsmck.webp";
+import dribbble from "../../public/dribbble.webp";
+import drinkext from "../../public/drinkext.webp";
+import iceblast from "../../public/iceblast.webp";
+import mejikuhibinu from "../../public/mejikuhibinu.webp";
+import dashboard from "../../public/dashboard.webp";
+import monapeng from "../../public/monapeng.webp";
+import msync from "../../public/msync.webp";
+import objectdetect from "../../public/objectdetect.webp";
+import othello from "../../public/othello.webp";
+import retrodesk from "../../public/retrodesk.webp";
+import rubik from "../../public/rubik.webp";
+import sagaramck from "../../public/sagaramck.webp";
+import skybreez from "../../public/skybreez.webp";
+import speedytype from "../../public/speedytype.webp";
+import syncwave from "../../public/syncwave.webp";
+import tanya from "../../public/tanya.webp";
+import tetr1s from "../../public/tetr1s.webp";
+import turutudu from "../../public/turutudu.webp";
+import komunitas from "../../public/komunitas.webp";
+import sugarpop from "../../public/sugarpop.webp";
+import codeshot from "../../public/codeshot.webp";
+import rocketrack from "../../public/rocketrack.webp";
+import syncrypt from "../../public/syncrypt.webp";
+import testy from "../../public/testy.webp";
+import { object } from "astro:schema";
+import { sync } from "astro";
+
+
+interface Project {
+  title: string;
+  image: ImageMetadata;
+  link: string;
+  preview: string;
+  status: string;
+}
+
+const projects: Project[] = [
+  {
+    title: "Orbix AI",
+    image: orbix as ImageMetadata,
+    link: "https://github.com/icecoffie/orbix-ai",
+    preview: "https://orbix.msync.my.id",
+    status: "Deployed",
+  },
+  {
+    title: "Matrix Sync",
+    image: msync as ImageMetadata,
+    link: "https://github.com/icecoffie/msync-tech",
+    preview: "https://tech.msync.my.id",
+    status: "Deployed",
+  }, 
+  {
+    title: "Synconfs",
+    image: synconfs as ImageMetadata,
+    link: "https://github.com/synconfs",
+    preview: "https://synconfs.msync.my.id",
+    status: "Deployed",
+  },
+  {
+    title: "Invorbit",
+    image: invorbit as ImageMetadata,
+    link: "https://github.com/icecoffie/invorbit",
+    preview: "https://invorbit.vercel.app",
+    status: "Deployed",
+  },
+  {
+    title: "Skirtz",
+    image: skirtz as ImageMetadata,
+    link: "https://github.com/icecoffie/skirtz",
+    preview: "https://skirtz.msync.my.id",
+    status: "Deployed",
+  },
+  {
+    title: "Dribbble",
+    image: dribbble as ImageMetadata,
+    link: "https://dribbble.com/msync",
+    preview: "https://dribbble.com/msync",
+    status: "Design Showcases",
+  },
+  {
+    title: "Othellosm",
+    image: othello as ImageMetadata,
+    link: "https://github.com/icecoffie/othellosm",
+    preview: "https://othellosm.msync.my.id",
+    status: "Deployed",
+  },
+  {
+    title: "Iceblast",
+    image: iceblast as ImageMetadata,
+    link: "https://github.com/icecoffie/iceblast",
+    preview: "https://iceblast.msync.my.id",
+    status: "Deployed",
+  },
+  {
+    title: "Main Rubik",
+    image: rubik as ImageMetadata,
+    link: "https://github.com/icecoffie/Game-Rubik",
+    preview: "https://skirtz.msync.my.id",
+    status: "Deployed",
+  },
+  {
+    title: "Tetr1s",
+    image: tetr1s as ImageMetadata,
+    link: "https://github.com/icecoffie/Tetris-Game-Tetr1s",
+    preview: "https://tetr1s.msync.my.id",
+    status: "Deployed",
+  },
+  {
+    title: "Metaverse",
+    image: Metaverse as ImageMetadata,
+    link: "https://github.com/icecoffie/metaverse-web3",
+    preview: "https://metaverse.vercel.app",
+    status: "Deployed",
+  }, 
+   {
+    title: "Dashboard Admin and User",
+    image: dashboard as ImageMetadata,
+    link: "https://github.com/icecoffie/Dashboard-Admin-Paling-Fix",
+    preview: "https://labshare.unpam.ac.id/",
+    status: "Deployed",
+  },
+  {
+    title: "Pop Up Reminder for Drink Water",
+    image: drinkext as ImageMetadata,
+    link: "https://github.com/icecoffie/drinkwater-extension-vsc",
+    preview: "https://marketplace.visualstudio.com/items?itemName=MatrixSync.drinkwater-extension",
+    status: "Deployed",
+  },
+  {
+    title: "RGB Porto",
+    image: mejikuhibinu as ImageMetadata,
+    link: "https://github.com/icecoffie/rgb-web",
+    preview: "https://shakti.msync.my.id",
+    status: "Deployed",
+  },
+  {
+    title: "Glacierzs",
+    image: monapeng as ImageMetadata,
+    link: "https://github.com/icecoffie/glacierzs",
+    preview: "https://glacierzs.msync.my.id",
+    status: "Deployed",
+  },
+  {
+    title: "Object Detection",
+    image: objectdetect as ImageMetadata,
+    link: "https://github.com/icecoffie/Simple-Object-Detection",
+    preview: "https://codepen.io/icecoffie/full/dPyvQwZ",
+    status: "Design Showcases",
+  },
+  {
+    title: "Resto Sagara Ikan",
+    image: sagaramck as ImageMetadata,
+    link: "https://github.com/icecoffie/sagara-resto",
+    preview: "https://sagara.msync.my.id",
+    status: "Deployed",
+  },
+  {
+    title: "Skybreez",
+    image: skybreez as ImageMetadata,
+    link: "https://github.com/icecoffie/skybreez",
+    preview: "https://skybreez.msync.my.id",
+    status: "Deployed",
+  },
+  {
+    title: "Speedytype",
+    image: speedytype as ImageMetadata,
+    link: "https://github.com/icecoffie/speedy-type",
+    preview: "https://codepen.io/icecoffie/full/LEYKYmR",
+    status: "Deployed",
+  },
+  {
+    title: "Syncwave",
+    image: syncwave as ImageMetadata,
+    link: "https://github.com/icecoffie/syncwave",
+    preview: "https://syncwave.msync.my.id",
+    status: "Deployed",
+  }, 
+  {
+    title: "Turutudu",
+    image: turutudu as ImageMetadata,
+    link: "https://github.com/icecoffie/turu-tudu",
+    preview: "https://turutudu.msync.my.id",
+    status: "Deployed",
+  },
+  {
+    title: "Tanya Aku",
+    image: tanya as ImageMetadata,
+    link: "https://github.com/icecoffie/tanya-aku",
+    preview: "https://tanya.msync.my.id",
+    status: "Deployed",
+  },
+  {
+    title: "Retrodesk",
+    image: retrodesk as ImageMetadata,
+    link: "https://github.com/icecoffie/retro-desktop",
+    preview: "https://codepen.io/icecoffie/full/jEbNKYR",
+    status: "Deployed",
+  },
+  {
+    title: "Code shot",
+    image: codeshot as ImageMetadata,
+    link: "https://github.com/icecoffie/Omala-ShotCode",
+    preview: "https://marketplace.visualstudio.com/items?itemName=MatrixSync.omala",
+    status: "Deployed",
+  },
+  {
+    title: "Rocket Track",
+    image: rocketrack as ImageMetadata,
+    link: "https://github.com/icecoffie/rockeTrack",
+    preview: "https://rocketrack.msync.my.id",
+    status: "Deployed",
+  },
+  {
+    title: "Syncrypt",
+    image: syncrypt as ImageMetadata,
+    link: "https://github.com/icecoffie/encryption-sync",
+    preview: "https://syncrypt.msync.my.id",
+    status: "Deployed",
+  },
+  {
+    title: "Community",
+    image: komunitas as ImageMetadata,
+    link: "https://whatsapp.com/channel/0029VbBNHToKrWQoNtBduu2u",
+    preview: "https://whatsapp.com/channel/0029VbBNHToKrWQoNtBduu2u",
+    status: "Deployed",
+  },
+  {
+    title: "Sugar Pop Photo",
+    image: sugarpop as ImageMetadata,
+    link: "https://github.com/icecoffie/sugarpop-photo",
+    preview: "https://sugarpop.msync.my.id",
+    status: "On Going",
+  },
+  {
+    title: "Testimoni",
+    image: testy as ImageMetadata,
+    link: "https://github.com/icecoffie/testy",
+    preview: "https://testy.msync.my.id",
+    status: "Testy",
+  },
+];
+---
+
+<section
+  id="projects"
+  class="py-12 border-t border-[#ffffff10] text-[var(--white)]"
+>
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">My work</h2>
+    <h3 class="text-4xl md:text-5xl font-medium mb-8">Projects</h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 ">
+      {
+        projects.map((project) => (
+          <div class="group">
+            <a
+              href={project.preview}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block"
+            >
+              {/* Kotak gambar */}
+              <div class="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 mb-4 aspect-square">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+
+              {/* Info project */}
+              <div class="flex items-center px-3">
+                <div class="flex-grow">
+                  <h4 class="text-2xl font-semibold">{project.title}</h4>
+                  <span class="py-1 text-sm text-[var(--white-icon)]">
+                    {project.status}
+                  </span>
+                </div>
+                <div class="flex gap-2 ml-auto">
+                  <a
+                    target="_blank"
+                    href={project.link}
+                    aria-label="GitHub"
+                    class="size-14 flex justify-center items-center text-[var(--white-icon)] hover:text-white transition duration-300 ease-in-out border border-1 border-[var(--white-icon-tr)] p-3 rounded-xl bg-[#1414149c] hover:bg-[var(--white-icon-tr)]"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      class="size-7"
+                    >
+                      <path d="M24 12L18.3431 17.6569L16.9289 16.2426L21.1716 12L16.9289 7.75736L18.3431 6.34315L24 12ZM2.82843 12L7.07107 16.2426L5.65685 17.6569L0 12L5.65685 6.34315L7.07107 7.75736L2.82843 12ZM9.78845 21H7.66009L14.2116 3H16.3399L9.78845 21Z" />
+                    </svg>
+                  </a>
+                  <a
+                    target="_blank"
+                    href={project.preview}
+                    aria-label="Preview"
+                    class="size-14 flex justify-center items-center text-[var(--white-icon)] hover:text-white transition duration-300 ease-in-out border border-1 border-[var(--white-icon-tr)] p-3 rounded-xl bg-[#1414149c] hover:bg-[var(--white-icon-tr)]"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      class="size-7"
+                    >
+                      <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </a>
+          </div>
+        ))
+      }
+    </div>
+
+    {/* Tombol More Projects */}
+    <a
+      target="_blank"
+      href="https://docs.google.com/spreadsheets/d/1qfATqXNokCWCgpNYU4if_lRzVRJM55zu7oycrJM06LI/edit?gid=0#gid=0"
+      aria-label="GitHub"
+      class="w-full flex items-center justify-center gap-2 mt-9 text-[var(--white-icon)] hover:text-white transition duration-300 ease-in-out border border-[var(--white-icon-tr)] p-3 rounded-full bg-[#1414149c] hover:bg-[var(--white-icon-tr)] hover:scale-105"
+    >
+      <span class="md:text-lg text-md">More projects</span>
+    </a>
+  </div>
+</section>
+
+

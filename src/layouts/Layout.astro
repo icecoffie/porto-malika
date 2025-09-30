@@ -1,0 +1,106 @@
+---
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Malika Shakila - Frontend Engineer, Mentor and creator of modern applications focused on web technologies, UI/UX, and high performance." />
+    <meta name="keywords" content="Malika Shakila, malika shakila, malsky, Frontend Engineer, Software Engineer, Mentor UI UX Designer, UI UX Designer, Tech in our orbit" />
+    <meta name="author" content="Malika Shakila" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/public/me.webp" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://malika1.vercel.app" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Malika Shakila - Software Engineer" />
+    <meta property="og:description" content="Software Engineer specializing in modern web development, performance optimization, and user-friendly design." />
+    <meta property="og:image" content="https://malika.msync.my.id/preview.png" />
+    <meta property="og:url" content="https://malika1.vercel.app" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Malika Shakila" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Malika Shakila - Software Engineer" />
+    <meta name="twitter:description" content="Building modern web applications with high performance and intuitive design." />
+    <meta name="twitter:image" content="https://malika.msync.my.id/preview.png" />
+    <meta name="twitter:site" content="@malikashakila" />
+
+    <!-- JSON-LD Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Malika Shakila",
+      "url": "https://malika1.vercel.app",
+      "image": "https://malika.msync.my.id/profile.jpg",
+      "jobTitle": "Software Engineer",
+      "sameAs": [
+        "https://github.com/malika",
+        "https://linkedin.com/in/malika",
+        "https://twitter.com/malikashakila"
+      ]
+    }
+    </script>
+
+    <title>{title}</title>
+  </head>
+  <body class="bg-[--background] sm:px-28 lg:px-20 px-9">
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  @import url('https://fonts.cdnfonts.com/css/montserrat');
+
+  :root {
+    --background: #101010;
+    --sec: #007bff;
+    --white: #dfdfdf;
+    --white-icon: #f3f3f398;
+    --white-icon-tr: #f3f3f310;
+  }
+
+  * {
+    font-family: "Montserrat", -apple-system, system-ui, sans-serif;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  *::selection {
+    background-color: var(--sec);
+    color: var(--background);
+  }
+
+  /* Scrollbar styles */
+  ::-webkit-scrollbar {
+    width: 15px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--container);
+    border-radius: 30px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--background);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--sec);
+  }
+
+  /* Scrollbar styles for Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--line) var(--container);
+  }
+</style>

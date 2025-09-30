@@ -1,0 +1,98 @@
+---
+import { Image } from "astro:assets";
+---
+
+<section
+  id="awards"
+  class="py-12 border-t border-[#ffffff10] text-[var(--white)]"
+>
+  <div class="max-w-5xl mx-auto">
+    <!-- Heading -->
+    <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">Recognition</h2>
+    <h3 class="text-4xl md:text-5xl font-medium mb-8">Awards</h3>
+
+    <!-- Awards list -->
+    <div class="awards flex flex-wrap gap-3">
+      <a class="tag trophy" href="https://www.linkedin.com/in/malikashkl/details/featured/1635550991999/single-media-viewer/?profileId=ACoAAD0wJn4BNShVktM_5xYO90hGobMjWQKvfw0">
+        Top 1 - National Sains Olympiad (Informatics)
+      </a>
+      <a class="tag trophy" href="https://www.linkedin.com/feed/update/urn:li:activity:7365386417952215040/" target="_blank">
+        Top 1 - Best Design Structure For Web App
+      </a>
+      <a class="tag trophy" href="https://www.instagram.com/p/DJzHz98PCEH/?img_index=1">
+        Best Mentor Tech
+      </a>
+      <a class="tag trophy" href="https://www.linkedin.com/feed/update/urn:li:activity:7364174726551793665/" title="Best">
+        Design System Excellence
+      </a>
+      <a class="tag trophy" href="https://www.instagram.com/p/DBXg9ptzvJg/?img_index=2" target="_blank">
+        Top 2 - Coding Challange Fakultas Ilmu Komputer
+      </a>
+      <a class="tag trophy" href="https://www.linkedin.com/in/malikashkl/overlay/1731311114920/single-media-viewer/?profileId=ACoAAD0wJn4BNShVktM_5xYO90hGobMjWQKvfw0" target="_blank">
+        Top 2 - Game Developer for a web app
+      </a>
+      <a class="tag trophy" href="https://malikashkl.vercel.app" target="_blank">
+        Best Web Portofolio with Three JS
+      </a>
+      <a class="tag trophy" href="https://orbix.msync.my.id" target="_blank">
+        Most Innovative Web App AI
+      </a>
+      <a class="tag trophy" href="https://testy.msync.my.id" target="_blank">
+        Youngest IT Expert
+      </a>
+    </div>
+  </div>
+
+  <style>
+    /* Awards bubble styling */
+    .tag {
+      border: 1px solid rgba(59, 130, 246, .5);
+      background: rgba(59, 130, 246, 0.2);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      position: relative;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(6px);
+    }
+    .tag:hover,
+    .tag:focus-visible {
+      background: rgba(59, 130, 246, 0.4);
+      box-shadow: 0 0 16px rgba(59, 130, 246, 0.75);
+      transform: translateY(-2px);
+    }
+
+    /* Trophy icon */
+    .tag.trophy::after {
+      content: "";
+      position: absolute;
+      right: -12px;
+      top: -16px;
+      width: 36px;
+      height: 36px;
+      background: url('/awards.webp') center/contain no-repeat;
+      opacity: 0;
+      transform: translateY(6px) scale(.9);
+      transition: opacity .18s ease, transform .18s ease;
+      pointer-events: none;
+      filter: drop-shadow(0 6px 10px rgba(0, 0, 0, .35));
+    }
+    .tag.trophy:hover::after,
+    .tag.trophy:focus-visible::after,
+    .tag.trophy:active::after {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      .tag {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+      }
+    }
+  </style>
+</section>

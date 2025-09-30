@@ -1,0 +1,15 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import BlogList from "../components/BlogList.tsx";
+---
+
+<Layout title="Blog | Malika Shakila">
+  <section class="py-12 text-[var(--white)] border-t border-[#ffffff10]">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">Latest Insights</h2>
+      <h3 class="text-4xl md:text-5xl font-medium mb-8">Blog</h3>
+
+      <BlogList client:load />
+    </div>
+  </section>
+</Layout>

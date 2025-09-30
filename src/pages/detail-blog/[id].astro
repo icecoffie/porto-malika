@@ -1,0 +1,14 @@
+---
+export const prerender = false; 
+
+import Layout from "@/layouts/Layout.astro";
+import BlogDetail from "../../components/BlogDetail.tsx";
+
+const { id } = Astro.params;
+---
+
+<Layout title="Blog Detail | Malika Shakila">
+  <section class="py-12 text-[var(--white)] max-w-5xl mx-auto">
+    <BlogDetail client:load id={id} />
+  </section>
+</Layout>

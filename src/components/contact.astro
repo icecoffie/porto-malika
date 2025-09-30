@@ -1,0 +1,184 @@
+<section id="contact" class="w-full py-12 border-t border-[#ffffff10] relative overflow-hidden">
+  <!-- 3D Canvas Background -->
+  <canvas id="three-contact" class="absolute inset-0 w-full h-full z-0"></canvas>
+
+  <div class="relative z-10 max-w-5xl mx-auto px-4">
+    <div class="flex flex-col md:flex-row md:items-start gap-8">
+      <!-- Left Info -->
+      <div class="md:w-1/2 text-[var(--white-icon)] space-y-4">
+        <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">Let's talk</h2>
+        <h3 class="text-4xl md:text-5xl font-medium text-[var(--white)] mb-4">
+          Contact
+        </h3>
+        <p>
+          Any questions? I won’t bite, I promise 🧍🏻‍♀️
+        </p>
+        <div class="flex flex-col md:flex-row md:items-center gap-2">
+          <span class="font-semibold">Location:</span>
+          <span class="text-[var(--white)]">Bekasi, Indonesia</span>
+        </div>
+      </div>
+
+      <!-- Right Form -->
+      <div class="md:w-1/2">
+        <form
+          id="contact-form"
+          action="https://formspree.io/f/xjkrorey"
+          method="POST"
+          class="flex flex-col gap-10 bg-[#141414d9] p-6 rounded-xl shadow-lg w-full"
+        >
+          <input
+            type="text"
+            name="from_name"
+            placeholder="Name"
+            required
+            class="px-4 py-2 bg-[#1414149c] text-[var(--white)] border border-[var(--white-icon-tr)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--sec)] transition-shadow hover:shadow-md w-full"
+          />
+          <input
+            type="email"
+            name="reply_to"
+            placeholder="Email"
+            required
+            class="px-4 py-2 bg-[#1414149c] text-[var(--white)] border border-[var(--white-icon-tr)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--sec)] transition-shadow hover:shadow-md w-full"
+          />
+          <textarea
+            name="message"
+            placeholder="Message"
+            rows="6"
+            required
+            class="px-4 py-2 bg-[#1414149c] text-[var(--white)] border border-[var(--white-icon-tr)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--sec)] resize-none transition-shadow hover:shadow-md w-full"
+          ></textarea>
+          <button
+            type="submit"
+            class="px-4 py-2 bg-[var(--sec)] text-[var(--white)] rounded-lg border border-[var(--sec)] transition-all hover:bg-white hover:text-[var(--sec)] w-full"
+          >
+            Submit
+          </button>
+        </form>
+
+        <!-- Status Message -->
+        <div
+          id="form-status"
+          class="hidden mt-4 px-4 py-2 rounded-lg text-[var(--white)] bg-green-600/80 w-full text-center"
+        >
+          Thanks! Your message has been sent 🌱
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="module">
+  // ===========================
+  // CONTACT FORM AJAX (Formspree)
+  // ===========================
+  const form = document.getElementById("contact-form");
+  const formStatus = document.getElementById("form-status");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" },
+      });
+
+      if (response.ok) {
+        form.reset();
+        formStatus.classList.remove("hidden");
+      } else {
+        const data = await response.json();
+        console.error("Error response:", data);
+        formStatus.textContent = "⚠️ There was a problem sending your message.";
+        formStatus.classList.remove("hidden");
+        formStatus.classList.add("bg-red-600/80");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      formStatus.textContent = "⚠️ There was a problem sending your message.";
+      formStatus.classList.remove("hidden");
+      formStatus.classList.add("bg-red-600/80");
+    }
+  });
+
+  // ===========================
+  // 3D SPHERE BACKGROUND
+  // ===========================
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js';
+
+const canvas = document.getElementById("three-contact");
+
+if (canvas) {
+  // Ambil warna dari CSS variable
+  const secColor = getComputedStyle(document.documentElement).getPropertyValue('--sec').trim();
+  const secColorHex = parseInt(secColor.replace(/^#/, ''), 16);
+
+  // Pastikan canvas punya ukuran
+  canvas.width = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+
+  const scene = new THREE.Scene();
+
+  const camera = new THREE.PerspectiveCamera(
+    65,
+    canvas.offsetWidth / canvas.offsetHeight,
+    0.1,
+    1000
+  );
+  camera.position.z = 6;
+
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setSize(canvas.offsetWidth, canvas.offsetHeight, false);
+
+  // Bola biru/var(--sec)
+  const sphere = new THREE.Mesh(
+    new THREE.SphereGeometry(2, 32, 32),
+    new THREE.MeshStandardMaterial({
+      color: secColorHex, // pake var(--sec)
+      metalness: 0.6,
+      roughness: 0.1,
+      transparent: true,
+      opacity: 0.9,
+      wireframe: true,
+    })
+  );
+  scene.add(sphere);
+
+  // Cahaya
+  const light = new THREE.PointLight(0xffffff, 2.5);
+  light.position.set(5, 5, 5);
+  scene.add(light);
+
+  const ambient = new THREE.AmbientLight(0xffffff, 1.5);
+  scene.add(ambient);
+
+  let targetX = 0, targetY = 0;
+  window.addEventListener("mousemove", (e) => {
+    targetX = (e.clientX / window.innerWidth - 0.5) * Math.PI * 0.3;
+    targetY = (e.clientY / window.innerHeight - 0.5) * Math.PI * 0.3;
+  });
+
+  const clock = new THREE.Clock();
+  function animate() {
+    requestAnimationFrame(animate);
+    const t = clock.getElapsedTime();
+    sphere.position.y = Math.sin(t) * 0.3;
+    sphere.rotation.x += (targetY - sphere.rotation.x) * 0.05;
+    sphere.rotation.y += (targetX - sphere.rotation.y) * 0.05;
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  window.addEventListener("resize", () => {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    renderer.setSize(canvas.offsetWidth, canvas.offsetHeight, false);
+    camera.aspect = canvas.offsetWidth / canvas.offsetHeight;
+    camera.updateProjectionMatrix();
+  });
+}
+</script>
