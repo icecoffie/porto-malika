@@ -29,9 +29,6 @@ import codeshot from "../../public/codeshot.webp";
 import rocketrack from "../../public/rocketrack.webp";
 import syncrypt from "../../public/syncrypt.webp";
 import testy from "../../public/testy.webp";
-import { object } from "astro:schema";
-import { sync } from "astro";
-
 
 interface Project {
   title: string;
@@ -39,6 +36,7 @@ interface Project {
   link: string;
   preview: string;
   status: string;
+  description: string; 
 }
 
 const projects: Project[] = [
@@ -48,13 +46,15 @@ const projects: Project[] = [
     link: "https://github.com/icecoffie/orbix-ai",
     preview: "https://orbix.msync.my.id",
     status: "Deployed",
+    description: "AI-powered application with modern web technologies and real-time features.",
   },
   {
     title: "Matrix Sync",
     image: msync as ImageMetadata,
     link: "https://github.com/icecoffie/msync-tech",
-    preview: "https://tech.msync.my.id",
+    preview: "https://matrixsync.tech",
     status: "Deployed",
+    description: "Matrix Sync Tech official website is the best tech service for your bussiness.",
   }, 
   {
     title: "Synconfs",
@@ -62,6 +62,7 @@ const projects: Project[] = [
     link: "https://github.com/synconfs",
     preview: "https://synconfs.msync.my.id",
     status: "Deployed",
+    description: "Conference management system with easy event scheduling and sharing.",
   },
   {
     title: "Invorbit",
@@ -69,6 +70,7 @@ const projects: Project[] = [
     link: "https://github.com/icecoffie/invorbit",
     preview: "https://invorbit.vercel.app",
     status: "Deployed",
+    description: "Interactive invoice application.",
   },
   {
     title: "Skirtz",
@@ -76,6 +78,7 @@ const projects: Project[] = [
     link: "https://github.com/icecoffie/skirtz",
     preview: "https://skirtz.msync.my.id",
     status: "Deployed",
+    description: "Freelance platform website",
   },
   {
     title: "Dribbble",
@@ -83,6 +86,7 @@ const projects: Project[] = [
     link: "https://dribbble.com/msync",
     preview: "https://dribbble.com/msync",
     status: "Design Showcases",
+    description: "Collection of creative design showcases and UI/UX inspirations.",
   },
   {
     title: "Othellosm",
@@ -90,6 +94,7 @@ const projects: Project[] = [
     link: "https://github.com/icecoffie/othellosm",
     preview: "https://othellosm.msync.my.id",
     status: "Deployed",
+    description: "Othello board game implementation with interactive gameplay.",
   },
   {
     title: "Iceblast",
@@ -97,6 +102,7 @@ const projects: Project[] = [
     link: "https://github.com/icecoffie/iceblast",
     preview: "https://iceblast.msync.my.id",
     status: "Deployed",
+    description: "Fun web-based mini game with smooth UI and animation effects.",
   },
   {
     title: "Main Rubik",
@@ -104,6 +110,7 @@ const projects: Project[] = [
     link: "https://github.com/icecoffie/Game-Rubik",
     preview: "https://skirtz.msync.my.id",
     status: "Deployed",
+    description: "3D interactive Rubik's cube simulation for practicing solving.",
   },
   {
     title: "Tetr1s",
@@ -111,6 +118,7 @@ const projects: Project[] = [
     link: "https://github.com/icecoffie/Tetris-Game-Tetr1s",
     preview: "https://tetr1s.msync.my.id",
     status: "Deployed",
+    description: "Classic Tetris-inspired game built for web browsers.",
   },
   {
     title: "Metaverse",
@@ -118,6 +126,7 @@ const projects: Project[] = [
     link: "https://github.com/icecoffie/metaverse-web3",
     preview: "https://metaverse.vercel.app",
     status: "Deployed",
+    description: "Metaverse concept app integrating Web3 and immersive features.",
   }, 
    {
     title: "Dashboard Admin and User",
@@ -125,6 +134,7 @@ const projects: Project[] = [
     link: "https://github.com/icecoffie/Dashboard-Admin-Paling-Fix",
     preview: "https://labshare.unpam.ac.id/",
     status: "Deployed",
+    description: "Responsive admin and user dashboard for managing data efficiently.",
   },
   {
     title: "Pop Up Reminder for Drink Water",
@@ -132,6 +142,7 @@ const projects: Project[] = [
     link: "https://github.com/icecoffie/drinkwater-extension-vsc",
     preview: "https://marketplace.visualstudio.com/items?itemName=MatrixSync.drinkwater-extension",
     status: "Deployed",
+    description: "VSCode extension reminding users to stay hydrated during coding.",
   },
   {
     title: "RGB Porto",
@@ -139,6 +150,7 @@ const projects: Project[] = [
     link: "https://github.com/icecoffie/rgb-web",
     preview: "https://shakti.msync.my.id",
     status: "Deployed",
+    description: "Portfolio with animated RGB gradient effects and modern style.",
   },
   {
     title: "Glacierzs",
@@ -146,6 +158,7 @@ const projects: Project[] = [
     link: "https://github.com/icecoffie/glacierzs",
     preview: "https://glacierzs.msync.my.id",
     status: "Deployed",
+    description: "Creative web experience inspired by icy aesthetic and effects.",
   },
   {
     title: "Object Detection",
@@ -153,6 +166,7 @@ const projects: Project[] = [
     link: "https://github.com/icecoffie/Simple-Object-Detection",
     preview: "https://codepen.io/icecoffie/full/dPyvQwZ",
     status: "Design Showcases",
+    description: "Simple object detection demo using HTML, CSS, and JavaScript.",
   },
   {
     title: "Resto Sagara Ikan",
@@ -160,6 +174,7 @@ const projects: Project[] = [
     link: "https://github.com/icecoffie/sagara-resto",
     preview: "https://sagara.msync.my.id",
     status: "Deployed",
+    description: "Restaurant website showcasing menu, services, and reservations.",
   },
   {
     title: "Skybreez",
@@ -167,6 +182,7 @@ const projects: Project[] = [
     link: "https://github.com/icecoffie/skybreez",
     preview: "https://skybreez.msync.my.id",
     status: "Deployed",
+    description: "Modern landing page with smooth scrolling and UI animations.",
   },
   {
     title: "Speedytype",
@@ -174,6 +190,7 @@ const projects: Project[] = [
     link: "https://github.com/icecoffie/speedy-type",
     preview: "https://codepen.io/icecoffie/full/LEYKYmR",
     status: "Deployed",
+    description: "Typing speed test game with accuracy and score tracking.",
   },
   {
     title: "Syncwave",
@@ -181,6 +198,7 @@ const projects: Project[] = [
     link: "https://github.com/icecoffie/syncwave",
     preview: "https://syncwave.msync.my.id",
     status: "Deployed",
+    description: "Music player and visualizer with smooth wave animations.",
   }, 
   {
     title: "Turutudu",
@@ -188,6 +206,7 @@ const projects: Project[] = [
     link: "https://github.com/icecoffie/turu-tudu",
     preview: "https://turutudu.msync.my.id",
     status: "Deployed",
+    description: "To-do list app with a playful and simple UI design.",
   },
   {
     title: "Tanya Aku",
@@ -195,6 +214,7 @@ const projects: Project[] = [
     link: "https://github.com/icecoffie/tanya-aku",
     preview: "https://tanya.msync.my.id",
     status: "Deployed",
+    description: "Q&A style web app for interactive question answering.",
   },
   {
     title: "Retrodesk",
@@ -202,6 +222,7 @@ const projects: Project[] = [
     link: "https://github.com/icecoffie/retro-desktop",
     preview: "https://codepen.io/icecoffie/full/jEbNKYR",
     status: "Deployed",
+    description: "Retro-style desktop UI recreated in the browser.",
   },
   {
     title: "Code shot",
@@ -209,6 +230,7 @@ const projects: Project[] = [
     link: "https://github.com/icecoffie/Omala-ShotCode",
     preview: "https://marketplace.visualstudio.com/items?itemName=MatrixSync.omala",
     status: "Deployed",
+    description: "VSCode extension to take clean and styled code screenshots.",
   },
   {
     title: "Rocket Track",
@@ -216,6 +238,7 @@ const projects: Project[] = [
     link: "https://github.com/icecoffie/rockeTrack",
     preview: "https://rocketrack.msync.my.id",
     status: "Deployed",
+    description: "Rocket launch tracker app with animated visuals and data.",
   },
   {
     title: "Syncrypt",
@@ -223,6 +246,7 @@ const projects: Project[] = [
     link: "https://github.com/icecoffie/encryption-sync",
     preview: "https://syncrypt.msync.my.id",
     status: "Deployed",
+    description: "Web app for secure file encryption and decryption sync.",
   },
   {
     title: "Community",
@@ -230,6 +254,7 @@ const projects: Project[] = [
     link: "https://whatsapp.com/channel/0029VbBNHToKrWQoNtBduu2u",
     preview: "https://whatsapp.com/channel/0029VbBNHToKrWQoNtBduu2u",
     status: "Deployed",
+    description: "Official community channel for updates and collaboration.",
   },
   {
     title: "Sugar Pop Photo",
@@ -237,6 +262,7 @@ const projects: Project[] = [
     link: "https://github.com/icecoffie/sugarpop-photo",
     preview: "https://sugarpop.msync.my.id",
     status: "On Going",
+    description: "Photo gallery app with colorful UI and smooth browsing.",
   },
   {
     title: "Testimoni",
@@ -244,6 +270,7 @@ const projects: Project[] = [
     link: "https://github.com/icecoffie/testy",
     preview: "https://testy.msync.my.id",
     status: "Testy",
+    description: "Testimonial and feedback showcase app.",
   },
 ];
 ---
@@ -252,72 +279,71 @@ const projects: Project[] = [
   id="projects"
   class="py-12 border-t border-[#ffffff10] text-[var(--white)]"
 >
-  <div class="max-w-5xl mx-auto">
+  <div class="max-w-6xl mx-auto px-4">
     <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">My work</h2>
     <h3 class="text-4xl md:text-5xl font-medium mb-8">Projects</h3>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 ">
+    {/* Responsive grid */}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
       {
         projects.map((project) => (
-          <div class="group">
+          <article class="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300 bg-[#111]">
             <a
               href={project.preview}
               target="_blank"
               rel="noopener noreferrer"
-              class="block"
+              aria-label={`Open live preview of ${project.title}`}
+              aria-describedby={`desc-${project.title}`}
+              class="block focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-[var(--sec)]"
             >
-              {/* Kotak gambar */}
-              <div class="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 mb-4 aspect-square">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
+              {/* Gambar */}
+              <Image
+                src={project.image}
+                alt={`Thumbnail of ${project.title}`}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 aspect-square"
+              />
 
-              {/* Info project */}
-              <div class="flex items-center px-3">
-                <div class="flex-grow">
-                  <h4 class="text-2xl font-semibold">{project.title}</h4>
-                  <span class="py-1 text-sm text-[var(--white-icon)]">
-                    {project.status}
-                  </span>
-                </div>
-                <div class="flex gap-2 ml-auto">
-                  <a
-                    target="_blank"
-                    href={project.link}
-                    aria-label="GitHub"
-                    class="size-14 flex justify-center items-center text-[var(--white-icon)] hover:text-white transition duration-300 ease-in-out border border-1 border-[var(--white-icon-tr)] p-3 rounded-xl bg-[#1414149c] hover:bg-[var(--white-icon-tr)]"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      class="size-7"
-                    >
-                      <path d="M24 12L18.3431 17.6569L16.9289 16.2426L21.1716 12L16.9289 7.75736L18.3431 6.34315L24 12ZM2.82843 12L7.07107 16.2426L5.65685 17.6569L0 12L5.65685 6.34315L7.07107 7.75736L2.82843 12ZM9.78845 21H7.66009L14.2116 3H16.3399L9.78845 21Z" />
-                    </svg>
-                  </a>
-                  <a
-                    target="_blank"
-                    href={project.preview}
-                    aria-label="Preview"
-                    class="size-14 flex justify-center items-center text-[var(--white-icon)] hover:text-white transition duration-300 ease-in-out border border-1 border-[var(--white-icon-tr)] p-3 rounded-xl bg-[#1414149c] hover:bg-[var(--white-icon-tr)]"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      class="size-7"
-                    >
-                      <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z" />
-                    </svg>
-                  </a>
-                </div>
+              {/* Overlay Info */}
+              <div class="absolute bottom-0 left-0 right-0 bg-black/70 p-4">
+                <h4 class="text-xl font-semibold">{project.title}</h4>
+                <span class="text-sm text-[var(--white-icon)]">{project.status}</span>
+                <p id={`desc-${project.title}`} class="text-xs text-[var(--white-icon)] mt-1">
+                  {project.description}
+                </p>
               </div>
             </a>
-          </div>
+
+            {/* Tombol Aksi */}
+            <div class="absolute top-2 right-2 flex gap-2">
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`GitHub repository for ${project.title}`}
+                aria-describedby={`desc-${project.title}`}
+                class="focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-[var(--sec)] size-10 flex justify-center items-center rounded-md bg-black/60 hover:bg-black/80 text-white transition"
+              >
+                {/* GitHub icon */}
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="size-5">
+                  <path d="M24 12L18.34 17.66L16.93 16.24L21.17 12L16.93 7.76L18.34 6.34L24 12ZM2.83 12L7.07 16.24L5.66 17.66L0 12L5.66 6.34L7.07 7.76L2.83 12ZM9.79 21H7.66L14.21 3H16.34L9.79 21Z"/>
+                </svg>
+              </a>
+
+              <a
+                href={project.preview}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Live preview of ${project.title}`}
+                aria-describedby={`desc-${project.title}`}
+                class="focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-[var(--sec)] size-10 flex justify-center items-center rounded-md bg-black/60 hover:bg-black/80 text-white transition"
+              >
+                {/* Preview icon */}
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="size-5">
+                  <path d="M16 9.41L7.4 18.02L5.98 16.61L14.59 8H7V6H18V17H16V9.41Z"/>
+                </svg>
+              </a>
+            </div>
+          </article>
         ))
       }
     </div>
@@ -326,12 +352,10 @@ const projects: Project[] = [
     <a
       target="_blank"
       href="https://docs.google.com/spreadsheets/d/1qfATqXNokCWCgpNYU4if_lRzVRJM55zu7oycrJM06LI/edit?gid=0#gid=0"
-      aria-label="GitHub"
+      aria-label="More projects in Google Sheets"
       class="w-full flex items-center justify-center gap-2 mt-9 text-[var(--white-icon)] hover:text-white transition duration-300 ease-in-out border border-[var(--white-icon-tr)] p-3 rounded-full bg-[#1414149c] hover:bg-[var(--white-icon-tr)] hover:scale-105"
     >
       <span class="md:text-lg text-md">More projects</span>
     </a>
   </div>
 </section>
-
-
