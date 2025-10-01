@@ -18,13 +18,21 @@ const { title } = Astro.props;
     <link rel="icon" type="image/png" href="/public/me.webp" />
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://malika1.vercel.app" />
+    <link rel="canonical" href="https://malika.engineer" />
+
+    <!-- Non-blocking font load -->
+    <link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.cdnfonts.com/css/montserrat" />
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/montserrat" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/montserrat" />
+    </noscript>
 
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content="Malika Shakila - Software Engineer" />
     <meta property="og:description" content="Software Engineer specializing in modern web development, performance optimization, and user-friendly design." />
     <meta property="og:image" content="https://malika.msync.my.id/preview.png" />
-    <meta property="og:url" content="https://malika1.vercel.app" />
+    <meta property="og:url" content="https://malika.engineer" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Malika Shakila" />
 
@@ -41,9 +49,9 @@ const { title } = Astro.props;
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Malika Shakila",
-      "url": "https://malika1.vercel.app",
+      "url": "https://malika.engineer",
       "image": "https://malika.msync.my.id/profile.jpg",
-      "jobTitle": "Software Engineer",
+      "jobTitle": "Frontend Engineer",
       "sameAs": [
         "https://github.com/malika",
         "https://linkedin.com/in/malika",
@@ -60,11 +68,10 @@ const { title } = Astro.props;
 </html>
 
 <style is:global>
-  @import url('https://fonts.cdnfonts.com/css/montserrat');
-
   :root {
     --background: #101010;
     --sec: #007bff;
+    --sec-dark: #0069d9;
     --white: #dfdfdf;
     --white-icon: #f3f3f398;
     --white-icon-tr: #f3f3f310;
