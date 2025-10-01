@@ -1,6 +1,9 @@
-<section id="contact" class="w-full py-12 border-t border-[#ffffff10] relative overflow-hidden">
-  <!-- 3D Canvas Background -->
-  <canvas id="three-contact" class="absolute inset-0 w-full h-full z-0"></canvas>
+<section
+  id="contact"
+  class="w-full py-12 border-t border-[#ffffff10] relative overflow-hidden"
+>
+  <!-- Canvas container (Three.js) -->
+  <div id="three-container" class="absolute inset-0 w-full h-full z-0"></div>
 
   <div class="relative z-10 max-w-5xl mx-auto px-4">
     <div class="flex flex-col md:flex-row md:items-start gap-8">
@@ -50,7 +53,7 @@
           ></textarea>
           <button
             type="submit"
-            class="px-4 py-2 bg-[var(--sec)] text-[var(--white)] rounded-lg border border-[var(--sec)] transition-all hover:bg-white hover:text-[var(--sec)] w-full"
+            class="px-4 py-2 bg-[var(--sec-dark)] text-[var(--white)] rounded-lg border border-[var(--sec-dark)] transition-all hover:bg-white hover:text-[var(--sec-dark)] hover:border-[var(--sec-dark)] w-full"
           >
             Submit
           </button>
@@ -70,7 +73,7 @@
 
 <script type="module">
   // ===========================
-  // CONTACT FORM AJAX (Formspree)
+  // FORM AJAX (Formspree)
   // ===========================
   const form = document.getElementById("contact-form");
   const formStatus = document.getElementById("form-status");
@@ -89,6 +92,7 @@
       if (response.ok) {
         form.reset();
         formStatus.classList.remove("hidden");
+        formStatus.classList.remove("bg-red-600/80");
       } else {
         const data = await response.json();
         console.error("Error response:", data);
@@ -105,80 +109,86 @@
   });
 
   // ===========================
-  // 3D SPHERE BACKGROUND
+  // Lazy load Three.js ketika section contact terlihat
   // ===========================
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js';
+  const contactSection = document.getElementById("contact");
+  let threeLoaded = false;
 
-const canvas = document.getElementById("three-contact");
+  const loadThree = async () => {
+    if (threeLoaded) return;
+    threeLoaded = true;
 
-if (canvas) {
-  // Ambil warna dari CSS variable
-  const secColor = getComputedStyle(document.documentElement).getPropertyValue('--sec').trim();
-  const secColorHex = parseInt(secColor.replace(/^#/, ''), 16);
+    const { Scene, PerspectiveCamera, WebGLRenderer, SphereGeometry, MeshStandardMaterial, Mesh, PointLight, AmbientLight, Clock } = await import(
+      'https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js'
+    );
 
-  // Pastikan canvas punya ukuran
-  canvas.width = canvas.offsetWidth;
-  canvas.height = canvas.offsetHeight;
+    const container = document.getElementById("three-container");
+    const canvas = document.createElement("canvas");
+    container.appendChild(canvas);
 
-  const scene = new THREE.Scene();
+    const secColor = getComputedStyle(document.documentElement).getPropertyValue('--sec').trim();
+    const secColorHex = parseInt(secColor.replace(/^#/, ''), 16);
 
-  const camera = new THREE.PerspectiveCamera(
-    65,
-    canvas.offsetWidth / canvas.offsetHeight,
-    0.1,
-    1000
-  );
-  camera.position.z = 6;
+    const scene = new Scene();
+    const camera = new PerspectiveCamera(65, canvas.offsetWidth / canvas.offsetHeight, 0.1, 1000);
+    camera.position.z = 6;
 
-  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
-  renderer.setPixelRatio(window.devicePixelRatio);
-  renderer.setSize(canvas.offsetWidth, canvas.offsetHeight, false);
-
-  // Bola biru/var(--sec)
-  const sphere = new THREE.Mesh(
-    new THREE.SphereGeometry(2, 32, 32),
-    new THREE.MeshStandardMaterial({
-      color: secColorHex, // pake var(--sec)
-      metalness: 0.6,
-      roughness: 0.1,
-      transparent: true,
-      opacity: 0.9,
-      wireframe: true,
-    })
-  );
-  scene.add(sphere);
-
-  // Cahaya
-  const light = new THREE.PointLight(0xffffff, 2.5);
-  light.position.set(5, 5, 5);
-  scene.add(light);
-
-  const ambient = new THREE.AmbientLight(0xffffff, 1.5);
-  scene.add(ambient);
-
-  let targetX = 0, targetY = 0;
-  window.addEventListener("mousemove", (e) => {
-    targetX = (e.clientX / window.innerWidth - 0.5) * Math.PI * 0.3;
-    targetY = (e.clientY / window.innerHeight - 0.5) * Math.PI * 0.3;
-  });
-
-  const clock = new THREE.Clock();
-  function animate() {
-    requestAnimationFrame(animate);
-    const t = clock.getElapsedTime();
-    sphere.position.y = Math.sin(t) * 0.3;
-    sphere.rotation.x += (targetY - sphere.rotation.x) * 0.05;
-    sphere.rotation.y += (targetX - sphere.rotation.y) * 0.05;
-    renderer.render(scene, camera);
-  }
-  animate();
-
-  window.addEventListener("resize", () => {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+    const renderer = new WebGLRenderer({ canvas, alpha: true });
+    renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(canvas.offsetWidth, canvas.offsetHeight, false);
-    camera.aspect = canvas.offsetWidth / canvas.offsetHeight;
-    camera.updateProjectionMatrix();
-  });
-}
+
+    const sphere = new Mesh(
+      new SphereGeometry(2, 32, 32),
+      new MeshStandardMaterial({
+        color: secColorHex,
+        metalness: 0.6,
+        roughness: 0.1,
+        transparent: true,
+        opacity: 0.9,
+        wireframe: true
+      })
+    );
+    scene.add(sphere);
+
+    const light = new PointLight(0xffffff, 2.5);
+    light.position.set(5, 5, 5);
+    scene.add(light);
+
+    const ambient = new AmbientLight(0xffffff, 1.5);
+    scene.add(ambient);
+
+    let targetX = 0, targetY = 0;
+    window.addEventListener("mousemove", (e) => {
+      targetX = (e.clientX / window.innerWidth - 0.5) * Math.PI * 0.3;
+      targetY = (e.clientY / window.innerHeight - 0.5) * Math.PI * 0.3;
+    });
+
+    const clock = new Clock();
+    const animate = () => {
+      requestAnimationFrame(animate);
+      const t = clock.getElapsedTime();
+      sphere.position.y = Math.sin(t) * 0.3;
+      sphere.rotation.x += (targetY - sphere.rotation.x) * 0.05;
+      sphere.rotation.y += (targetX - sphere.rotation.y) * 0.05;
+      renderer.render(scene, camera);
+    };
+    animate();
+
+    window.addEventListener("resize", () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      renderer.setSize(canvas.offsetWidth, canvas.offsetHeight, false);
+      camera.aspect = canvas.offsetWidth / canvas.offsetHeight;
+      camera.updateProjectionMatrix();
+    });
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      loadThree();
+      observer.disconnect();
+    }
+  }, { threshold: 0.1 });
+
+  observer.observe(contactSection);
 </script>
