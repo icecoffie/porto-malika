@@ -1,7 +1,5 @@
-// src/components/LikeButton.tsx
+
 import React, { useEffect, useState } from "react";
-import { doc, onSnapshot, updateDoc, increment } from "firebase/firestore";
-import { db } from "src/firebase";
 
 const LikeButton = () => {
   const [likes, setLikes] = useState(0);
@@ -14,25 +12,41 @@ const LikeButton = () => {
   useEffect(() => {
     setIsClient(true);
 
-    // cek localStorage biar user cuma bisa like sekali
+    // Cek localStorage supaya user cuma bisa like sekali
     const storedIsLiked = localStorage.getItem("websiteIsLiked");
     if (storedIsLiked) setIsLiked(storedIsLiked === "true");
 
-    // realtime listen ke likes/counter
-    const likeDocRef = doc(db, "likes", "counter");
-    const unsubscribe = onSnapshot(likeDocRef, (docSnap) => {
-      if (docSnap.exists()) {
-        const currentLikes = (docSnap.data() as any).likes ?? 0;
-        setLikes(Math.max(0, currentLikes));
-        setAnimateLikes(true);
-        setTimeout(() => setAnimateLikes(false), 300);
-      } else {
-        // kalau dokumen belum ada, show 0
-        setLikes(0);
-      }
-    });
+    // Lazy load Firebase & setup realtime listener
+    let unsubscribe: (() => void) | null = null;
 
-    return () => unsubscribe();
+    const initFirebase = async () => {
+      try {
+        const { doc, onSnapshot } = await import("firebase/firestore");
+        const { db } = await import("src/firebase");
+
+        const likeDocRef = doc(db, "likes", "counter");
+
+        // realtime listener
+        unsubscribe = onSnapshot(likeDocRef, (docSnap) => {
+          if (docSnap.exists()) {
+            const currentLikes = (docSnap.data() as any).likes ?? 0;
+            setLikes(Math.max(0, currentLikes));
+            setAnimateLikes(true);
+            setTimeout(() => setAnimateLikes(false), 300);
+          } else {
+            setLikes(0);
+          }
+        });
+      } catch (error) {
+        console.error("Firebase listener error:", error);
+      }
+    };
+
+    initFirebase();
+
+    return () => {
+      if (unsubscribe) unsubscribe();
+    };
   }, []);
 
   const triggerLikeAnimation = () => {
@@ -46,17 +60,22 @@ const LikeButton = () => {
       triggerLikeAnimation();
       return;
     }
+
+    setIsProcessing(true);
+
     try {
-      setIsProcessing(true);
+      // Lazy load Firebase on first click (for update)
+      const { doc, updateDoc, increment } = await import("firebase/firestore");
+      const { db } = await import("src/firebase");
+
       const likeDocRef = doc(db, "likes", "counter");
       await updateDoc(likeDocRef, { likes: increment(1) });
+
       setIsLiked(true);
       localStorage.setItem("websiteIsLiked", "true");
       triggerLikeAnimation();
     } catch (error) {
       console.error("Error updating likes:", error);
-      // kalau dok belum ada, buat via updateDoc akan error; kita bisa fallback create:
-      // tapi untuk simplicity, pastikan dokumen 'counter' sudah dibuat di Firestore.
     } finally {
       setIsProcessing(false);
     }
@@ -82,7 +101,6 @@ const LikeButton = () => {
         className={`hover:scale-105
           group relative w-40 h-10 flex items-center justify-center p-3
           rounded-full transition-all duration-300 ease-in-out transform border-2 ${borderColorClass}
-          ${!isLiked ? "md:hover:border-[var(--white)]" : ""}
           ${triggerAnimation ? " animate-scale" : ""}
         `}
       >
