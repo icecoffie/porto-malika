@@ -1,44 +1,7 @@
 ---
-import { Image } from "astro:assets";
-import Metaverse from "../../public/Metaverse.webp";
-import invorbit from "../../public/invorbit.webp";
-import orbix from "../../public/orbix.webp";
-import skirtz from "../../public/skirtzmockup.webp";
-import synconfs from "../../public/synconfsmck.webp";
-import dribbble from "../../public/dribbble.webp";
-import drinkext from "../../public/drinkext.webp";
-import iceblast from "../../public/iceblast.webp";
-import mejikuhibinu from "../../public/mejikuhibinu.webp";
-import dashboard from "../../public/dashboard.webp";
-import monapeng from "../../public/monapeng.webp";
-import msync from "../../public/msync.webp";
-import objectdetect from "../../public/objectdetect.webp";
-import othello from "../../public/othello.webp";
-import retrodesk from "../../public/retrodesk.webp";
-import rubik from "../../public/rubik.webp";
-import sagaramck from "../../public/sagaramck.webp";
-import skybreez from "../../public/skybreez.webp";
-import speedytype from "../../public/speedytype.webp";
-import syncwave from "../../public/syncwave.webp";
-import tanya from "../../public/tanya.webp";
-import tetr1s from "../../public/tetr1s.webp";
-import turutudu from "../../public/turutudu.webp";
-import komunitas from "../../public/komunitas.webp";
-import sugarpop from "../../public/sugarpop.webp";
-import codeshot from "../../public/codeshot.webp";
-import rocketrack from "../../public/rocketrack.webp";
-import syncrypt from "../../public/syncrypt.webp";
-import testy from "../../public/testy.webp";
-import evoste from "../../public/evoste.webp";
-import malsky from "../../public/malsky.webp";
-import linux from "../../public/linux.webp";
-import skytech from "../../public/skytech.webp";
-import turutodoo from "../../public/turutodoo.webp";
-import wenow from "../../public/wenow.webp";
-
 interface Project {
   title: string;
-  image: ImageMetadata;
+  image: string;
   link: string;
   preview: string;
   status: string;
@@ -48,7 +11,7 @@ interface Project {
 const projects: Project[] = [
   {
     title: "Orbix AI",
-    image: orbix as ImageMetadata,
+    image: "/orbix.webp",
     link: "https://github.com/icecoffie/orbix-ai",
     preview: "https://orbix.msync.my.id",
     status: "Deployed",
@@ -56,7 +19,7 @@ const projects: Project[] = [
   },
   {
     title: "Matrix Sync",
-    image: msync as ImageMetadata,
+    image: "/msync.webp",
     link: "https://github.com/icecoffie/msync-tech",
     preview: "https://matrixsync.app",
     status: "Deployed",
@@ -64,7 +27,7 @@ const projects: Project[] = [
   }, 
   {
     title: "Synconfs",
-    image: synconfs as ImageMetadata,
+    image: "/synconfsmck.webp",
     link: "https://github.com/synconfs",
     preview: "https://synconfs.msync.my.id",
     status: "Deployed",
@@ -72,7 +35,7 @@ const projects: Project[] = [
   },
   {
     title: "Invorbit",
-    image: invorbit as ImageMetadata,
+    image: "/invorbit.webp",
     link: "https://github.com/icecoffie/invorbit",
     preview: "https://invorbit.vercel.app",
     status: "Deployed",
@@ -80,7 +43,7 @@ const projects: Project[] = [
   },
   {
     title: "Skirtz",
-    image: skirtz as ImageMetadata,
+    image: "/skirtzmockup.webp",
     link: "https://github.com/icecoffie/skirtz",
     preview: "https://skirtz.msync.my.id",
     status: "Deployed",
@@ -88,7 +51,7 @@ const projects: Project[] = [
   },
   {
     title: "Dribbble",
-    image: dribbble as ImageMetadata,
+    image: "/dribbble.webp",
     link: "https://dribbble.com/msync",
     preview: "https://dribbble.com/msync",
     status: "Design Showcases",
@@ -96,7 +59,7 @@ const projects: Project[] = [
   },
   {
     title: "Othellosm",
-    image: othello as ImageMetadata,
+    image: "/othello.webp",
     link: "https://github.com/icecoffie/othellosm",
     preview: "https://othellosm.msync.my.id",
     status: "Deployed",
@@ -104,7 +67,7 @@ const projects: Project[] = [
   },
   {
     title: "Iceblast",
-    image: iceblast as ImageMetadata,
+    image: "/iceblast.webp",
     link: "https://github.com/icecoffie/iceblast",
     preview: "https://iceblast.msync.my.id",
     status: "Deployed",
@@ -112,7 +75,7 @@ const projects: Project[] = [
   },
   {
     title: "E-Voste",
-    image: evoste as ImageMetadata,
+    image: "/evoste.webp",
     link: "https://github.com/icecoffie/e-voste",
     preview: "https://e-voste.vercel.app",
     status: "Deployed",
@@ -120,7 +83,7 @@ const projects: Project[] = [
   }, 
   {
     title: "Malsky App",
-    image: malsky as ImageMetadata,
+    image: "/malsky.webp",
     link: "https://github.com/icecoffie/malsky-app/",
     preview: "https://github.com/icecoffie/malsky-app/",
     status: "Deployed",
@@ -128,7 +91,7 @@ const projects: Project[] = [
   },
   {
     title: "Linux Simulation",
-    image: linux as ImageMetadata,
+    image: "/linux.webp",
     link: "https://github.com/icecoffie/ubuntu-nextjs",
     preview: "https://github.com/icecoffie/ubuntu-nextjs",
     status: "Deployed",
@@ -136,7 +99,7 @@ const projects: Project[] = [
   },
   {
     title: "Main Rubik",
-    image: rubik as ImageMetadata,
+    image: "/rubik.webp",
     link: "https://github.com/icecoffie/Game-Rubik",
     preview: "https://skirtz.msync.my.id",
     status: "Deployed",
@@ -144,7 +107,7 @@ const projects: Project[] = [
   },
   {
     title: "Tetr1s",
-    image: tetr1s as ImageMetadata,
+    image: "/tetr1s.webp",
     link: "https://github.com/icecoffie/Tetris-Game-Tetr1s",
     preview: "https://tetr1s.msync.my.id",
     status: "Deployed",
@@ -152,15 +115,15 @@ const projects: Project[] = [
   },
   {
     title: "Metaverse",
-    image: Metaverse as ImageMetadata,
+    image: "/Metaverse.webp",
     link: "https://github.com/icecoffie/metaverse-web3",
-    preview: "https://metaverse.vercel.app",
+    preview: "https://metaverse-mada.vercel.app",
     status: "Deployed",
     description: "Metaverse concept app integrating Web3 and immersive features.",
   }, 
    {
     title: "Dashboard Admin and User",
-    image: dashboard as ImageMetadata,
+    image: "/dashboard.webp",
     link: "https://github.com/icecoffie/frontend-paling-baru",
     preview: "https://labshare.unpam.ac.id/",
     status: "Deployed",
@@ -168,7 +131,7 @@ const projects: Project[] = [
   },
   {
     title: "Sky Tech",
-    image: skytech as ImageMetadata,
+    image: "/skytech.webp",
     link: "https://github.com/icecoffie/sky-tech",
     preview: "https://github.com/icecoffie/sky.tech",
     status: "Deployed",
@@ -176,7 +139,7 @@ const projects: Project[] = [
   },
   {
     title: "Turutodoo",
-    image: turutodoo as ImageMetadata,
+    image: "/turutodoo.webp",
     link: "https://github.com/icecoffie/turutodoo",
     preview: "https://github.com/icecoffie/turutodoo",
     status: "Deployed",
@@ -184,7 +147,7 @@ const projects: Project[] = [
   },
   {
     title: "Atmox Wenow",
-    image: wenow as ImageMetadata,
+    image: "/wenow.webp",
     link: "https://github.com/icecoffie/atmox",
     preview: "https://github.com/icecoffie/atmox",
     status: "Deployed",
@@ -192,7 +155,7 @@ const projects: Project[] = [
   },
   {
     title: "Pop Up Reminder for Drink Water",
-    image: drinkext as ImageMetadata,
+    image: "/drinkext.webp",
     link: "https://github.com/icecoffie/drinkwater-extension-vsc",
     preview: "https://marketplace.visualstudio.com/items?itemName=MatrixSync.drinkwater-extension",
     status: "Deployed",
@@ -200,7 +163,7 @@ const projects: Project[] = [
   },
   {
     title: "RGB Porto",
-    image: mejikuhibinu as ImageMetadata,
+    image: "/mejikuhibinu.webp",
     link: "https://github.com/icecoffie/rgb-web",
     preview: "https://shakti.msync.my.id",
     status: "Deployed",
@@ -208,7 +171,7 @@ const projects: Project[] = [
   },
   {
     title: "Glacierzs",
-    image: monapeng as ImageMetadata,
+    image: "/monapeng.webp",
     link: "https://github.com/icecoffie/glacierzs",
     preview: "https://icecoffie.github.io/glacierzs/",
     status: "Deployed",
@@ -216,7 +179,7 @@ const projects: Project[] = [
   },
   {
     title: "Object Detection",
-    image: objectdetect as ImageMetadata,
+    image: "/objectdetect.webp",
     link: "https://github.com/icecoffie/Simple-Object-Detection",
     preview: "https://codepen.io/icecoffie/full/dPyvQwZ",
     status: "Design Showcases",
@@ -224,7 +187,7 @@ const projects: Project[] = [
   },
   {
     title: "Resto Sagara Ikan",
-    image: sagaramck as ImageMetadata,
+    image: "/sagaramck.webp",
     link: "https://github.com/icecoffie/sagara-resto",
     preview: "https://icecoffie.github.io/sagara-resto/",
     status: "Deployed",
@@ -232,7 +195,7 @@ const projects: Project[] = [
   },
   {
     title: "Skybreez",
-    image: skybreez as ImageMetadata,
+    image: "/skybreez.webp",
     link: "https://github.com/icecoffie/skybreez",
     preview: "https://skybreez.msync.my.id",
     status: "Deployed",
@@ -240,7 +203,7 @@ const projects: Project[] = [
   },
   {
     title: "Speedytype",
-    image: speedytype as ImageMetadata,
+    image: "/speedytype.webp",
     link: "https://github.com/icecoffie/speedy-type",
     preview: "https://codepen.io/icecoffie/full/LEYKYmR",
     status: "Deployed",
@@ -248,7 +211,7 @@ const projects: Project[] = [
   },
   {
     title: "Syncwave",
-    image: syncwave as ImageMetadata,
+    image: "/syncwave.webp",
     link: "https://github.com/icecoffie/syncwave",
     preview: "https://syncwave.msync.my.id",
     status: "Deployed",
@@ -256,7 +219,7 @@ const projects: Project[] = [
   }, 
   {
     title: "Turutudu",
-    image: turutudu as ImageMetadata,
+    image: "/turutudu.webp",
     link: "https://github.com/icecoffie/turu-tudu",
     preview: "https://turutudu.msync.my.id",
     status: "Deployed",
@@ -264,7 +227,7 @@ const projects: Project[] = [
   },
   {
     title: "Tanya Aku",
-    image: tanya as ImageMetadata,
+    image: "/tanya.webp",
     link: "https://github.com/icecoffie/tanya-aku",
     preview: "https://tanya.msync.my.id",
     status: "Deployed",
@@ -272,7 +235,7 @@ const projects: Project[] = [
   },
   {
     title: "Retrodesk",
-    image: retrodesk as ImageMetadata,
+    image: "/retrodesk.webp",
     link: "https://github.com/icecoffie/retro-desktop",
     preview: "https://codepen.io/icecoffie/full/jEbNKYR",
     status: "Deployed",
@@ -280,7 +243,7 @@ const projects: Project[] = [
   },
   {
     title: "Code shot",
-    image: codeshot as ImageMetadata,
+    image: "/codeshot.webp",
     link: "https://github.com/icecoffie/Omala-ShotCode",
     preview: "https://marketplace.visualstudio.com/items?itemName=MatrixSync.omala",
     status: "Deployed",
@@ -288,7 +251,7 @@ const projects: Project[] = [
   },
   {
     title: "Rocket Track",
-    image: rocketrack as ImageMetadata,
+    image: "/rocketrack.webp",
     link: "https://github.com/icecoffie/rockeTrack",
     preview: "https://icecoffie.github.io/rockeTrack/",
     status: "Deployed",
@@ -296,7 +259,7 @@ const projects: Project[] = [
   },
   {
     title: "Syncrypt",
-    image: syncrypt as ImageMetadata,
+    image: "/syncrypt.webp",
     link: "https://github.com/icecoffie/encryption-sync",
     preview: "https://icecoffie.github.io/encryption-sync/",
     status: "Deployed",
@@ -304,7 +267,7 @@ const projects: Project[] = [
   },
   {
     title: "Community",
-    image: komunitas as ImageMetadata,
+    image: "/komunitas.webp",
     link: "https://whatsapp.com/channel/0029VbBNHToKrWQoNtBduu2u",
     preview: "https://whatsapp.com/channel/0029VbBNHToKrWQoNtBduu2u",
     status: "Deployed",
@@ -312,7 +275,7 @@ const projects: Project[] = [
   },
   {
     title: "Sugar Pop Photo",
-    image: sugarpop as ImageMetadata,
+    image: "/sugarpop.webp",
     link: "https://github.com/icecoffie/sugarpop-photo",
     preview: "https://sugarpop.msync.my.id",
     status: "On Going",
@@ -320,7 +283,7 @@ const projects: Project[] = [
   },
   {
     title: "Testimoni",
-    image: testy as ImageMetadata,
+    image: "/testy.webp",
     link: "https://github.com/icecoffie/testy",
     preview: "https://testy.msync.my.id",
     status: "Testy",
@@ -351,10 +314,11 @@ const projects: Project[] = [
               class="block focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-[var(--sec)]"
             >
               {/* Gambar */}
-              <Image
+              <img
                 src={project.image}
                 alt={`Thumbnail of ${project.title}`}
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 aspect-square"
+                loading="lazy"
               />
 
               {/* Overlay Info */}
