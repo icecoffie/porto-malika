@@ -1,0 +1,104 @@
+---
+interface EducationItem {
+  institution: string;
+  degree: string;
+  year: string;
+  score: string;
+  description: string;
+  tags: string[];
+  type: "academic" | "bootcamp"; 
+}
+
+const educationData: EducationItem[] = [
+  {
+    institution: "Universitas Pamulang",
+    degree: "Bachelor's Degree - Informatics Engineering",
+    year: "Sep 2023 - Present",
+    score: "Current GPA: 4.00 / 4.00",
+    description: "Active student majoring in Informatics Engineering. Mentor UI UX Design of the Informatics Study Club (ISC) Engaged in various projects and research in software development and design.",
+    tags: ["Software Engineering", "Algorithms", "UI/UX Design", "Data Structures", "Mentor", "Leadership", "Business Starategy"],
+    type: "academic",
+  },
+  {
+    institution: "Maxy Academy",
+    degree: "Bootcamp - Frontend Developer Course",
+    year: "Aug 2025 - Nov 2025",
+    score: "Grade: A (99,93)",
+    description: "Intensive Frontend development bootcamp. Focus on mastering modern web technologies, component based architecture, and building scalable for website and mobile applications.",
+    tags: ["Frontend Development", "React JS", "Next JS", "React Native", "Responsive Design", "API Integration"],
+    type: "bootcamp",
+  },
+];
+---
+
+<section
+  id="education"
+  class="py-12 border-t border-[#ffffff10] text-[var(--white)]"
+>
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">Learning Path</h2>
+    <h3 class="text-4xl md:text-5xl font-medium mb-8">Education</h3>
+
+    {/* Grid Layout */}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {
+        educationData.map((edu) => (
+          /* Menggunakan div agar tidak ada link, tapi class hover tetap dipertahankan */
+          <div
+            class="group relative bg-[#111] rounded-2xl p-6 border border-[#ffffff10] hover:border-[var(--sec)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_-15px_var(--sec)] flex flex-col h-full cursor-default"
+          >
+            {/* Header Card: Icon & Institution */}
+            <div class="flex items-start gap-4 mb-4">
+              <div class="p-3 rounded-xl bg-white/5 group-hover:bg-[var(--sec)] group-hover:text-black transition-colors duration-300 shrink-0">
+                {/* Icon Logic based on type */}
+                {edu.type === "academic" ? (
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.57 50.57 0 0 0-2.658-.813A59.905 59.905 0 0 1 12 3.493a59.902 59.902 0 0 1 10.499 5.24 50.552 50.552 0 0 0-2.658.813m-15.482 0A50.55 50.55 0 0 1 12 13.489a50.55 50.55 0 0 1 10.499-3.342" />
+                  </svg>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 18" />
+                  </svg>
+                )}
+              </div>
+              
+              <div>
+                <h4 class="text-xl font-bold group-hover:text-[var(--sec)] transition-colors duration-300">
+                  {edu.institution}
+                </h4>
+                <p class="text-sm text-[var(--white-icon)] mt-1">{edu.degree}</p>
+              </div>
+            </div>
+
+            {/* Score & Year Badges */}
+            <div class="flex flex-wrap items-center gap-3 mb-4">
+              <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[var(--sec)]/10 text-[var(--sec)] text-xs font-semibold border border-[var(--sec)]/20">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-3">
+                  <path fill-rule="evenodd" d="M16.403 12.652a3 3 0 0 0 0-5.304 3 3 0 0 0-3.75-3.751 3 3 0 0 0-5.305 0 3 3 0 0 0-3.751 3.75 3 3 0 0 0 0 5.305 3 3 0 0 0 3.75 3.751 3 3 0 0 0 5.305 0 3 3 0 0 0 3.751-3.75Zm-2.546-4.46a.75.75 0 0 0-1.214-.883l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clip-rule="evenodd" />
+                </svg>
+                {edu.score}
+              </span>
+              <span class="text-xs text-[var(--white-icon)] border border-[#ffffff20] px-3 py-1 rounded-full">
+                {edu.year}
+              </span>
+            </div>
+
+            {/* Description */}
+            <p class="text-[var(--white-icon)] text-sm mb-6 leading-relaxed flex-grow">
+              {edu.description}
+            </p>
+
+            {/* Tags / Skills Pill */}
+            <div class="flex flex-wrap gap-2 pt-4 border-t border-[#ffffff10] mt-auto">
+              {edu.tags.map((tag) => (
+                <span class="px-3 py-1 text-xs rounded-md bg-[#1a1a1a] text-gray-300 border border-[#ffffff10] group-hover:border-[var(--sec)]/30 transition-colors duration-300">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
