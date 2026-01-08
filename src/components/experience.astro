@@ -2,7 +2,7 @@
 interface ExperienceItem {
   company: string;
   role: string;
-  type: "intern" | "parttime" | "contract" | "fulltime" | "freelance";
+  type: "intern" | "parttime" | "contract" | "fulltime" | "startup";
   year: string;
   location?: string;
   logoSrc: string;
@@ -14,16 +14,16 @@ const experienceData: ExperienceItem[] = [
   {
     company: "Matrix Sync Tech",
     role: "Chief Executive Officer",
-    type: "freelance",
+    type: "startup",
     year: "Jul 2022 - Present",
     location: "Remote",
     logoSrc: "/matrixsync.webp",
     highlights: [
-      "- Lead UI/UX, web app development, hosting, domain, server services, informatics solutions.",
-      "- Delivered projects for 271+ clients across multiple industries.",
+      "- Lead UI/UX, mentor, web app development, hosting, domain, server services, informatics solutions.",
+      "- Delivered projects for 271+ clients with national and international scale.",
       "- Handled consultation → execution → deployment → ongoing support.",
     ],
-    tags: ["Leadership", "UI/UX", "Web Dev", "App Dev", "Hosting"],
+    tags: ["CEO", "Leadership", "Mentor", "Project Manager", "UI/UX", "Design", "Web Dev", "App Dev", "Hosting"],
   },
   {
     company: "Goodkind Indonesia",
@@ -116,7 +116,7 @@ const typeLabel: Record<ExperienceItem["type"], string> = {
   parttime: "Part time",
   contract: "Contract",
   fulltime: "Full time",
-  freelance: "Freelance",
+  startup: "Startup",
 };
 ---
 
@@ -127,19 +127,19 @@ const typeLabel: Record<ExperienceItem["type"], string> = {
       <h3 class="text-4xl md:text-5xl font-medium">Experience</h3>
     </div>
 
-    <div class="stack-pro">
+    <div class="exp-stack">
       {experienceData.map((exp, i) => (
-        <section class="step" style={`--i:${i}; --n:${experienceData.length};`}>
-          <article class="card group" aria-label={`${exp.role} at ${exp.company}`}>
-            <div class="bgfx"></div>
+        <section class="exp-step" style={`--i:${i}; --n:${experienceData.length};`}>
+          <article class="exp-card group" aria-label={`${exp.role} at ${exp.company}`}>
+            <div class="exp-bgfx"></div>
 
             <header class="flex items-start justify-between gap-4">
               <div class="flex items-start gap-4 min-w-0">
-                <div class="logo">
+                <div class="exp-logo">
                   <img
                     src={exp.logoSrc}
                     alt={`${exp.company} logo`}
-                    class="logoImg"
+                    class="exp-logoImg"
                     loading="lazy"
                     decoding="async"
                     width="32"
@@ -157,14 +157,14 @@ const typeLabel: Record<ExperienceItem["type"], string> = {
                   </h4>
 
                   <div class="mt-3 flex flex-wrap items-center gap-2">
-                    <span class="pill">{exp.year}</span>
-                    <span class="pillSec">{typeLabel[exp.type]}</span>
+                    <span class="exp-pill">{exp.year}</span>
+                    <span class="exp-pillSec">{typeLabel[exp.type]}</span>
                   </div>
                 </div>
               </div>
 
               <div class="hidden md:flex items-center gap-2">
-                <span class="chip">#{String(i + 1).padStart(2, "0")}</span>
+                <span class="exp-chip">#{String(i + 1).padStart(2, "0")}</span>
               </div>
             </header>
 
@@ -179,14 +179,14 @@ const typeLabel: Record<ExperienceItem["type"], string> = {
               </ul>
 
               <div class="md:col-span-5">
-                <div class="tags">
+                <div class="exp-tags">
                   {exp.tags.slice(0, 8).map((tag) => (
-                    <span class="tag">{tag}</span>
+                    <span class="exp-tag">{tag}</span>
                   ))}
                 </div>
 
-                <div class="hint">
-                  <span class="dot"></span>
+                <div class="exp-hint hidden md:flex">
+                  <span class="exp-dot"></span>
                   <span>keep scrolling</span>
                 </div>
               </div>
@@ -198,101 +198,135 @@ const typeLabel: Record<ExperienceItem["type"], string> = {
   </div>
 
   <script is:inline>
-    const steps = [...document.querySelectorAll(".step")];
-    const cards = steps.map(s => s.querySelector(".card"));
-    const clamp = (n, a, b) => Math.min(b, Math.max(a, n));
-    const lerp = (a, b, t) => a + (b - a) * t;
+    (() => {
+      const root = document.getElementById("experience");
+      if (!root) return;
 
-    let ticking = false;
+      const mq = window.matchMedia("(min-width: 768px)");
+      const steps = [...root.querySelectorAll(".exp-step")];
+      const cards = steps.map(s => s.querySelector(".exp-card")).filter(Boolean);
 
-    const update = () => {
-      ticking = false;
-      const vh = window.innerHeight;
+      const clamp = (n, a, b) => Math.min(b, Math.max(a, n));
+      const lerp = (a, b, t) => a + (b - a) * t;
 
-      steps.forEach((step, idx) => {
-        const rect = step.getBoundingClientRect();
+      let rafId = 0;
 
-        // progress: 0..1 when step enters viewport
-        const p = clamp((vh - rect.top) / (vh * 0.85), 0, 1);
+      const reset = () => {
+        steps.forEach((s) => (s.style.height = ""));
+        cards.forEach((c) => {
+          c.style.transform = "";
+          c.style.opacity = "";
+          c.style.filter = "";
+        });
+      };
 
-        // Softer stack values:
-        const depth = idx;
-        const baseScale = 1 - depth * 0.018; // less harsh
-        const scale = lerp(baseScale - 0.02, baseScale, p);
+      const measureAndSetHeights = () => {
+        // dynamic heights so it never breaks other sections / screens
+        const base = Math.max(...cards.map(c => c.getBoundingClientRect().height)) || 520;
+        // room per step so stacking feels right
+        const stepH = Math.round(base + 220);
+        steps.forEach((s) => (s.style.height = `${stepH}px`));
+      };
 
-        // more “organic” stacking: overlap + gentle lift
-        const y = lerp(24 + depth * 10, depth * 8, p);
+      const update = () => {
+        rafId = 0;
+        if (!mq.matches) return;
 
-        // tiny rotation gives life, not stiff
-        const rot = lerp((idx % 2 === 0 ? -1.2 : 1.2) - depth * 0.12, (idx % 2 === 0 ? -0.2 : 0.2), p);
+        const vh = window.innerHeight;
 
-        // opacity + blur for depth
-        const opacity = lerp(0.86, 1, p);
-        const blur = lerp(2.8, 0, p);
+        steps.forEach((step, idx) => {
+          const rect = step.getBoundingClientRect();
+          const p = clamp((vh - rect.top) / (vh * 0.9), 0, 1);
 
-        const card = cards[idx];
-        if (!card) return;
+          const depth = idx;
+          const baseScale = 1 - depth * 0.016;
+          const scale = lerp(baseScale - 0.012, baseScale, p);
 
-        card.style.transform = `translateY(${y}px) scale(${scale}) rotate(${rot}deg)`;
-        card.style.opacity = opacity.toFixed(3);
-        card.style.filter = `blur(${blur}px)`;
+          const y = lerp(18 + depth * 10, depth * 7, p);
+          const rot = lerp((idx % 2 === 0 ? -1.0 : 1.0) - depth * 0.08, (idx % 2 === 0 ? -0.2 : 0.2), p);
+
+          const opacity = lerp(0.92, 1, p);
+          const blur = lerp(1.8, 0, p);
+
+          const card = cards[idx];
+          if (!card) return;
+
+          card.style.transform = `translateY(${y}px) scale(${scale}) rotate(${rot}deg)`;
+          card.style.opacity = opacity.toFixed(3);
+          card.style.filter = `blur(${blur}px)`;
+        });
+      };
+
+      const schedule = () => {
+        if (rafId) return;
+        rafId = requestAnimationFrame(update);
+      };
+
+      const setup = () => {
+        reset();
+        if (!mq.matches) return;
+        measureAndSetHeights();
+        schedule();
+      };
+
+      // init
+      setup();
+      window.addEventListener("scroll", schedule, { passive: true });
+      window.addEventListener("resize", () => {
+        setup();
       });
-    };
 
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(update);
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    update();
+      mq.addEventListener?.("change", () => {
+        setup();
+      });
+    })();
   </script>
 
   <style is:inline>
-    /* wrapper */
-    .stack-pro{
+    /* ====== scoped: ONLY affects #experience ====== */
+    #experience .exp-stack{
       display: grid;
       gap: 26px;
     }
 
-    /* each step gives room for the next card to stack */
-    .step{
+    /* MOBILE DEFAULT: normal layout, no forced heights, no sticky */
+    #experience .exp-step{
       position: relative;
-      height: 520px;
-    }
-    @media (min-width: 768px){
-      .step{ height: 560px; }
+      height: auto;
     }
 
-    /* Card sticky */
-    .card{
-      position: sticky;
-      top: 104px;
-      border-radius: 34px;
+    #experience .exp-card{
+      position: relative;
+      top: auto;
+      border-radius: 24px; /* closer to Education */
       border: 1px solid #ffffff10;
-      background: #0f0f0f;
-      padding: 28px;
+      background: #111;    /* match your other cards */
+      padding: 24px;
       overflow: hidden;
       transform-origin: center top;
-      will-change: transform, opacity, filter;
-      transition: border-color .35s ease, box-shadow .35s ease;
-    }
-    @media (min-width: 768px){
-      .card{ padding: 32px; top: 112px; }
+      transition: border-color .35s ease, box-shadow .35s ease, transform .35s ease;
     }
 
-    /* Hover: deepen and a bit “lift” */
-    .card:hover{
+    /* DESKTOP: enable stacked sticky */
+    @media (min-width: 768px){
+      #experience .exp-card{
+        position: sticky;
+        top: 112px;
+        border-radius: 34px;
+        background: #0f0f0f;
+        padding: 32px;
+        will-change: transform, opacity, filter;
+      }
+    }
+
+    #experience .exp-card:hover{
       border-color: color-mix(in oklab, var(--sec) 65%, transparent);
       box-shadow:
         0 0 44px -18px color-mix(in oklab, var(--sec) 55%, transparent),
         0 14px 50px -30px rgba(0,0,0,.75);
     }
 
-    /* background fx */
-    .bgfx{
+    #experience .exp-bgfx{
       position:absolute;
       inset:-2px;
       pointer-events:none;
@@ -302,17 +336,16 @@ const typeLabel: Record<ExperienceItem["type"], string> = {
         linear-gradient(120deg, transparent 0%, rgba(255,255,255,.06) 35%, transparent 70%);
       opacity: .32;
       transform: translateX(-55%);
-      animation: sweep 8s ease-in-out infinite;
+      animation: expSweep 8s ease-in-out infinite;
       mix-blend-mode: screen;
     }
-    @keyframes sweep{
+    @keyframes expSweep{
       0%{ transform: translateX(-60%); opacity:.20; }
       45%{ opacity:.34; }
       100%{ transform: translateX(60%); opacity:.20; }
     }
 
-    /* Logo bubble */
-    .logo{
+    #experience .exp-logo{
       width: 54px;
       height: 54px;
       border-radius: 9999px;
@@ -325,15 +358,14 @@ const typeLabel: Record<ExperienceItem["type"], string> = {
       flex: 0 0 auto;
       box-shadow: 0 0 26px -18px var(--sec);
     }
-    .logoImg{
+    #experience .exp-logoImg{
       width: 32px;
       height: 32px;
       object-fit: contain;
       opacity: .96;
     }
 
-    /* Pills */
-    .pill{
+    #experience .exp-pill{
       display:inline-flex;
       align-items:center;
       padding: 6px 10px;
@@ -343,7 +375,7 @@ const typeLabel: Record<ExperienceItem["type"], string> = {
       color: var(--white-icon);
       background: rgba(255,255,255,.02);
     }
-    .pillSec{
+    #experience .exp-pillSec{
       display:inline-flex;
       align-items:center;
       padding: 6px 10px;
@@ -355,7 +387,7 @@ const typeLabel: Record<ExperienceItem["type"], string> = {
       text-transform: uppercase;
       letter-spacing: .12em;
     }
-    .chip{
+    #experience .exp-chip{
       font-size: 10px;
       letter-spacing: .18em;
       text-transform: uppercase;
@@ -366,13 +398,12 @@ const typeLabel: Record<ExperienceItem["type"], string> = {
       color: rgba(255,255,255,.75);
     }
 
-    /* Tags */
-    .tags{
+    #experience .exp-tags{
       display:flex;
       flex-wrap: wrap;
       gap: 8px;
     }
-    .tag{
+    #experience .exp-tag{
       padding: 6px 10px;
       border-radius: 10px;
       font-size: 12px;
@@ -381,20 +412,19 @@ const typeLabel: Record<ExperienceItem["type"], string> = {
       border: 1px solid #ffffff10;
       transition: border-color .3s ease, transform .3s ease;
     }
-    .card:hover .tag{
+    #experience .exp-card:hover .exp-tag{
       border-color: color-mix(in oklab, var(--sec) 28%, transparent);
       transform: translateY(-1px);
     }
-    
-    .hint{
+
+    #experience .exp-hint{
       margin-top: 16px;
-      display:flex;
       align-items:center;
       gap: 10px;
       font-size: 11px;
       color: rgba(255,255,255,.55);
     }
-    .dot{
+    #experience .exp-dot{
       width: 6px;
       height: 6px;
       border-radius: 9999px;
@@ -402,10 +432,9 @@ const typeLabel: Record<ExperienceItem["type"], string> = {
       box-shadow: 0 0 18px -4px var(--sec);
     }
 
-    /* reduce motion */
     @media (prefers-reduced-motion: reduce){
-      .bgfx{ animation: none; }
-      .card{ filter:none !important; transform:none !important; }
+      #experience .exp-bgfx{ animation: none; }
+      #experience .exp-card{ transform:none !important; filter:none !important; }
     }
   </style>
 </section>
