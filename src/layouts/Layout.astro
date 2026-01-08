@@ -1,27 +1,44 @@
 ---
 interface Props {
   title: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: "website" | "article";
 }
-const { title } = Astro.props;
+
+const {
+  title,
+  description = "Official website of Malika Shakila. Owner Matrix Sync Tech, Leader Frontend Engineer, and UI/UX Mentor building high performance web apps with all frameworks of frontend.",
+  canonical,
+  ogImage = "https://malika.engineer/preview.png",
+  ogType = "website",
+} = Astro.props;
+
+const site = Astro.site ?? new URL("https://malika.engineer");
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, site).toString();
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Malika Shakila - Frontend Engineer, Mentor and creator of modern applications focused on web technologies, UI/UX, and high performance." />
-    <meta name="keywords" content="Malika Shakila, malika shakila, malsky, Frontend Engineer, Software Engineer, Mentor UI UX Designer, UI UX Designer, Tech in our orbit" />
+    <meta name="description" content={description} />
     <meta name="author" content="Malika Shakila" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   
+    <meta
+      name="keywords"
+      content="Malika Shakila, Malsky, frontend engineer, UI/UX mentor, Astro, React, Next.js, web performance, portfolio"
+    />
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/me.webp" />
     <link rel="apple-touch-icon" sizes="180x180" href="/me.webp" />
     <link rel="icon" type="image/png" sizes="32x32" href="/me.webp" />
     <link rel="icon" type="image/png" sizes="16x16" href="/me.webp" />
 
-    <!-- Canonical -->
-    <link rel="canonical" href="https://malika.engineer" />
+    <!-- Canonical (PER PAGE) -->
+    <link rel="canonical" href={canonicalUrl} />
 
     <!-- Non-blocking font load -->
     <link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin />
@@ -31,41 +48,44 @@ const { title } = Astro.props;
       <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/montserrat" />
     </noscript>
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:title" content="Malika Shakila - Software Engineer" />
-    <meta property="og:description" content="Software Engineer specializing in modern web development, performance optimization, and user-friendly design." />
-    <meta property="og:image" content="https://malika.engineer/preview.png" />
-    <meta property="og:url" content="https://malika.engineer" />
-    <meta property="og:type" content="website" />
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="Malika Shakila" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Malika Shakila - Software Engineer" />
-    <meta name="twitter:description" content="Building modern web applications with high performance and intuitive design." />
-    <meta name="twitter:image" content="https://malika.engineer/preview.png" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:site" content="@msyncq" />
 
-    <!-- JSON-LD Schema.org -->
+    <!-- JSON-LD -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Malika Shakila",
+      "alternateName": ["Malsky"],
       "url": "https://malika.engineer",
-      "image": "https://malika.msync.my.id/profile.jpg",
+      "image": "https://malika.engineer/me.webp",
       "jobTitle": "Frontend Engineer",
+      "description": "Frontend Engineer & UI/UX Mentor building modern web applications with Astro, React, and Next.js.",
       "sameAs": [
         "https://github.com/icecoffie",
         "https://linkedin.com/in/malikashkl",
         "https://twitter.com/msyncq"
-      ]
+      ],
+      "knowsAbout": ["Frontend Engineering", "UI/UX", "Astro", "React", "Next.js", "Web Performance"]
     }
     </script>
 
     <title>{title}</title>
   </head>
-  
+
   <body class="bg-[--background] sm:px-28 lg:px-20 px-9">
     <slot />
   </body>
@@ -87,13 +107,23 @@ const { title } = Astro.props;
     padding: 0;
     margin: 0;
   }
+    .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
 
   *::selection {
     background-color: var(--sec);
     color: var(--background);
   }
 
-  /* Scrollbar styles */
   ::-webkit-scrollbar {
     width: 15px;
   }
@@ -109,7 +139,6 @@ const { title } = Astro.props;
     background: var(--sec);
   }
 
-  /* Scrollbar styles for Firefox */
   * {
     scrollbar-width: thin;
     scrollbar-color: var(--line) var(--container);
