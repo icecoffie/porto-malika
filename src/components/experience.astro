@@ -13,31 +13,59 @@ interface ExperienceItem {
 const experienceData: ExperienceItem[] = [
   {
     company: "Matrix Sync Tech",
-    role: "Chief Executive Officer",
+    role: "Founder",
     type: "startup",
     year: "Jul 2022 - Present",
     location: "Remote",
     logoSrc: "/matrixsync.webp",
     highlights: [
-      "- Lead UI/UX, mentor, web app development, hosting, domain, server services, informatics solutions.",
-      "- Delivered projects for 271+ clients with national and international scale.",
-      "- Handled consultation → execution → deployment → ongoing support.",
+      "Lead UI/UX, mentor, web app development, hosting, domain, server services, informatics solutions.",
+      "Delivered projects for 281+ clients with national and international scale.",
+      "Handled consultation, execution, deployment, and ongoing support.",
     ],
-    tags: ["CEO", "Leadership", "Mentor", "Project Manager", "UI/UX", "Design", "Web Dev", "App Dev", "Hosting"],
+    tags: ["CEO","Leadership","Mentor","Project Manager","UI/UX","Web Dev","App Dev","Hosting"],
+  },
+  {
+    company: "Skale Academy",
+    role: "Founder",
+    type: "startup",
+    year: "Dec 2025 - Present",
+    location: "Hybrid",
+    logoSrc: "/skale.webp",
+    highlights: [
+      "Private frontend and UI/UX courses.",
+      "Teach HTML, CSS, JavaScript, and frameworks.",
+      "Help students build portfolio ready projects.",
+    ],
+    tags: ["CEO","Mentor","UI/UX","Web Dev","Deployment"],
   },
   {
     company: "Goodkind Indonesia",
-    role: "Frontend Developer",
-    type: "intern",
+    role: "Frontend Engineer",
+    type: "contract", 
     year: "Dec 2025 - Present",
     location: "Indonesia",
     logoSrc: "/goodkind.webp",
     highlights: [
-      "- Implement UI from Figma into Vue.js for the real website.",
-      "- Pixel perfect responsive layout clean state handling.",
-      "- Maintain UI consistency across pages and components.",
+      "Implement UI from Figma into Vue.",
+      "Pixel perfect responsive layout.",
+      "Maintain UI consistency.",
     ],
-    tags: ["Vue.js", "Figma to Code", "Responsive UI", "Frontend"],
+    tags: ["Vue.js","Figma","Responsive","Frontend"],
+  },
+  {
+    company: "Hafar EPCI",
+    role: "Frontend Engineer",
+    type: "contract",
+    year: "Jan 2025 - Present",
+    location: "Indonesia & Singapore",
+    logoSrc: "/hafar.webp",
+    highlights: [
+      "Developed responsive web applications.",
+      "Make a design system in Figma.",
+      "Maintained code quality and performance.",
+    ],
+    tags: ["Figma","Responsive","Frontend","Wordpress","SEO" ],
   },
   {
     company: "Informatics Study Club",
@@ -47,25 +75,11 @@ const experienceData: ExperienceItem[] = [
     location: "Campus Community",
     logoSrc: "/isc.webp",
     highlights: [
-      "- Mentor UI/UX and modern frontend workflow for students.",
-      "- Share tips and tricks for frontend frameworks, tools, and clean structure.",
-      "- Community support via Discord and WhatsApp.",
+      "Mentor UI/UX and frontend workflow.",
+      "Share tools and clean structure.",
+      "Community support.",
     ],
-    tags: ["Mentoring", "UI/UX", "Frontend", "Discord", "WhatsApp"],
-  },
-  {
-    company: "BPPP - KEMENDIKDASMEN",
-    role: "Project Team IT",
-    type: "contract",
-    year: "Jan 2025 - Present",
-    location: "Indonesia",
-    logoSrc: "/bp3.webp",
-    highlights: [
-      "- QA testing apps for stability and usability.",
-      "- UI/UX website prototype for TKA in Figma.",
-      "- Implementation into Vue.js with consistent UI behavior.",
-    ],
-    tags: ["QA Testing", "UI/UX", "Prototyping", "Vue.js"],
+    tags: ["Mentoring","UI/UX","Frontend"],
   },
   {
     company: "AAG International",
@@ -75,11 +89,11 @@ const experienceData: ExperienceItem[] = [
     location: "Indonesia",
     logoSrc: "/aag.webp",
     highlights: [
-      "- Designed website UI and components in Figma.",
-      "- Collaborated for smooth design to dev handoff and iterations.",
-      "- Awarded Best Intern among 10 interns.",
+      "Designed UI in Figma.",
+      "Design to dev collaboration.",
+      "Best Intern award.",
     ],
-    tags: ["Figma", "Web Design", "UI System", "Best Intern"],
+    tags: ["Figma","Web Design","UI System"],
   },
   {
     company: "Sarana Indo",
@@ -89,11 +103,11 @@ const experienceData: ExperienceItem[] = [
     location: "Indonesia",
     logoSrc: "/saranaindo.webp",
     highlights: [
-      "- Configured router and switch with Cisco CLI and MikroTik Winbox.",
-      "- Network troubleshooting for stable operations.",
-      "- Data center visits for inspection and device recovery.",
+      "Router and switch configuration.",
+      "Network troubleshooting.",
+      "Data center inspection.",
     ],
-    tags: ["Cisco", "MikroTik", "Winbox", "Routing", "Data Center"],
+    tags: ["Cisco","MikroTik","Routing","Data Center"],
   },
   {
     company: "PUSMENDIK - KEMENDIKBUD",
@@ -103,11 +117,11 @@ const experienceData: ExperienceItem[] = [
     location: "Indonesia",
     logoSrc: "/pusmendik.webp",
     highlights: [
-      "- Helpdesk for national ANBK implementation.",
-      "- Digitalized ANBK questions and managed large scale recaps.",
-      "- Handled UI/UX tasks in Figma and supported database operations.",
+      "National ANBK helpdesk.",
+      "Digitalized exam data.",
+      "UI/UX and database support.",
     ],
-    tags: ["ANBK", "Helpdesk", "Data Ops", "Database", "Figma"],
+    tags: ["ANBK","Helpdesk","Database","Figma"],
   },
 ];
 
@@ -123,73 +137,58 @@ const typeLabel: Record<ExperienceItem["type"], string> = {
 <section id="experience" class="py-12 border-t border-[#ffffff10] text-[var(--white)]">
   <div class="max-w-6xl mx-auto px-4">
     <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">Career Journey</h2>
-    <div class="flex items-end justify-between gap-6 mb-10">
-      <h3 class="text-4xl md:text-5xl font-medium">Experience</h3>
-    </div>
+    <h3 class="text-4xl md:text-5xl font-medium mb-10">Experience</h3>
 
-    <div class="exp-stack">
+    <div class="exp-stack grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:block">
       {experienceData.map((exp, i) => (
         <section class="exp-step" style={`--i:${i}; --n:${experienceData.length};`}>
-          <article class="exp-card group" aria-label={`${exp.role} at ${exp.company}`}>
+          <article class="exp-card group">
             <div class="exp-bgfx"></div>
 
             <header class="flex items-start justify-between gap-4">
               <div class="flex items-start gap-4 min-w-0">
                 <div class="exp-logo">
-                  <img
-                    src={exp.logoSrc}
-                    alt={`${exp.company} logo`}
-                    class="exp-logoImg"
-                    loading="lazy"
-                    decoding="async"
-                    width="32"
-                    height="32"
-                  />
+                  <img src={exp.logoSrc} alt={exp.company} class="exp-logoImg" width="32" height="32" loading="lazy" />
                 </div>
 
                 <div class="min-w-0">
                   <p class="text-xs text-[var(--white-icon)] truncate">
-                    {exp.company}{exp.location ? <span class="opacity-70"> • {exp.location}</span> : null}
+                    {exp.company}
+                    {exp.location ? <span class="opacity-70"> • {exp.location}</span> : null}
                   </p>
 
-                  <h4 class="mt-1 text-2xl md:text-3xl font-bold leading-tight">
-                    {exp.role}
-                  </h4>
+                  <h4 class="mt-1 text-2xl md:text-3xl font-bold">{exp.role}</h4>
 
-                  <div class="mt-3 flex flex-wrap items-center gap-2">
+                  <div class="mt-3 flex flex-wrap gap-2">
                     <span class="exp-pill">{exp.year}</span>
                     <span class="exp-pillSec">{typeLabel[exp.type]}</span>
                   </div>
                 </div>
               </div>
 
-              <div class="hidden md:flex items-center gap-2">
-                <span class="exp-chip">#{String(i + 1).padStart(2, "0")}</span>
-              </div>
+              <span class="exp-chip hidden md:inline">
+                #{String(i + 1).padStart(2,"0")}
+              </span>
             </header>
 
-            <div class="mt-6 grid grid-cols-1 md:grid-cols-12 gap-6">
-              <ul class="md:col-span-7 text-[var(--white-icon)] text-sm leading-relaxed space-y-2">
-                {exp.highlights.slice(0, 3).map((h) => (
-                  <li class="flex gap-2">
-                    <span class="mt-2 size-1.5 rounded-full bg-[var(--sec)]/80 shrink-0"></span>
-                    <span>{h}</span>
-                  </li>
-                ))}
-              </ul>
+            <ul class="mt-6 text-sm text-[var(--white-icon)] space-y-2">
+              {exp.highlights.map(h => (
+                <li class="flex gap-2">
+                  <span class="mt-2 size-1.5 rounded-full bg-[var(--sec)] shrink-0"></span>
+                  <span>{h}</span>
+                </li>
+              ))}
+            </ul>
 
-              <div class="md:col-span-5">
-                <div class="exp-tags">
-                  {exp.tags.slice(0, 8).map((tag) => (
-                    <span class="exp-tag">{tag}</span>
-                  ))}
-                </div>
+            <div class="mt-6 flex flex-wrap gap-2">
+              {exp.tags.map(tag => (
+                <span class="exp-tag">{tag}</span>
+              ))}
+            </div>
 
-                <div class="exp-hint hidden md:flex">
-                  <span class="exp-dot"></span>
-                  <span>keep scrolling</span>
-                </div>
-              </div>
+            <div class="exp-hint hidden md:flex">
+              <span class="exp-dot"></span>
+              <span>keep scrolling</span>
             </div>
           </article>
         </section>
@@ -206,235 +205,182 @@ const typeLabel: Record<ExperienceItem["type"], string> = {
       const steps = [...root.querySelectorAll(".exp-step")];
       const cards = steps.map(s => s.querySelector(".exp-card")).filter(Boolean);
 
-      const clamp = (n, a, b) => Math.min(b, Math.max(a, n));
-      const lerp = (a, b, t) => a + (b - a) * t;
+      const clamp = (n,a,b)=>Math.min(b,Math.max(a,n));
+      const lerp = (a,b,t)=>a+(b-a)*t;
 
-      let rafId = 0;
+      let raf = 0;
 
       const reset = () => {
-        steps.forEach((s) => (s.style.height = ""));
-        cards.forEach((c) => {
+        steps.forEach(s => s.style.height = "");
+        cards.forEach(c => {
           c.style.transform = "";
           c.style.opacity = "";
           c.style.filter = "";
         });
       };
 
-      const measureAndSetHeights = () => {
-        // dynamic heights so it never breaks other sections / screens
+      const measure = () => {
         const base = Math.max(...cards.map(c => c.getBoundingClientRect().height)) || 520;
-        // room per step so stacking feels right
-        const stepH = Math.round(base + 220);
-        steps.forEach((s) => (s.style.height = `${stepH}px`));
+        steps.forEach(s => s.style.height = `${base + 220}px`);
       };
 
       const update = () => {
-        rafId = 0;
+        raf = 0;
         if (!mq.matches) return;
 
         const vh = window.innerHeight;
 
-        steps.forEach((step, idx) => {
+        steps.forEach((step,i)=>{
           const rect = step.getBoundingClientRect();
-          const p = clamp((vh - rect.top) / (vh * 0.9), 0, 1);
+          const p = clamp((vh - rect.top)/(vh*0.9),0,1);
 
-          const depth = idx;
-          const baseScale = 1 - depth * 0.016;
-          const scale = lerp(baseScale - 0.012, baseScale, p);
+          const depth = i;
+          const scale = lerp(1 - depth*0.028, 1 - depth*0.016, p);
+          const y = lerp(18 + depth*10, depth*7, p);
+          const rot = lerp((i%2?-1:1) - depth*0.08, (i%2?-0.2:0.2), p);
+          const blur = lerp(1.8,0,p);
 
-          const y = lerp(18 + depth * 10, depth * 7, p);
-          const rot = lerp((idx % 2 === 0 ? -1.0 : 1.0) - depth * 0.08, (idx % 2 === 0 ? -0.2 : 0.2), p);
-
-          const opacity = lerp(0.92, 1, p);
-          const blur = lerp(1.8, 0, p);
-
-          const card = cards[idx];
+          const card = cards[i];
           if (!card) return;
 
           card.style.transform = `translateY(${y}px) scale(${scale}) rotate(${rot}deg)`;
-          card.style.opacity = opacity.toFixed(3);
           card.style.filter = `blur(${blur}px)`;
+          card.style.opacity = lerp(0.92,1,p).toFixed(3);
         });
       };
 
-      const schedule = () => {
-        if (rafId) return;
-        rafId = requestAnimationFrame(update);
+      const tick = () => {
+        if (raf) return;
+        raf = requestAnimationFrame(update);
       };
 
       const setup = () => {
         reset();
         if (!mq.matches) return;
-        measureAndSetHeights();
-        schedule();
+        measure();
+        tick();
       };
 
-      // init
       setup();
-      window.addEventListener("scroll", schedule, { passive: true });
-      window.addEventListener("resize", () => {
-        setup();
-      });
-
-      mq.addEventListener?.("change", () => {
-        setup();
-      });
+      window.addEventListener("scroll", tick, { passive:true });
+      window.addEventListener("resize", setup);
+      mq.addEventListener?.("change", setup);
     })();
   </script>
 
   <style is:inline>
-    /* ====== scoped: ONLY affects #experience ====== */
-    #experience .exp-stack{
-      display: grid;
-      gap: 26px;
-    }
+    #experience .exp-stack{ gap:26px; }
 
-    /* MOBILE DEFAULT: normal layout, no forced heights, no sticky */
-    #experience .exp-step{
-      position: relative;
-      height: auto;
-    }
+    #experience .exp-step{ position:relative; }
 
     #experience .exp-card{
-      position: relative;
-      top: auto;
-      border-radius: 24px; /* closer to Education */
-      border: 1px solid #ffffff10;
-      background: #111;    /* match your other cards */
-      padding: 24px;
-      overflow: hidden;
-      transform-origin: center top;
-      transition: border-color .35s ease, box-shadow .35s ease, transform .35s ease;
+      position:relative;
+      border-radius:24px;
+      border:1px solid #ffffff10;
+      background:#111;
+      padding:24px;
+      overflow:hidden;
+      transform-origin:center top;
     }
 
-    /* DESKTOP: enable stacked sticky */
-    @media (min-width: 768px){
+    @media (min-width:768px){
       #experience .exp-card{
-        position: sticky;
-        top: 112px;
-        border-radius: 34px;
-        background: #0f0f0f;
-        padding: 32px;
-        will-change: transform, opacity, filter;
+        position:sticky;
+        top:112px;
+        border-radius:34px;
+        background:#0f0f0f;
+        padding:32px;
+        will-change:transform,opacity,filter;
       }
-    }
-
-    #experience .exp-card:hover{
-      border-color: color-mix(in oklab, var(--sec) 65%, transparent);
-      box-shadow:
-        0 0 44px -18px color-mix(in oklab, var(--sec) 55%, transparent),
-        0 14px 50px -30px rgba(0,0,0,.75);
     }
 
     #experience .exp-bgfx{
       position:absolute;
       inset:-2px;
-      pointer-events:none;
       background:
         radial-gradient(620px circle at 18% 15%, rgba(255,255,255,.08), transparent 55%),
-        radial-gradient(520px circle at 82% 70%, color-mix(in oklab, var(--sec) 40%, transparent), transparent 60%),
-        linear-gradient(120deg, transparent 0%, rgba(255,255,255,.06) 35%, transparent 70%);
-      opacity: .32;
-      transform: translateX(-55%);
-      animation: expSweep 8s ease-in-out infinite;
-      mix-blend-mode: screen;
+        radial-gradient(520px circle at 82% 70%, color-mix(in oklab,var(--sec) 40%,transparent), transparent 60%);
+      opacity:.32;
+      animation:expSweep 8s ease-in-out infinite;
+      pointer-events:none;
     }
+
     @keyframes expSweep{
-      0%{ transform: translateX(-60%); opacity:.20; }
-      45%{ opacity:.34; }
-      100%{ transform: translateX(60%); opacity:.20; }
+      0%{transform:translateX(-60%);}
+      100%{transform:translateX(60%);}
     }
 
     #experience .exp-logo{
-      width: 54px;
-      height: 54px;
-      border-radius: 9999px;
-      border: 1px solid #ffffff14;
-      background: rgba(0,0,0,.35);
+      width:54px;
+      height:54px;
+      border-radius:9999px;
+      border:1px solid #ffffff14;
       display:flex;
       align-items:center;
       justify-content:center;
-      overflow:hidden;
-      flex: 0 0 auto;
-      box-shadow: 0 0 26px -18px var(--sec);
+      background:#000;
     }
-    #experience .exp-logoImg{
-      width: 32px;
-      height: 32px;
-      object-fit: contain;
-      opacity: .96;
+
+    #experience .exp-logoImg{ width:32px;height:32px; }
+
+    #experience .exp-pill,
+    #experience .exp-pillSec{
+      font-size:10px;
+      padding:6px 10px;
+      border-radius:9999px;
     }
 
     #experience .exp-pill{
-      display:inline-flex;
-      align-items:center;
-      padding: 6px 10px;
-      border-radius: 9999px;
-      font-size: 10px;
-      border: 1px solid #ffffff20;
-      color: var(--white-icon);
-      background: rgba(255,255,255,.02);
-    }
-    #experience .exp-pillSec{
-      display:inline-flex;
-      align-items:center;
-      padding: 6px 10px;
-      border-radius: 9999px;
-      font-size: 10px;
-      border: 1px solid color-mix(in oklab, var(--sec) 35%, transparent);
-      color: var(--sec);
-      background: color-mix(in oklab, var(--sec) 12%, transparent);
-      text-transform: uppercase;
-      letter-spacing: .12em;
-    }
-    #experience .exp-chip{
-      font-size: 10px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      padding: 8px 12px;
-      border-radius: 9999px;
-      border: 1px solid #ffffff14;
-      background: rgba(255,255,255,.03);
-      color: rgba(255,255,255,.75);
+      border:1px solid #ffffff20;
+      color:var(--white-icon);
     }
 
-    #experience .exp-tags{
-      display:flex;
-      flex-wrap: wrap;
-      gap: 8px;
+    #experience .exp-pillSec{
+      border:1px solid color-mix(in oklab,var(--sec) 35%,transparent);
+      color:var(--sec);
+      letter-spacing:.12em;
+      text-transform:uppercase;
     }
+
+    #experience .exp-chip{
+      font-size:10px;
+      padding:8px 12px;
+      border-radius:9999px;
+      border:1px solid #ffffff14;
+      color:rgba(255,255,255,.7);
+    }
+
     #experience .exp-tag{
-      padding: 6px 10px;
-      border-radius: 10px;
-      font-size: 12px;
-      background: #111;
-      color: rgba(255,255,255,.85);
-      border: 1px solid #ffffff10;
-      transition: border-color .3s ease, transform .3s ease;
-    }
-    #experience .exp-card:hover .exp-tag{
-      border-color: color-mix(in oklab, var(--sec) 28%, transparent);
-      transform: translateY(-1px);
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:10px;
+      border:1px solid #ffffff10;
+      background:#111;
     }
 
     #experience .exp-hint{
-      margin-top: 16px;
+      margin-top:16px;
+      font-size:11px;
+      gap:10px;
+      color:rgba(255,255,255,.55);
       align-items:center;
-      gap: 10px;
-      font-size: 11px;
-      color: rgba(255,255,255,.55);
-    }
-    #experience .exp-dot{
-      width: 6px;
-      height: 6px;
-      border-radius: 9999px;
-      background: color-mix(in oklab, var(--sec) 80%, transparent);
-      box-shadow: 0 0 18px -4px var(--sec);
     }
 
-    @media (prefers-reduced-motion: reduce){
-      #experience .exp-bgfx{ animation: none; }
-      #experience .exp-card{ transform:none !important; filter:none !important; }
+    #experience .exp-dot{
+      width:6px;
+      height:6px;
+      border-radius:9999px;
+      background:var(--sec);
+    }
+
+    @media (max-width:767px){
+      #experience .exp-card{
+        transform:none !important;
+        filter:none !important;
+        opacity:1 !important;
+      }
+      #experience .exp-bgfx,
+      #experience .exp-hint{ display:none; }
     }
   </style>
 </section>
