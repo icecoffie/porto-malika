@@ -2,25 +2,31 @@
 import Layout from "@/layouts/Layout.astro";
 import Nav from "@/components/nav.astro";
 import Home from "@/components/home.astro";
+import Featured from "@/components/featured.astro";
+import Playground from "@/components/playground.astro";
+import Projects from "@/components/projects.astro";
+import Mentorship from "@/components/mentorship.astro";
 import Awards from "@/components/awards.astro"; 
-import Projects from "@/components/education.astro";
+import Education from "@/components/education.astro";
 import Experience from "@/components/experience.astro";
-import Education from "@/components/projects.astro";
 import Contact from "@/components/contact.astro";
 import Blog from "@/pages/blog.astro"; 
 import Footer from "@/components/footer.astro";
 ---
 
 <Layout
-  title="Malika Shakila — Frontend Engineer & UI/UX Mentor"
+  title="Malika Shakila | Frontend Engineer & UI/UX Designer"
   description="Official website of Malika Shakila. Owner Matrix Sync Tech, Leader Frontend Engineer, and UI/UX Mentor building high performance web apps with all frameworks of frontend."
 >
   <Nav />
   <Home />
-  <Awards />  
+  <Featured />
+  <Playground />
   <Projects />
-  <Experience />
+  <Mentorship />
+  <Awards />  
   <Education />
+  <Experience />
   <Contact />
   <Blog />  
   <Footer />
