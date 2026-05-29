@@ -1,467 +1,216 @@
 ---
-interface Project {
-  title: string;
-  image: string;
-  link: string;
-  preview: string;
-  status: string;
-  description: string; 
-}
+import { projects } from "../data/projects";
+import { highlightProjects } from "../data/featured";
 
-const projects: Project[] = [
-  {
-    title: "Orbix AI",
-    image: "/orbix.webp",
-    link: "https://github.com/icecoffie/orbix-ai",
-    preview: "https://orbix.msync.my.id",
-    status: "Deployed",
-    description: "AI-powered application with modern web technologies and real time features.",
-  },
-  {
-    title: "Matrix Sync Tech",
-    image: "/msync.webp",
-    link: "https://github.com/icecoffie/msync-tech",
-    preview: "https://matrixsync.app",
-    status: "Deployed",
-    description: "Matrix Sync Tech official website is the best tech service for your bussiness.",
-  }, 
-  {
-    title: "Matrix Sync Test",
-    image: "/msync-test.webp",
-    link: "https://github.com/icecoffie/msync-test",
-    preview: "https://tesbakatminat-msync.vercel.app",
-    status: "Deployed",
-    description: "Apptitude and interest test application for people who want to know their skill.",
-  },
-  {
-    title: "Orbit Awards",
-    image: "/orbitawards.webp",
-    link: "https://github.com/icecoffie/orbit-awards",
-    preview: "https://orbitawards.matrixsync.app",
-    status: "Deployed",
-    description: "Web for showcase and nominate the best projects and talents in tech industry.",
-  },
-  {
-    title: "Job Portal",
-    image: "/jobportal.webp",
-    link: "https://github.com/icecoffie/msync-fix",
-    preview: "https://matrixsync.app/job.html",
-    status: "Deployed",
-    description: "Job portal msync website for finding tech related job opportunities.",
-  },
-  {
-    title: "Invorbit",
-    image: "/invorbit.webp",
-    link: "https://github.com/icecoffie/invorbit",
-    preview: "https://invorbit.vercel.app",
-    status: "Deployed",
-    description: "Interactive invoice application.",
-  },
-  {
-    title: "Skirtz",
-    image: "/skirtzmockup.webp",
-    link: "https://github.com/icecoffie/skirtz",
-    preview: "https://skirtz.msync.my.id",
-    status: "Deployed",
-    description: "Freelance platform website",
-  },
-  {
-    title: "Dribbble",
-    image: "/dribbble.webp",
-    link: "https://dribbble.com/msync",
-    preview: "https://dribbble.com/msync",
-    status: "Design Showcases",
-    description: "Collection of creative design showcases and UI/UX inspirations.",
-  },
-  {
-    title: "Othellosm",
-    image: "/othello.webp",
-    link: "https://github.com/icecoffie/othellosm",
-    preview: "https://othellosm.msync.my.id",
-    status: "Deployed",
-    description: "Othello board game implementation with interactive gameplay.",
-  },
-  {
-    title: "Iceblast",
-    image: "/iceblast.webp",
-    link: "https://github.com/icecoffie/iceblast",
-    preview: "https://iceblast.msync.my.id",
-    status: "Deployed",
-    description: "Fun web based mini game with smooth UI and animation effects.",
-  },
-  {
-    title: "Synconfs",
-    image: "/synconfsmck.webp",
-    link: "https://github.com/icecoffie/synconfs",
-    preview: "https://icecoffie.github.io/synconfs/",
-    status: "Deployed",
-    description: "Conference management system with easy event scheduling and sharing.",
-  },
-  {
-    title: "E-Voste",
-    image: "/evoste.webp",
-    link: "https://github.com/icecoffie/e-voste",
-    preview: "https://e-voste.vercel.app",
-    status: "Deployed",
-    description: "Redesign web Evoste company profile with modern UI/UX with fullstack deevelopment.",
-  }, 
-  {
-    title: "Malsky App",
-    image: "/malsky.webp",
-    link: "https://github.com/icecoffie/malsky-app/",
-    preview: "https://github.com/icecoffie/malsky-app/",
-    status: "Deployed",
-    description: "Portfolio App Mobile use react native and expo.",
-  },
-  {
-    title: "Linux Simulation",
-    image: "/linux.webp",
-    link: "https://github.com/icecoffie/ubuntu-nextjs",
-    preview: "https://github.com/icecoffie/ubuntu-nextjs",
-    status: "Deployed",
-    description: "Ubuntu linux simulation web use nextjs framework.",
-  },
-  {
-    title: "Main Rubik",
-    image: "/rubik.webp",
-    link: "https://github.com/icecoffie/Game-Rubik",
-    preview: "https://mainrubik.msync.my.id",
-    status: "Deployed",
-    description: "3D interactive Rubik's cube simulation for practicing solving.",
-  },
-  {
-    title: "Tetr1s",
-    image: "/tetr1s.webp",
-    link: "https://github.com/icecoffie/Tetris-Game-Tetr1s",
-    preview: "https://tetr1s.msync.my.id",
-    status: "Deployed",
-    description: "Classic Tetris inspired game built for web browsers.",
-  },
-  {
-    title: "Metaverse",
-    image: "/Metaverse.webp",
-    link: "https://github.com/icecoffie/metaverse-web3",
-    preview: "https://metaverse-mada.vercel.app",
-    status: "Deployed",
-    description: "Metaverse concept app integrating Web3 and immersive features.",
-  }, 
-   {
-    title: "Dashboard Admin and User",
-    image: "/dashboard.webp",
-    link: "https://github.com/icecoffie/frontend-paling-baru",
-    preview: "https://labshare.unpam.ac.id/",
-    status: "Deployed",
-    description: "Responsive admin and user dashboard for managing data efficiently.",
-  },
-  {
-    title: "Sky Tech",
-    image: "/skytech.webp",
-    link: "https://github.com/icecoffie/sky-tech",
-    preview: "https://github.com/icecoffie/sky.tech",
-    status: "Deployed",
-    description: "App mobile for Sky Tech company profile and internal group with modern UI/UX with fullstack deevelopment.",
-  },
-  {
-    title: "Turutodoo",
-    image: "/turutodoo.webp",
-    link: "https://github.com/icecoffie/turutodoo",
-    preview: "https://github.com/icecoffie/turutodoo",
-    status: "Deployed",
-    description: "To do list app mobile with database configuration use react native and expo.",
-  },
-  {
-    title: "Atmox Wenow",
-    image: "/wenow.webp",
-    link: "https://github.com/icecoffie/atmox",
-    preview: "https://github.com/icecoffie/atmox",
-    status: "Deployed",
-    description: "App mobile weather app wenow is weather now.",
-  },
-  {
-    title: "Pop Up Reminder for Drink Water",
-    image: "/drinkext.webp",
-    link: "https://github.com/icecoffie/drinkwater-extension-vsc",
-    preview: "https://marketplace.visualstudio.com/items?itemName=MatrixSync.drinkwater-extension",
-    status: "Deployed",
-    description: "VSCode extension reminding users to stay hydrated during coding.",
-  },
-  {
-    title: "RGB Porto",
-    image: "/mejikuhibinu.webp",
-    link: "https://github.com/icecoffie/rgb-web",
-    preview: "https://shakti.msync.my.id",
-    status: "Deployed",
-    description: "Portfolio with animated RGB gradient effects and modern style.",
-  },
-  {
-    title: "Glacierzs",
-    image: "/monapeng.webp",
-    link: "https://github.com/icecoffie/glacierzs",
-    preview: "https://icecoffie.github.io/glacierzs/",
-    status: "Deployed",
-    description: "Creative web experience inspired by icy aesthetic and effects.",
-  },
-  {
-    title: "Object Detection",
-    image: "/objectdetect.webp",
-    link: "https://github.com/icecoffie/Simple-Object-Detection",
-    preview: "https://codepen.io/icecoffie/full/dPyvQwZ",
-    status: "Design Showcases",
-    description: "Simple object detection demo using HTML, CSS, and JavaScript.",
-  },
-  {
-    title: "Resto Sagara Ikan",
-    image: "/sagaramck.webp",
-    link: "https://github.com/icecoffie/sagara-resto",
-    preview: "https://icecoffie.github.io/sagara-resto/",
-    status: "Deployed",
-    description: "Restaurant website showcasing menu, services, and reservations.",
-  },
-  {
-    title: "Skybreez",
-    image: "/skybreez.webp",
-    link: "https://github.com/icecoffie/skybreez",
-    preview: "https://skybreez.msync.my.id",
-    status: "Deployed",
-    description: "Modern landing page with smooth scrolling and UI animations.",
-  },
-  {
-    title: "Speedytype",
-    image: "/speedytype.webp",
-    link: "https://github.com/icecoffie/speedy-type",
-    preview: "https://codepen.io/icecoffie/full/LEYKYmR",
-    status: "Deployed",
-    description: "Typing speed test game with accuracy and score tracking.",
-  },
-  {
-    title: "Syncwave",
-    image: "/syncwave.webp",
-    link: "https://github.com/icecoffie/syncwave",
-    preview: "https://syncwave.msync.my.id",
-    status: "Deployed",
-    description: "Music player and visualizer with smooth wave animations.",
-  }, 
-  {
-    title: "Gallery",
-    image: "/gallery.webp",
-    link: "https://github.com/icecoffie/gallery",
-    preview: "https://icecoffie.github.io/gallery/",
-    status: "Deployed",
-    description: "Gallery web app with image grid locomotive scrolling effect.",
-  },
-  {
-    title: "Turutudu",
-    image: "/turutudu.webp",
-    link: "https://github.com/icecoffie/turu-tudu",
-    preview: "https://turutudu.msync.my.id",
-    status: "Deployed",
-    description: "To do list app with a playful and simple UI design.",
-  },
-  {
-    title: "Tanya Aku",
-    image: "/tanya.webp",
-    link: "https://github.com/icecoffie/tanya-aku",
-    preview: "https://tanya.msync.my.id",
-    status: "Deployed",
-    description: "Q&A style web app for interactive question answering.",
-  },
-  {
-    title: "Retrodesk",
-    image: "/retrodesk.webp",
-    link: "https://github.com/icecoffie/retro-desktop",
-    preview: "https://codepen.io/icecoffie/full/jEbNKYR",
-    status: "Deployed",
-    description: "Retro style desktop UI recreated in the browser.",
-  },
-  {
-    title: "Code shot",
-    image: "/codeshot.webp",
-    link: "https://github.com/icecoffie/Omala-ShotCode",
-    preview: "https://marketplace.visualstudio.com/items?itemName=MatrixSync.omala",
-    status: "Deployed",
-    description: "VSCode extension to take clean and styled code screenshots.",
-  },
-  {
-    title: "Rocket Track",
-    image: "/rocketrack.webp",
-    link: "https://github.com/icecoffie/rockeTrack",
-    preview: "https://icecoffie.github.io/rockeTrack/",
-    status: "Deployed",
-    description: "Rocket launch tracker app with animated visuals and data.",
-  },
-  {
-    title: "Syncrypt",
-    image: "/syncrypt.webp",
-    link: "https://github.com/icecoffie/encryption-sync",
-    preview: "https://icecoffie.github.io/encryption-sync/",
-    status: "Deployed",
-    description: "Web app for secure file encryption and decryption sync.",
-  },
-  {
-    title: "Internal System",
-    image: "/internal.webp",
-    link: "https://github.com/icecoffie/msync-app-internal",
-    preview: "https://github.com/icecoffie/msync-app-internal",
-    status: "On Going Backend",
-    description: "Internal system Matrix Sync Tech team for managing projects and tasks .",
-  },
-  {
-    title: "Nezoflow",
-    image: "/nezoflow.webp",
-    link: "https://github.com/icecoffie/NezoFlow-v1",
-    preview: "https://icecoffie.github.io/NezoFlow-v1/",
-    status: "Deployed",
-    description: "Photo gallery app with colorful UI and smooth browsing.",
-  },
-  {
-    title: "Snack JS",
-    image: "/snackjs.webp",
-    link: "https://github.com/icecoffie/snack.js",
-    preview: "https://icecoffie.github.io/snack.js/",
-    status: "On Going",
-    description: "Frontend Framework to make UI smoother, faster, and delightful..",
-  },
-  {
-    title: "Ruang Pulang App",
-    image: "/ruangpulang.webp",
-    link: "https://github.com/icecoffie/ruangpulang",
-    preview: "https://order.ruangpulang.app/",
-    status: "Deployed",
-    description: "Ordering app for Ruang Pulang cafe with dashboard management and payment integration.",
-  },
-  {
-    title: "Hafar Group",
-    image: "/hafarr.webp",
-    link: "https://hafar.com",
-    preview: "https://hafar.arxan.com/",
-    status: "Deployed",
-    description: "Redesign company profile website for Hafar Group with modern UI/UX and fullstack development.",
-  },
-  {
-    title: "HPZ TDR ",
-    image: "/hpz.webp",
-    link: "https://github.com/icecoffie/hackathon1",
-    preview: "https://icecoffie.github.io/hpz-tdr-final/",
-    status: "Deployed",
-    description: "Redesign website with sales dashboard and best marketing for community motorcycle HPZ TDR.",
-  },
-  {
-    title: "Wangiloka",
-    image: "/wangiloka.webp",
-    link: "https://github.com/icecoffie/wangiloka",
-    preview: "https://wangiloka.com/",
-    status: "Deployed",
-    description: "Frontend development for wangiloka e-commerce marketplace website.",
-  },
-  {
-    title: "Community",
-    image: "/komunitas.webp",
-    link: "https://whatsapp.com/channel/0029VbBNHToKrWQoNtBduu2u",
-    preview: "https://whatsapp.com/channel/0029VbBNHToKrWQoNtBduu2u",
-    status: "Deployed",
-    description: "Official community channel for updates and collaboration.",
-  },
-  {
-    title: "Sugar Pop Photo",
-    image: "/sugarpop.webp",
-    link: "https://github.com/icecoffie/sugarpop-photo",
-    preview: "https://sugarpop.msync.my.id",
-    status: "On Going",
-    description: "Photo gallery app with colorful UI and smooth browsing.",
-  },
-  {
-    title: "Testimoni",
-    image: "/testy.webp",
-    link: "https://github.com/icecoffie/testy",
-    preview: "https://testy.msync.my.id",
-    status: "Testy",
-    description: "Testimonial and feedback showcase app.",
-  },
+// Define specific projects to show in detail
+const detailedProjectIds = [
+  "matrix-sync-tech",
+  "skale-orbit",
+  "worcket",
+  "orbit-awards",
+  "freedoom",
+  "skale-academy"
 ];
+
+// Get detailed projects
+const detailedProjects = [
+  ...highlightProjects.filter(p => detailedProjectIds.includes(p.id)),
+  ...projects.filter(p => detailedProjectIds.includes(p.id))
+].filter((v, i, a) => a.findIndex(t => t.id === v.id) === i); // Remove duplicates
+
+// Get all other projects for the list
+const otherProjects = [
+  ...highlightProjects.filter(p => !detailedProjectIds.includes(p.id)),
+  ...projects.filter(p => !detailedProjectIds.includes(p.id))
+].filter((v, i, a) => a.findIndex(t => t.id === v.id) === i);
 ---
 
-<section
-  id="projects"
-  class="py-12 border-t border-[#ffffff10] text-[var(--white)]"
->
-  <div class="max-w-6xl mx-auto px-4">
-    <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">My work</h2>
-    <h3 class="text-4xl md:text-5xl font-medium mb-8">Projects</h3>
+<section id="projects" class="py-12 border-t border-[#ffffff10] text-[var(--white)]">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">My Work</h2>
+    <h3 class="text-4xl md:text-5xl font-medium mb-12">Projects</h3>
 
-    {/* Responsive grid */}
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    {/* Detailed Projects Grid */}
+    <div class="space-y-12 mb-16">
       {
-        projects.map((project) => (
-          <article class="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300 bg-[#111]">
-            <a
-              href={project.preview}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Open live preview of ${project.title}`}
-              aria-describedby={`desc-${project.title}`}
-              class="block focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-[var(--sec)]"
-            >
-              {/* Gambar */}
-              <img
-                src={project.image}
-                alt={`Thumbnail of ${project.title}`}
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 aspect-square"
-                loading="lazy"
-              />
-
-              {/* Overlay Info */}
-              <div class="absolute bottom-0 left-0 right-0 bg-black/70 p-4">
-                <h4 class="text-xl font-semibold">{project.title}</h4>
-                <span class="text-sm text-[var(--white-icon)]">{project.status}</span>
-                <p id={`desc-${project.title}`} class="text-xs text-[var(--white-icon)] mt-1">
-                  {project.description}
-                </p>
+        detailedProjects.map((project) => (
+          <article class="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-[#111] to-[#0a0a0a] border border-[#ffffff08] hover:border-[var(--sec)]/50">
+            <a href={`/projects/${project.id}`} class="block">
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* Image Side */}
+                <div class="relative overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={`${project.title} screenshot`}
+                    class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                  {project.status && (
+                    <div class="absolute top-4 left-4 bg-[var(--sec)]/90 text-white px-3 py-1 rounded-full text-sm font-medium">
+                      {project.status}
+                    </div>
+                  )}
+                </div>
+                
+                {/* Content Side */}
+                <div class="p-6 lg:p-8 flex flex-col justify-center">
+                  <h4 class="text-2xl md:text-3xl font-bold text-white mb-3">
+                    {project.title}
+                  </h4>
+                  {((project as any).tagline || project.description) && (
+                    <p class="text-[var(--sec)] text-lg mb-4">
+                      {(project as any).tagline || project.description}
+                    </p>
+                  )}
+                  
+                  {/* Why/How/What Preview */}
+                  <div class="space-y-3 mb-6">
+                    {project.why && (
+                      <div class="flex items-start gap-2">
+                        <span class="text-[var(--sec)] font-bold">Why:</span>
+                        <p class="text-[var(--white-icon)] text-sm line-clamp-2">{project.why}</p>
+                      </div>
+                    )}
+                    {project.how && (
+                      <div class="flex items-start gap-2">
+                        <span class="text-[var(--sec)] font-bold">How:</span>
+                        <p class="text-[var(--white-icon)] text-sm line-clamp-2">{project.how}</p>
+                      </div>
+                    )}
+                    {project.what && (
+                      <div class="flex items-start gap-2">
+                        <span class="text-[var(--sec)] font-bold">What:</span>
+                        <p class="text-[var(--white-icon)] text-sm line-clamp-2">{project.what}</p>
+                      </div>
+                    )}
+                  </div>
+                  
+                  {/* Tech Stack */}
+                  {project.techStack && (
+                    <div class="flex flex-wrap gap-2 mb-6">
+                      {project.techStack.slice(0, 5).map((tech) => (
+                        <span class="px-3 py-1 bg-[#ffffff08] border border-[#ffffff10] rounded-full text-sm text-[var(--white-icon)]">
+                          {tech}
+                        </span>
+                      ))}
+                      {project.techStack.length > 5 && (
+                        <span class="px-3 py-1 bg-[#ffffff08] border border-[#ffffff10] rounded-full text-sm text-[var(--white-icon)]">
+                          +{project.techStack.length - 5}
+                        </span>
+                      )}
+                    </div>
+                  )}
+                  
+                  {/* CTA */}
+                  <span class="inline-flex items-center gap-2 text-[var(--sec)] font-medium group-hover:gap-3 transition-all">
+                    View Full Details
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"/>
+                    </svg>
+                  </span>
+                </div>
               </div>
             </a>
-
-            {/* Tombol Aksi */}
-            <div class="absolute top-2 right-2 flex gap-2">
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`GitHub repository for ${project.title}`}
-                aria-describedby={`desc-${project.title}`}
-                class="focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-[var(--sec)] size-10 flex justify-center items-center rounded-md bg-black/60 hover:bg-black/80 text-white transition"
-              >
-                {/* GitHub icon */}
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="size-5">
-                  <path d="M24 12L18.34 17.66L16.93 16.24L21.17 12L16.93 7.76L18.34 6.34L24 12ZM2.83 12L7.07 16.24L5.66 17.66L0 12L5.66 6.34L7.07 7.76L2.83 12ZM9.79 21H7.66L14.21 3H16.34L9.79 21Z"/>
-                </svg>
-              </a>
-
-              <a
-                href={project.preview}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Live preview of ${project.title}`}
-                aria-describedby={`desc-${project.title}`}
-                class="focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-[var(--sec)] size-10 flex justify-center items-center rounded-md bg-black/60 hover:bg-black/80 text-white transition"
-              >
-                {/* Preview icon */}
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="size-5">
-                  <path d="M16 9.41L7.4 18.02L5.98 16.61L14.59 8H7V6H18V17H16V9.41Z"/>
-                </svg>
-              </a>
-            </div>
           </article>
         ))
       }
     </div>
 
-    {/* Tombol More Projects */}
-    <a
-      target="_blank"
-      href="https://docs.google.com/spreadsheets/d/1qfATqXNokCWCgpNYU4if_lRzVRJM55zu7oycrJM06LI/edit?gid=0#gid=0"
-      aria-label="More projects in Google Sheets"
-      class="w-full flex items-center justify-center gap-2 mt-9 text-[var(--white-icon)] hover:text-white transition duration-300 ease-in-out border border-[var(--white-icon-tr)] p-3 rounded-full bg-[#1414149c] hover:bg-[var(--white-icon-tr)] hover:scale-105"
+    {/* Another Projects Button */}
+    <button
+      id="open-projects-panel"
+      class="w-full flex items-center justify-center gap-2 text-[var(--white-icon)] hover:text-white transition duration-300 ease-in-out border border-[var(--white-icon-tr)] p-3 rounded-full bg-[#1414149c] hover:bg-[var(--white-icon-tr)] hover:scale-105"
     >
-      <span class="md:text-lg text-md">More projects</span>
-    </a>
+      <span class="md:text-lg text-md">Another Projects →</span>
+    </button>
   </div>
 </section>
+
+{/* Slide-in Panel for All Projects */}
+<div id="projects-panel" class="fixed top-0 right-0 w-full md:w-2/3 lg:w-1/2 h-full bg-[#111] border-l border-[#ffffff10] transform translate-x-full transition-transform duration-300 ease-in-out z-50 overflow-y-auto">
+  <div class="p-8">
+    <div class="flex items-center justify-between mb-8">
+      <h2 class="text-3xl font-bold text-white">Selected Projects List (2024-2020)</h2>
+      <button id="close-projects-panel" class="text-white hover:text-[var(--sec)] transition p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="space-y-4">
+      {
+        otherProjects.map((project, index) => (
+          <a
+            href={`/projects/${project.id}`}
+            class="flex items-center gap-4 py-4 px-3 rounded-xl border border-[#ffffff10] hover:border-[var(--sec)] hover:bg-[#ffffff05] transition group"
+          >
+            <img
+              src={project.image}
+              alt={`${project.title} preview`}
+              class="w-20 h-20 object-cover rounded-lg flex-shrink-0"
+              loading="lazy"
+            />
+            <div class="flex-1">
+              <h3 class="text-lg font-semibold text-white group-hover:text-[var(--sec)] transition">
+                {project.title}
+              </h3>
+              <p class="text-sm text-[var(--white-icon)] mt-1">{project.status}</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-sm text-[var(--white-icon)]">{(new Date().getFullYear() - (index % 5)).toString()}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--white-icon)] group-hover:text-[var(--sec)] transition group-hover:translate-x-1">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+{/* Overlay */}
+<div id="projects-overlay" class="fixed inset-0 bg-black/50 opacity-0 pointer-events-none transition-opacity duration-300 z-40"></div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const openBtn = document.getElementById("open-projects-panel");
+    const closeBtn = document.getElementById("close-projects-panel");
+    const panel = document.getElementById("projects-panel");
+    const overlay = document.getElementById("projects-overlay");
+
+    const openPanel = () => {
+      panel.classList.remove("translate-x-full");
+      overlay.classList.remove("opacity-0", "pointer-events-none");
+      document.body.style.overflow = "hidden";
+    };
+
+    const closePanel = () => {
+      panel.classList.add("translate-x-full");
+      overlay.classList.add("opacity-0", "pointer-events-none");
+      document.body.style.overflow = "";
+    };
+
+    if (openBtn) openBtn.addEventListener("click", openPanel);
+    if (closeBtn) closeBtn.addEventListener("click", closePanel);
+    if (overlay) overlay.addEventListener("click", closePanel);
+
+    // Close with Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closePanel();
+    });
+  });
+</script>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
