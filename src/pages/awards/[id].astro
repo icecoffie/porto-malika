@@ -1,0 +1,204 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { awards } from "../../data/awards";
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return awards.map((award) => ({
+    params: { id: award.id },
+    props: { award },
+  }));
+}
+
+interface Props {
+  award: typeof awards[0];
+}
+
+const { award } = Astro.props;
+
+if (!award) {
+  return Astro.redirect("/");
+}
+---
+
+<Layout
+  title={`${award.title} - Award Detail`}
+  description={award.description}
+  ogImage={award.image}
+>
+  <main class="min-h-screen bg-[var(--background)] text-[var(--white)]">
+    <!-- Navigation Back -->
+    <nav class="py-6 border-b border-[#ffffff10]">
+      <div class="max-w-5xl mx-auto px-4">
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 text-[var(--sec)] hover:text-[var(--sec-dark)] transition"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            class="w-5 h-5"
+          >
+            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+          </svg>
+          Back to Home
+        </a>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-5xl mx-auto px-4 py-12">
+      <!-- Header Section -->
+      <section class="mb-12">
+        <div class="mb-8">
+          <h1 class="text-5xl md:text-6xl font-bold mb-4">{award.title}</h1>
+        </div>
+
+        <!-- Award Certificate Image - Main Focus -->
+        <div class="mb-12 flex justify-center">
+          <div class="relative w-full max-w-2xl">
+            <div class="rounded-2xl overflow-hidden border-4 border-[var(--sec)]/50 bg-[#111] shadow-2xl">
+              <img
+                src={award.image}
+                alt={`${award.title} Certificate`}
+                class="w-full h-auto object-cover animate-float"
+                loading="lazy"
+              />
+            </div>
+            <!-- Trophy Icon Decoration -->
+            <div
+              class="absolute -top-6 -right-6 w-20 h-20 bg-[var(--sec)]/30 rounded-full blur-3xl"
+            ></div>
+            <div
+              class="absolute -bottom-6 -left-6 w-20 h-20 bg-[var(--sec)]/20 rounded-full blur-3xl"
+            ></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Award Details Grid -->
+      <section class="mb-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Issuer -->
+        {
+          award.issuer && (
+            <div class="p-6 rounded-2xl bg-[#111] border border-[#ffffff10] hover:border-[var(--sec)]/50 transition">
+              <h3 class="text-sm font-semibold text-[var(--sec)] mb-2 uppercase tracking-wider">
+                Issued By
+              </h3>
+              <p class="text-lg text-[var(--white)]">{award.issuer}</p>
+            </div>
+          )
+        }
+
+        <!-- Date -->
+        {
+          award.date && (
+            <div class="p-6 rounded-2xl bg-[#111] border border-[#ffffff10] hover:border-[var(--sec)]/50 transition">
+              <h3 class="text-sm font-semibold text-[var(--sec)] mb-2 uppercase tracking-wider">
+                Date Received
+              </h3>
+              <p class="text-lg text-[var(--white)]">{award.date}</p>
+            </div>
+          )
+        }
+      </section>
+
+      <!-- Description Section -->
+      <section class="mb-12 p-8 rounded-2xl bg-[#1a1a1a] border border-[var(--sec)]/20">
+        <h2 class="text-2xl font-semibold mb-4">About This Award</h2>
+        <p class="text-[var(--white-icon)] leading-relaxed text-lg">
+          {award.description}
+        </p>
+      </section>
+
+      <!-- Certificate Link -->
+      {
+        award.link && (
+          <section class="mb-12">
+            <a
+              href={award.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block w-full p-6 rounded-2xl bg-gradient-to-r from-[var(--sec)]/20 to-[var(--sec)]/10 border border-[var(--sec)]/50 hover:border-[var(--sec)] transition text-center group"
+            >
+              <div class="flex items-center justify-center gap-2 text-[var(--sec)] font-semibold">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  class="w-5 h-5 group-hover:translate-x-1 transition"
+                >
+                  <path d="M16 9.41L7.4 18.02L5.98 16.61L14.59 8H7V6H18V17H16V9.41Z" />
+                </svg>
+                View Certificate / Proof
+              </div>
+            </a>
+          </section>
+        )
+      }
+
+      <!-- Achievement Stats -->
+      <section class="mb-12 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="p-6 rounded-2xl bg-[#111] border border-[#ffffff10] text-center hover:border-[var(--sec)]/50 transition">
+          <div class="text-4xl mb-2 flex justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-8 h-8 text-[var(--sec)]">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
+            </svg>
+          </div>
+          <p class="text-sm text-[var(--white-icon)]">Achievement</p>
+          <p class="text-lg font-semibold text-[var(--white)]">Recognized</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-[#111] border border-[#ffffff10] text-center hover:border-[var(--sec)]/50 transition">
+          <div class="text-4xl mb-2 flex justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-8 h-8 text-[var(--sec)]">
+              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2l-2.81 6.63L2 9.24l5.46 4.73L5.82 21 12 17.27z"/>
+            </svg>
+          </div>
+          <p class="text-sm text-[var(--white-icon)]">Excellence</p>
+          <p class="text-lg font-semibold text-[var(--white)]">Awarded</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-[#111] border border-[#ffffff10] text-center hover:border-[var(--sec)]/50 transition">
+          <div class="text-4xl mb-2 flex justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-8 h-8 text-[var(--sec)]">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+          </div>
+          <p class="text-sm text-[var(--white-icon)]">Milestone</p>
+          <p class="text-lg font-semibold text-[var(--white)]">Achieved</p>
+        </div>
+      </section>
+
+      <!-- Back to Awards -->
+      <section class="text-center py-6 border-t border-[#ffffff10]">
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 text-[var(--sec)] hover:text-[var(--sec-dark)] transition font-semibold"
+        >
+          ← Back to All Awards
+        </a>
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  img {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+</style>

@@ -64,7 +64,7 @@
           id="form-status"
           class="hidden mt-4 px-4 py-2 rounded-lg text-[var(--white)] bg-green-600/80 w-full text-center"
         >
-          Thanks! Your message has been sent 🌱
+          Thanks! Your message has been sent successfully.
         </div>
       </div>
     </div>
@@ -72,9 +72,6 @@
 </section>
 
 <script type="module">
-  // ===========================
-  // FORM AJAX (Formspree)
-  // ===========================
   const form = document.getElementById("contact-form");
   const formStatus = document.getElementById("form-status");
 
@@ -96,13 +93,13 @@
       } else {
         const data = await response.json();
         console.error("Error response:", data);
-        formStatus.textContent = "⚠️ There was a problem sending your message.";
+        formStatus.textContent = "There was a problem sending your message. Please try again.";
         formStatus.classList.remove("hidden");
         formStatus.classList.add("bg-red-600/80");
       }
     } catch (error) {
       console.error("Error:", error);
-      formStatus.textContent = "⚠️ There was a problem sending your message.";
+      formStatus.textContent = "There was a problem sending your message. Please try again.";
       formStatus.classList.remove("hidden");
       formStatus.classList.add("bg-red-600/80");
     }

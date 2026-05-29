@@ -1,0 +1,351 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { projects } from "../../data/projects";
+import { highlightProjects } from "../../data/featured";
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  // Combine both highlight and regular projects
+  const allProjects = [
+    ...highlightProjects.map(p => ({ ...p, isHighlight: true })),
+    ...projects.map(p => ({ ...p, isHighlight: false }))
+  ];
+  
+  return allProjects.map((project) => ({
+    params: { id: project.id },
+    props: { project },
+  }));
+}
+
+interface Props {
+  project: any;
+}
+
+const { project } = Astro.props;
+
+if (!project) {
+  return Astro.redirect("/");
+}
+
+const isHighlight = project.isHighlight || false;
+---
+
+<Layout
+  title={`${project.title} - Project Detail`}
+  description={project.summary || project.description}
+  ogImage={project.image}
+>
+  <main class="min-h-screen bg-[var(--background)] text-[var(--white)]">
+    <!-- Navigation Back -->
+    <nav class="py-6 border-b border-[#ffffff10]">
+      <div class="max-w-5xl mx-auto px-4">
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 text-[var(--sec)] hover:text-[var(--sec-dark)] transition"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            class="w-5 h-5"
+          >
+            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+          </svg>
+          Back to Home
+        </a>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-5xl mx-auto px-4 py-12">
+      <!-- Header Section -->
+      <section class="mb-12">
+        <div class="mb-6">
+          {isHighlight && (
+            <span class="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-[var(--sec)] to-blue-400 text-white text-sm font-bold mb-4">
+              HIGHLIGHT PROJECT
+            </span>
+          )}
+          <h1 class="text-5xl md:text-6xl font-bold mb-4">{project.title}</h1>
+          <p class="text-xl text-[var(--sec)] font-medium mb-4">{project.tagline || project.description}</p>
+          {project.description && project.tagline && (
+            <p class="text-lg text-[var(--white-icon)]">{project.description}</p>
+          )}
+        </div>
+
+        <!-- Status Badge -->
+        <div class="flex items-center gap-3 mb-6">
+          <span
+            class="px-4 py-2 rounded-full bg-[var(--sec)]/20 border border-[var(--sec)]/50 text-[var(--sec)] font-semibold text-sm"
+          >
+            {project.status}
+          </span>
+        </div>
+      </section>
+
+      <!-- Why-How-What Circle (for all projects with why/how/what) -->
+      {(project.why || project.how || project.what) && (
+        <section class="mb-16">
+          <h2 class="text-3xl font-bold mb-8 text-center">The Story</h2>
+          <div class="grid md:grid-cols-3 gap-6">
+            <!-- Why -->
+            {project.why && (
+              <div class="p-6 rounded-2xl bg-gradient-to-br from-[#1a1a1a] to-[#111] border border-[var(--sec)]/30 hover:border-[var(--sec)] transition-all duration-300">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="w-12 h-12 rounded-full bg-[var(--sec)]/20 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[var(--sec)]" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11 15H13V17H11V15ZM13 13.3551V14H11V12.5C11 11.9477 11.4477 11.5 12 11.5C12.8284 11.5 13.5 10.8284 13.5 10C13.5 9.17157 12.8284 8.5 12 8.5C11.2723 8.5 10.6656 9.01823 10.5288 9.70577L8.56731 9.31346C8.88637 7.70919 10.302 6.5 12 6.5C13.933 6.5 15.5 8.067 15.5 10C15.5 11.5855 14.4457 12.9248 13 13.3551Z"/>
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-[var(--sec)]">Why</h3>
+                </div>
+                <p class="text-[var(--white-icon)] leading-relaxed">{project.why}</p>
+              </div>
+            )}
+
+            <!-- How -->
+            {project.how && (
+              <div class="p-6 rounded-2xl bg-gradient-to-br from-[#1a1a1a] to-[#111] border border-[var(--sec)]/30 hover:border-[var(--sec)] transition-all duration-300">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="w-12 h-12 rounded-full bg-[var(--sec)]/20 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[var(--sec)]" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M6.9998 6V3C6.9998 2.44772 7.44752 2 7.9998 2H19.9998C20.5521 2 20.9998 2.44772 20.9998 3V17C20.9998 17.5523 20.5521 18 19.9998 18H16.9998V20.9991C16.9998 21.5519 16.5499 22 15.993 22H4.00666C3.45059 22 3 21.5554 3 20.9991L3.0026 7.00087C3.0027 6.44811 3.45264 6 4.00942 6H6.9998ZM8.9998 6H16.9998V16H18.9998V4H8.9998V6Z"/>
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-[var(--sec)]">How</h3>
+                </div>
+                <p class="text-[var(--white-icon)] leading-relaxed">{project.how}</p>
+              </div>
+            )}
+
+            <!-- What -->
+            {project.what && (
+              <div class="p-6 rounded-2xl bg-gradient-to-br from-[#1a1a1a] to-[#111] border border-[var(--sec)]/30 hover:border-[var(--sec)] transition-all duration-300">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="w-12 h-12 rounded-full bg-[var(--sec)]/20 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[var(--sec)]" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M13 10H18L12 23V14H7L13 1V10Z"/>
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-[var(--sec)]">What</h3>
+                </div>
+                <p class="text-[var(--white-icon)] leading-relaxed">{project.what}</p>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      <!-- Case Study Section (for highlight projects) -->
+      {isHighlight && project.problem && project.solution && (
+        <section class="mb-16">
+          <h2 class="text-3xl font-bold mb-8">Case Study</h2>
+          
+          <!-- Problem -->
+          <div class="mb-8 p-6 rounded-2xl bg-[#1a1a1a] border border-[#ffffff10]">
+            <h3 class="text-xl font-semibold mb-4 text-red-400">The Problem</h3>
+            <p class="text-[var(--white-icon)] leading-relaxed">{project.problem}</p>
+          </div>
+
+          <!-- Solution -->
+          <div class="mb-8 p-6 rounded-2xl bg-[#1a1a1a] border border-[#ffffff10]">
+            <h3 class="text-xl font-semibold mb-4 text-green-400">The Solution</h3>
+            <p class="text-[var(--white-icon)] leading-relaxed">{project.solution}</p>
+          </div>
+
+          <!-- Results -->
+          {project.results && project.results.length > 0 && (
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+              {project.results.map((result) => (
+                <div class="p-6 rounded-2xl bg-gradient-to-br from-[var(--sec)]/10 to-[#1a1a1a] border border-[var(--sec)]/30 text-center">
+                  <div class="text-3xl font-bold text-[var(--sec)] mb-2">{result.value}</div>
+                  <div class="text-sm text-[var(--white-icon)]">{result.metric}</div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          <!-- Timeline & Role -->
+          <div class="grid md:grid-cols-2 gap-6">
+            {project.timeline && (
+              <div class="p-6 rounded-2xl bg-[#1a1a1a] border border-[#ffffff10]">
+                <h4 class="text-sm font-bold text-[var(--sec)] mb-2 uppercase tracking-wider">Timeline</h4>
+                <p class="text-lg text-white">{project.timeline}</p>
+              </div>
+            )}
+            {project.role && (
+              <div class="p-6 rounded-2xl bg-[#1a1a1a] border border-[#ffffff10]">
+                <h4 class="text-sm font-bold text-[var(--sec)] mb-2 uppercase tracking-wider">Role</h4>
+                <p class="text-lg text-white">{project.role}</p>
+              </div>
+            )}
+          </div> 
+        </section>
+      )}
+
+      <!-- Challenges & Learnings (for highlight projects) -->
+      {isHighlight && (project.challenges || project.learnings) && (
+        <section class="mb-16">
+          <div class="grid md:grid-cols-2 gap-8">
+            {project.challenges && project.challenges.length > 0 && (
+              <div>
+                <h3 class="text-2xl font-semibold mb-6">Challenges</h3>
+                <ul class="space-y-4">
+                  {project.challenges.map((challenge) => (
+                    <li class="flex items-start gap-3 p-4 rounded-xl bg-[#1a1a1a] border border-[#ffffff10]">
+                      <span class="text-yellow-400 mt-1 flex-shrink-0">⚠</span>
+                      <span class="text-[var(--white-icon)]">{challenge}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {project.learnings && project.learnings.length > 0 && (
+              <div>
+                <h3 class="text-2xl font-semibold mb-6">Key Learnings</h3>
+                <ul class="space-y-4">
+                  {project.learnings.map((learning) => (
+                    <li class="flex items-start gap-3 p-4 rounded-xl bg-[#1a1a1a] border border-[#ffffff10]">
+                      <span class="text-green-400 mt-1 flex-shrink-0">✓</span>
+                      <span class="text-[var(--white-icon)]">{learning}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      <!-- Summary Section (for regular projects) -->
+      {!isHighlight && project.summary && (
+        <section class="mb-12 p-6 rounded-2xl bg-[#111] border border-[#ffffff10]">
+          <h2 class="text-2xl font-semibold mb-4">About This Project</h2>
+          <p class="text-[var(--white-icon)] leading-relaxed">{project.summary}</p>
+        </section>
+      )}
+
+      <!-- Tech Stack Section -->
+      {project.techStack && project.techStack.length > 0 && (
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-6">Tech Stack</h2>
+          <div class="flex flex-wrap gap-3">
+            {project.techStack.map((tech) => (
+              <span class="px-4 py-2 rounded-lg bg-[#1a1a1a] border border-[#ffffff10] text-[var(--white-icon)] hover:border-[var(--sec)] hover:text-[var(--sec)] transition">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- Features Section -->
+      {project.features && project.features.length > 0 && (
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-6">Key Features</h2>
+          <div class="grid md:grid-cols-2 gap-4">
+            {project.features.map((feature) => (
+              <div class="flex items-start gap-3 p-4 rounded-xl bg-[#1a1a1a] border border-[#ffffff10]">
+                <span class="text-[var(--sec)] mt-1 flex-shrink-0">✓</span>
+                <span class="text-[var(--white-icon)]">{feature}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- Use Cases Section (for regular projects) -->
+      {!isHighlight && project.useCases && project.useCases.length > 0 && (
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-6">Use Cases</h2>
+          <ul class="space-y-3">
+            {project.useCases.map((useCase) => (
+              <li class="flex items-start gap-3">
+                <span class="text-[var(--sec)] mt-1">✓</span>
+                <span class="text-[var(--white-icon)]">{useCase}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <!-- Problem Solving Section (for regular projects) -->
+      {!isHighlight && project.problemSolving && (
+        <section class="mb-12 p-6 rounded-2xl bg-[#1a1a1a] border border-[var(--sec)]/20">
+          <h2 class="text-2xl font-semibold mb-4">How It Solves Problems</h2>
+          <p class="text-[var(--white-icon)] leading-relaxed">
+            {project.problemSolving}
+          </p>
+        </section>
+      )}
+
+      <!-- Impact Section -->
+      {project.impact && (
+        <section class="mb-12 p-6 rounded-2xl bg-gradient-to-r from-[var(--sec)]/10 to-transparent border border-[var(--sec)]/30">
+          <div class="flex items-start gap-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-[var(--sec)] flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M13 10H18L12 23V14H7L13 1V10Z"/>
+            </svg>
+            <div>
+              <h2 class="text-2xl font-semibold mb-3">Impact</h2>
+              <p class="text-lg text-white leading-relaxed">{project.impact}</p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      <!-- Preview Section -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-6">Live Preview</h2>
+        <div class="rounded-2xl overflow-hidden border border-[#ffffff10] bg-[#111]">
+          <iframe
+            src={project.preview}
+            title={`${project.title} Live Preview`}
+            class="w-full h-[600px] border-0"
+            loading="lazy"
+          ></iframe>
+        </div>
+        <p class="text-sm text-[var(--white-icon)] mt-3">
+          If the preview doesn't load, click the button below to open it in a new tab.
+        </p>
+      </section>
+
+      <!-- Action Buttons -->
+      <section class="flex flex-col sm:flex-row gap-4 mb-12">
+        <a
+          href={project.preview}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex-1 px-6 py-3 rounded-lg bg-[var(--sec)] text-white font-semibold hover:bg-[var(--sec-dark)] transition text-center"
+        >
+          Open Live Preview
+        </a>
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex-1 px-6 py-3 rounded-lg border border-[var(--sec)] text-[var(--sec)] font-semibold hover:bg-[var(--sec)]/10 transition text-center"
+        >
+          View on GitHub
+        </a>
+      </section>
+
+      <!-- Back to Projects -->
+      <section class="text-center py-6 border-t border-[#ffffff10]">
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 text-[var(--sec)] hover:text-[var(--sec-dark)] transition font-semibold"
+        >
+          ← Back to All Projects
+        </a>
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  iframe {
+    background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+  }
+</style>

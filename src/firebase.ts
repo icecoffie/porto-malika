@@ -2,12 +2,12 @@ import { initializeApp, getApps } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAdnzG-VvEMFpNfERfQdDqw_rzixOiLqKc",
-  authDomain: "likes-web-malika.firebaseapp.com",
-  projectId: "likes-web-malika",
-  storageBucket: "likes-web-malika.firebasestorage.app",
-  messagingSenderId: "53105575987",
-  appId: "1:53105575987:web:7a37c23a5e3ba720b7bb46",
+  apiKey: import.meta.env.PUBLIC_FIREBASE_API_KEY,
+  authDomain: import.meta.env.PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.PUBLIC_FIREBASE_APP_ID,
 };
 
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApps()[0];

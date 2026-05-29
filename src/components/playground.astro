@@ -1,0 +1,77 @@
+---
+import TechPlayground from "./TechPlayground.tsx";
+---
+
+<section
+  id="playground"
+  class="py-12 border-t border-[#ffffff10] text-[var(--white)]"
+>
+  <div class="max-w-6xl mx-auto px-4">
+    <!-- Section Header -->
+    <div class="mb-8">
+      <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">Interactive Demo</h2>
+      <h3 class="text-4xl md:text-5xl font-medium mb-4">Tech Memory Game</h3>
+      <p class="text-lg text-[var(--white-icon)] max-w-3xl">
+        Test your memory with this tech-themed matching game. Match all the icons to win!
+      </p>
+    </div>
+
+    <!-- Playground -->
+    <TechPlayground client:load />
+
+    <!-- Tech Info -->
+    <div class="mt-8 grid md:grid-cols-3 gap-6">
+      <div class="p-6 rounded-xl bg-[#1a1a1a] border border-[#ffffff10]">
+        <div class="flex items-center gap-3 mb-3">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[var(--sec)]" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM13 12H17V14H13V17L9 13.5L13 10V12Z"/>
+          </svg>
+          <h4 class="text-lg font-semibold">Memory Challenge</h4>
+        </div>
+        <p class="text-sm text-[var(--white-icon)]">
+          Match pairs of tech icons to test your memory and concentration
+        </p>
+      </div>
+
+      <div class="p-6 rounded-xl bg-[#1a1a1a] border border-[#ffffff10]">
+        <div class="flex items-center gap-3 mb-3">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[var(--sec)]" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M13 10H18L12 23V14H7L13 1V10Z"/>
+          </svg>
+          <h4 class="text-lg font-semibold">Interactive UI</h4>
+        </div>
+        <p class="text-sm text-[var(--white-icon)]">
+          Smooth animations and responsive design with Lucide icons
+        </p>
+      </div>
+
+      <div class="p-6 rounded-xl bg-[#1a1a1a] border border-[#ffffff10]">
+        <div class="flex items-center gap-3 mb-3">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[var(--sec)]" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11 15H13V17H11V15ZM13 13.3551V14H11V12.5C11 11.9477 11.4477 11.5 12 11.5C12.8284 11.5 13.5 10.8284 13.5 10C13.5 9.17157 12.8284 8.5 12 8.5C11.2723 8.5 10.6656 9.01823 10.5288 9.70577L8.56731 9.31346C8.88637 7.70919 10.302 6.5 12 6.5C13.933 6.5 15.5 8.067 15.5 10C15.5 11.5855 14.4457 12.9248 13 13.3551Z"/>
+          </svg>
+          <h4 class="text-lg font-semibold">Game Logic</h4>
+        </div>
+        <p class="text-sm text-[var(--white-icon)]">
+          Built with React state management and game mechanics
+        </p>
+      </div>
+    </div>
+
+    <!-- More Examples CTA -->
+    <div class="mt-8 text-center p-6 rounded-xl bg-gradient-to-r from-[var(--sec)]/10 to-transparent border border-[var(--sec)]/30">
+      <p class="text-[var(--white-icon)] mb-4">
+        This is just one example. I've built interactive games, 3D visualizations, and engaging user experiences.
+      </p>
+      <a
+        href="#featured"
+        class="inline-flex items-center gap-2 text-[var(--sec)] hover:text-white transition-colors font-medium"
+      >
+        <span>See more interactive projects</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

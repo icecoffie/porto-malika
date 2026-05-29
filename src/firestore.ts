@@ -1,4 +1,3 @@
-// src/lib/firestore.ts
 import { db } from "./firebase";
 import {
   collection,
@@ -9,7 +8,6 @@ import {
   onSnapshot as onDocSnapshot,
 } from "firebase/firestore";
 
-// listen semua blog realtime, ordered by date desc (format date = "YYYY-MM-DD")
 export const listenBlogs = (cb: (blogs: any[]) => void) => {
   const q = query(collection(db, "blogs"), orderBy("date", "desc"));
   return onSnapshot(q, (snap) => {
@@ -18,7 +16,6 @@ export const listenBlogs = (cb: (blogs: any[]) => void) => {
   });
 };
 
-// listen 1 blog by id realtime
 export const listenBlogById = (id: string, cb: (blog: any | null) => void) => {
   const ref = doc(db, "blogs", id);
   return onDocSnapshot(ref, (snap) => {
@@ -27,7 +24,6 @@ export const listenBlogById = (id: string, cb: (blog: any | null) => void) => {
   });
 };
 
-// listen footer likes
 export const listenFooterLikes = (cb: (count: number) => void) => {
   const ref = doc(db, "likes", "counter");
   return onDocSnapshot(ref, (snap) => {

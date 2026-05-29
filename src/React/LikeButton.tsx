@@ -12,11 +12,9 @@ const LikeButton = () => {
   useEffect(() => {
     setIsClient(true);
 
-    // Cek localStorage supaya user cuma bisa like sekali
     const storedIsLiked = localStorage.getItem("websiteIsLiked");
     if (storedIsLiked) setIsLiked(storedIsLiked === "true");
 
-    // Lazy load Firebase & setup realtime listener
     let unsubscribe: (() => void) | null = null;
 
     const initFirebase = async () => {
@@ -26,7 +24,6 @@ const LikeButton = () => {
 
         const likeDocRef = doc(db, "likes", "counter");
 
-        // realtime listener
         unsubscribe = onSnapshot(likeDocRef, (docSnap) => {
           if (docSnap.exists()) {
             const currentLikes = (docSnap.data() as any).likes ?? 0;
@@ -64,7 +61,6 @@ const LikeButton = () => {
     setIsProcessing(true);
 
     try {
-      // Lazy load Firebase on first click (for update)
       const { doc, updateDoc, increment } = await import("firebase/firestore");
       const { db } = await import("src/firebase");
 
