@@ -12,11 +12,16 @@ const detailedProjectIds = [
   "skale-academy"
 ];
 
-// Get detailed projects
+// Get detailed projects, sorted to match the order we want
 const detailedProjects = [
   ...highlightProjects.filter(p => detailedProjectIds.includes(p.id)),
   ...projects.filter(p => detailedProjectIds.includes(p.id))
 ].filter((v, i, a) => a.findIndex(t => t.id === v.id) === i); // Remove duplicates
+
+// Sort them to match the exact order specified
+const sortedDetailedProjects = detailedProjectIds.map(id => 
+  detailedProjects.find(p => p.id === id)
+).filter(Boolean);
 
 // Get all other projects for the list
 const otherProjects = [
@@ -25,110 +30,105 @@ const otherProjects = [
 ].filter((v, i, a) => a.findIndex(t => t.id === v.id) === i);
 ---
 
-<section id="projects" class="py-12 border-t border-[#ffffff10] text-[var(--white)]">
+<section id="projects" class="py-12 border-t border-[#ffffff10] text-[var(--white)] overflow-hidden">
   <div class="max-w-7xl mx-auto px-4">
     <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">My Work</h2>
-    <h3 class="text-4xl md:text-5xl font-medium mb-12">Projects</h3>
+    <h3 class="text-3xl md:text-4xl font-medium mb-12">Projects</h3>
 
-    {/* Detailed Projects Grid */}
-    <div class="space-y-12 mb-16">
-      {
-        detailedProjects.map((project) => (
-          <article class="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-[#111] to-[#0a0a0a] border border-[#ffffff08] hover:border-[var(--sec)]/50">
-            <a href={`/projects/${project.id}`} class="block">
-              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {/* Image Side */}
-                <div class="relative overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={`${project.title} screenshot`}
-                    class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-700"
-                    loading="lazy"
-                  />
-                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                  {project.status && (
-                    <div class="absolute top-4 left-4 bg-[var(--sec)]/90 text-white px-3 py-1 rounded-full text-sm font-medium">
-                      {project.status}
-                    </div>
-                  )}
-                </div>
-                
-                {/* Content Side */}
-                <div class="p-6 lg:p-8 flex flex-col justify-center">
-                  <h4 class="text-2xl md:text-3xl font-bold text-white mb-3">
-                    {project.title}
-                  </h4>
-                  {((project as any).tagline || project.description) && (
-                    <p class="text-[var(--sec)] text-lg mb-4">
-                      {(project as any).tagline || project.description}
-                    </p>
-                  )}
-                  
-                  {/* Why/How/What Preview */}
-                  <div class="space-y-3 mb-6">
-                    {project.why && (
-                      <div class="flex items-start gap-2">
-                        <span class="text-[var(--sec)] font-bold">Why:</span>
-                        <p class="text-[var(--white-icon)] text-sm line-clamp-2">{project.why}</p>
-                      </div>
-                    )}
-                    {project.how && (
-                      <div class="flex items-start gap-2">
-                        <span class="text-[var(--sec)] font-bold">How:</span>
-                        <p class="text-[var(--white-icon)] text-sm line-clamp-2">{project.how}</p>
-                      </div>
-                    )}
-                    {project.what && (
-                      <div class="flex items-start gap-2">
-                        <span class="text-[var(--sec)] font-bold">What:</span>
-                        <p class="text-[var(--white-icon)] text-sm line-clamp-2">{project.what}</p>
+    {/* Carousel Container */}
+    <div class="relative">
+      {/* Carousel Wrapper */}
+      <div id="carousel-track" class="flex gap-6 transition-transform duration-500 ease-out">
+        {
+          sortedDetailedProjects.map((project, index) => (
+            <article 
+              class="carousel-item flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] group"
+              data-index={index}
+            >
+              <a href={`/projects/${project.id}`} class="block h-full">
+                <div class="relative rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-[#111] to-[#0a0a0a] border border-[#ffffff08] hover:border-[var(--sec)]/50 hover:-translate-y-1">
+                  {/* Image */}
+                  <div class="relative overflow-hidden h-48">
+                    <img
+                      src={project.image}
+                      alt={`${project.title} screenshot`}
+                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      loading="lazy"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                    {(project as any).status && (
+                      <div class="absolute top-3 left-3 bg-[var(--sec)]/90 text-white px-2 py-1 rounded-full text-xs font-medium">
+                        {(project as any).status}
                       </div>
                     )}
                   </div>
                   
-                  {/* Tech Stack */}
-                  {project.techStack && (
-                    <div class="flex flex-wrap gap-2 mb-6">
-                      {project.techStack.slice(0, 5).map((tech) => (
-                        <span class="px-3 py-1 bg-[#ffffff08] border border-[#ffffff10] rounded-full text-sm text-[var(--white-icon)]">
-                          {tech}
-                        </span>
-                      ))}
-                      {project.techStack.length > 5 && (
-                        <span class="px-3 py-1 bg-[#ffffff08] border border-[#ffffff10] rounded-full text-sm text-[var(--white-icon)]">
-                          +{project.techStack.length - 5}
-                        </span>
-                      )}
-                    </div>
-                  )}
-                  
-                  {/* CTA */}
-                  <span class="inline-flex items-center gap-2 text-[var(--sec)] font-medium group-hover:gap-3 transition-all">
-                    View Full Details
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"/>
-                    </svg>
-                  </span>
+                  {/* Content */}
+                  <div class="p-4">
+                    <h4 class="text-lg font-bold text-white mb-2">
+                      {project.title}
+                    </h4>
+                    <p class="text-[var(--white-icon)] text-sm leading-relaxed line-clamp-2">
+                      {(project as any).tagline || project.description}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </a>
-          </article>
-        ))
-      }
+              </a>
+            </article>
+          ))
+        }
+      </div>
+
+      {/* Navigation Arrows */}
+      <button
+        id="prev-btn"
+        class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-10 h-10 items-center justify-center rounded-full bg-black/80 backdrop-blur-sm border border-[var(--sec)] text-white hover:bg-[var(--sec)] transition-all duration-300 z-10"
+        aria-label="Previous"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z"/>
+        </svg>
+      </button>
+
+      <button
+        id="next-btn"
+        class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-10 h-10 items-center justify-center rounded-full bg-black/80 backdrop-blur-sm border border-[var(--sec)] text-white hover:bg-[var(--sec)] transition-all duration-300 z-10"
+        aria-label="Next"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M13.1717 12.0007L8.22192 7.05093L9.63614 5.63672L16.0001 12.0007L9.63614 18.3646L8.22192 16.9504L13.1717 12.0007Z"/>
+        </svg>
+      </button>
+    </div>
+
+    {/* Dots Indicator */}
+    <div id="dots-container" class="flex justify-center gap-2 mt-8">
+      {sortedDetailedProjects.map((_, index) => (
+        <button
+          class="dot w-2 h-2 rounded-full bg-[var(--white-icon)] transition-all duration-300 hover:bg-[var(--sec)]"
+          data-index={index}
+          aria-label={`Go to project ${index + 1}`}
+        ></button>
+      ))}
     </div>
 
     {/* Another Projects Button */}
-    <button
-      id="open-projects-panel"
-      class="w-full flex items-center justify-center gap-2 text-[var(--white-icon)] hover:text-white transition duration-300 ease-in-out border border-[var(--white-icon-tr)] p-3 rounded-full bg-[#1414149c] hover:bg-[var(--white-icon-tr)] hover:scale-105"
-    >
-      <span class="md:text-lg text-md">Another Projects →</span>
-    </button>
+    <div class="flex justify-center">
+      <button
+        id="open-projects-panel"
+        class="w-full md:w-auto inline-flex items-center justify-center gap-2 mt-10 px-8 py-4 rounded-xl bg-gradient-to-r from-[var(--sec)] to-blue-400 text-white font-medium hover:shadow-lg hover:shadow-[var(--sec)]/50 transition-all duration-300 hover:scale-105"
+      >
+        <span>Another Projects</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"/>
+        </svg>
+      </button>
+    </div>
   </div>
 </section>
 
 {/* Slide-in Panel for All Projects */}
-<div id="projects-panel" class="fixed top-0 right-0 w-full md:w-2/3 lg:w-1/2 h-full bg-[#111] border-l border-[#ffffff10] transform translate-x-full transition-transform duration-300 ease-in-out z-50 overflow-y-auto">
+<div id="projects-panel" class="fixed top-0 right-0 w-full md:w-2/3 lg:w-1/2 h-full bg-[#111] border-l border-[#ffffff10] transform translate-x-full transition-transform duration-300 ease-in-out z-[102] overflow-y-auto">
   <div class="p-8">
     <div class="flex items-center justify-between mb-8">
       <h2 class="text-3xl font-bold text-white">Selected Projects List (2024-2020)</h2>
@@ -142,7 +142,7 @@ const otherProjects = [
 
     <div class="space-y-4">
       {
-        otherProjects.map((project, index) => (
+        [...sortedDetailedProjects, ...otherProjects].map((project, index) => (
           <a
             href={`/projects/${project.id}`}
             class="flex items-center gap-4 py-4 px-3 rounded-xl border border-[#ffffff10] hover:border-[var(--sec)] hover:bg-[#ffffff05] transition group"
@@ -157,7 +157,7 @@ const otherProjects = [
               <h3 class="text-lg font-semibold text-white group-hover:text-[var(--sec)] transition">
                 {project.title}
               </h3>
-              <p class="text-sm text-[var(--white-icon)] mt-1">{project.status}</p>
+              <p class="text-sm text-[var(--white-icon)] mt-1">{(project as any).status}</p>
             </div>
             <div class="flex items-center gap-2">
               <span class="text-sm text-[var(--white-icon)]">{(new Date().getFullYear() - (index % 5)).toString()}</span>
@@ -174,10 +174,108 @@ const otherProjects = [
 </div>
 
 {/* Overlay */}
-<div id="projects-overlay" class="fixed inset-0 bg-black/50 opacity-0 pointer-events-none transition-opacity duration-300 z-40"></div>
+<div id="projects-overlay" class="fixed inset-0 bg-black/50 opacity-0 pointer-events-none transition-opacity duration-300 z-[101]"></div>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+    const track = document.getElementById('carousel-track');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const dots = document.querySelectorAll('.dot');
+    const items = document.querySelectorAll('.carousel-item');
+    
+    let currentIndex = 0;
+    let itemsPerView = 1;
+
+    function updateItemsPerView() {
+      if (window.innerWidth >= 1024) {
+        itemsPerView = 3;
+      } else if (window.innerWidth >= 768) {
+        itemsPerView = 2;
+      } else {
+        itemsPerView = 1;
+      }
+    }
+
+    function updateCarousel() {
+      if (!track) return;
+      
+      const firstItem = items[0] as HTMLElement;
+      const itemWidth = firstItem?.offsetWidth || 0;
+      const gap = 24; // 6 * 4px (gap-6)
+      const offset = -(currentIndex * (itemWidth + gap));
+      
+      track.style.transform = `translateX(${offset}px)`;
+      
+      // Update dots
+      dots.forEach((dot, index) => {
+        if (index === currentIndex) {
+          dot.classList.add('bg-[var(--sec)]', 'w-8');
+          dot.classList.remove('bg-[var(--white-icon)]', 'w-2');
+        } else {
+          dot.classList.remove('bg-[var(--sec)]', 'w-8');
+          dot.classList.add('bg-[var(--white-icon)]', 'w-2');
+        }
+      });
+    }
+
+    function goToSlide(index: number) {
+      const maxIndex = Math.max(0, items.length - itemsPerView);
+      currentIndex = Math.max(0, Math.min(index, maxIndex));
+      updateCarousel();
+    }
+
+    prevBtn?.addEventListener('click', () => {
+      goToSlide(currentIndex - 1);
+    });
+
+    nextBtn?.addEventListener('click', () => {
+      goToSlide(currentIndex + 1);
+    });
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        goToSlide(index);
+      });
+    });
+
+    // Auto-play
+    let autoplayInterval = setInterval(() => {
+      const maxIndex = Math.max(0, items.length - itemsPerView);
+      if (currentIndex >= maxIndex) {
+        goToSlide(0);
+      } else {
+        goToSlide(currentIndex + 1);
+      }
+    }, 5000);
+
+    // Pause on hover
+    track?.addEventListener('mouseenter', () => {
+      clearInterval(autoplayInterval);
+    });
+
+    track?.addEventListener('mouseleave', () => {
+      autoplayInterval = setInterval(() => {
+        const maxIndex = Math.max(0, items.length - itemsPerView);
+        if (currentIndex >= maxIndex) {
+          goToSlide(0);
+        } else {
+          goToSlide(currentIndex + 1);
+        }
+      }, 5000);
+    });
+
+    // Handle resize
+    window.addEventListener('resize', () => {
+      updateItemsPerView();
+      goToSlide(currentIndex);
+    });
+
+    // Initialize
+    updateItemsPerView();
+    updateCarousel();
+    
+    // Panel functionality
     const openBtn = document.getElementById("open-projects-panel");
     const closeBtn = document.getElementById("close-projects-panel");
     const panel = document.getElementById("projects-panel");
@@ -212,5 +310,9 @@ const otherProjects = [
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+
+  .dot.bg-\[var\(--sec\)\] {
+    background-color: var(--sec);
   }
 </style>

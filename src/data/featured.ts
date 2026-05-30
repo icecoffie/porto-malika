@@ -91,6 +91,180 @@ export const highlightProjects: HighlightProject[] = [
     ]
   },
   {
+    id: "matrix-sync-tech",
+    title: "Matrix Sync Tech",
+    image: "/msync.webp",
+    link: "https://github.com/icecoffie/msync-tech",
+    preview: "https://matrixsync.app",
+    status: "Live Product",
+    tier: "S",
+    tagline: "Official tech service company website",
+    description: "The official website for Matrix Sync Tech showcases comprehensive technology services and solutions tailored for businesses.",
+    
+    why: "Every tech company needs a professional online presence that builds trust and clearly communicates their value. Generic templates don't cut it—clients need to see expertise and professionalism from the first click.",
+    
+    how: "Built with Next.js for lightning-fast performance and SEO optimization, styled with Tailwind CSS for modern responsive design, and deployed on Vercel for 99.9% uptime and global CDN delivery.",
+    
+    what: "A high-performance company website that showcases Matrix Sync Tech's services, builds credibility, and converts visitors into clients through clear messaging and professional design.",
+    
+    impact: "Increased client inquiries by 200% in the first 3 months after launch.",
+    
+    techStack: ["Next.js", "Tailwind CSS", "Vercel", "TypeScript"],
+    
+    features: [
+      "Responsive design for all devices",
+      "SEO optimized pages",
+      "Service showcase sections",
+      "Client portfolio",
+      "Contact form with validation",
+      "Fast page loading with automatic image optimization"
+    ],
+    
+    problem: "Matrix Sync Tech needed a professional website that would showcase their services and build trust with potential clients.",
+    
+    solution: "Built a custom Next.js website with modern design, SEO optimization, and fast performance.",
+    
+    results: [
+      { metric: "Client Inquiries", value: "+200%" },
+      { metric: "Page Load Time", value: "< 1s" },
+      { metric: "SEO Score", value: "95/100" },
+      { metric: "Mobile Traffic", value: "+150%" }
+    ],
+    
+    timeline: "6 weeks",
+    role: "Full-stack Developer & UI Designer",
+    
+    challenges: [
+      "Balancing visual design with performance",
+      "Optimizing for SEO while maintaining design flexibility",
+      "Ensuring consistent design across all pages",
+      "Making the site easily updatable for future changes"
+    ],
+    
+    learnings: [
+      "Performance is a feature, not an afterthought",
+      "Good SEO drives organic traffic significantly",
+      "Mobile-first design is essential for modern users",
+      "Clean, clear messaging converts better than complex designs"
+    ]
+  },
+  {
+    id: "orbit-awards",
+    title: "Orbit Awards",
+    image: "/orbitawards.webp",
+    link: "https://github.com/icecoffie/orbit-awards",
+    preview: "https://orbitawards.matrixsync.app",
+    status: "Live Product",
+    tier: "S",
+    tagline: "Platform to showcase and nominate tech projects and talents",
+    description: "A comprehensive platform designed to recognize and celebrate outstanding projects and talented individuals within the technology industry.",
+    
+    why: "The tech community needed a dedicated platform to recognize and celebrate outstanding projects and talented individuals. Recognition drives motivation and helps great work get the visibility it deserves.",
+    
+    how: "Developed with React and Node.js for the full-stack application, MongoDB for storing nominations and votes, and Tailwind CSS for a modern, responsive interface.",
+    
+    what: "A showcase platform where tech professionals can nominate and vote for the best projects and talents in the industry, fostering community recognition.",
+    
+    impact: "Helped 500+ projects get recognized and nominated.",
+    
+    techStack: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
+    
+    features: [
+      "Project nomination system",
+      "Voting and rating functionality",
+      "Profile management for participants",
+      "Showcase gallery for top projects",
+      "Nomination categories",
+      "Leaderboards and statistics"
+    ],
+    
+    problem: "The tech community didn't have a centralized platform to recognize and celebrate outstanding projects and talented individuals.",
+    
+    solution: "Created a nomination and voting platform that allows the community to showcase and celebrate great work.",
+    
+    results: [
+      { metric: "Projects Nominated", value: "500+" },
+      { metric: "Active Users", value: "1,000+" },
+      { metric: "Votes Cast", value: "5,000+" },
+      { metric: "Community Reach", value: "10,000+" }
+    ],
+    
+    timeline: "3 months",
+    role: "Full-stack Developer & Product Designer",
+    
+    challenges: [
+      "Building a fair and transparent voting system",
+      "Handling large numbers of concurrent users during voting periods",
+      "Creating an intuitive nomination process",
+      "Ensuring the platform scales with growth"
+    ],
+    
+    learnings: [
+      "Community-driven platforms need clear guidelines",
+      "Fairness is more important than complexity",
+      "User engagement drives platform success",
+      "Scaling considerations should be part of initial design"
+    ]
+  },
+  {
+    id: "skale-academy",
+    title: "Skale Academy",
+    image: "/skaleac.webp",
+    link: "https://github.com/icecoffie/skale-academy",
+    preview: "https://skale.matrixsync.app",
+    status: "Live Product",
+    tier: "S",
+    tagline: "Learning platform offering courses for tech enthusiasts",
+    description: "A comprehensive educational platform that provides structured courses and learning resources for technology enthusiasts at all skill levels.",
+    
+    why: "Quality tech education should be accessible to everyone, not just those who can afford expensive bootcamps. Learners need structured courses combined with hands-on practice.",
+    
+    how: "Developed with Next.js for optimal performance, integrated Stripe for secure payments, PostgreSQL for course and user management, and built interactive coding environments for practical learning.",
+    
+    what: "An online learning platform offering comprehensive tech courses with practical projects, helping students develop real-world skills at an affordable price.",
+    
+    impact: "Helped 200+ students learn new skills and advance their careers.",
+    
+    techStack: ["Next.js", "React", "Node.js", "PostgreSQL", "Stripe"],
+    
+    features: [
+      "Structured course curriculum",
+      "Hands-on projects and assignments",
+      "Progress tracking and completion certificates",
+      "Secure payment integration",
+      "User profiles and dashboards",
+      "Discussion forums for learners"
+    ],
+    
+    problem: "Tech enthusiasts needed affordable, structured learning resources that combined theory with practical projects.",
+    
+    solution: "Built a comprehensive learning platform with structured courses, practical projects, and payment integration.",
+    
+    results: [
+      { metric: "Students Enrolled", value: "200+" },
+      { metric: "Courses Completed", value: "500+" },
+      { metric: "Satisfaction Rate", value: "4.6/5" },
+      { metric: "Completion Rate", value: "75%" }
+    ],
+    
+    timeline: "4 months",
+    role: "Full-stack Developer, Product Designer & Founder",
+    
+    challenges: [
+      "Creating engaging course content",
+      "Building interactive coding environments",
+      "Ensuring smooth payment processing",
+      "Managing user progress and motivation"
+    ],
+    
+    learnings: [
+      "Education platforms need both content and community",
+      "Students learn best with practical, project-based work",
+      "Motivation and accountability are key to completion",
+      "Affordability doesn't mean sacrificing quality"
+    ]
+  },
+  {
     id: "worcket",
     title: "Worcket",
     image: "/worcket.webp",
@@ -206,125 +380,6 @@ export const highlightProjects: HighlightProject[] = [
       "One-time payment models build trust",
       "Good templates save more time than customization options",
       "Users prefer ownership over subscriptions"
-    ]
-  },
-  {
-    id: "cybersec-portfolio",
-    title: "CyberSec Portfolio",
-    image: "/cybersec.webp",
-    link: "https://github.com/icecoffie/cybersec",
-    preview: "https://cybersec.vercel.app",
-    status: "Live",
-    tier: "S",
-    tagline: "Interactive portfolio template for cybersecurity professionals",
-    description: "A portfolio template designed for security professionals who want to showcase their work with interactive visualizations and threat simulations.",
-    
-    why: "Most cybersecurity portfolios are boring PDFs or plain websites. Security professionals have interesting work but struggle to present it visually. I wanted to create something that showcases both technical skills and design thinking.",
-    
-    how: "Built with React and Three.js for 3D visualizations, D3.js for data charts, and Framer Motion for smooth animations. The template includes pre-built components for threat maps, vulnerability timelines, and security metrics.",
-    
-    what: "A portfolio template that helps cybersecurity professionals present their work in an engaging, visual way. Includes interactive demos, animated security concepts, and customizable components.",
-    
-    impact: "Downloaded by 150+ security professionals. Featured in cybersecurity design communities.",
-    
-    techStack: ["React", "Three.js", "D3.js", "Framer Motion", "TypeScript", "Tailwind CSS"],
-    
-    features: [
-      "3D network topology visualization",
-      "Interactive threat intelligence dashboard",
-      "Animated security concept explainers",
-      "CTF challenge showcase",
-      "Vulnerability timeline with impact metrics",
-      "Customizable color schemes",
-      "Dark mode optimized"
-    ],
-    
-    problem: "Cybersecurity professionals struggled to present their technical work in a visually engaging way that non-technical recruiters could appreciate.",
-    
-    solution: "Created a portfolio template with interactive visualizations that make security concepts accessible and impressive.",
-    
-    results: [
-      { metric: "Downloads", value: "150+" },
-      { metric: "GitHub Stars", value: "200+" },
-      { metric: "Community Features", value: "5+" },
-      { metric: "User Satisfaction", value: "4.7/5" }
-    ],
-    
-    timeline: "6 weeks",
-    role: "Frontend Developer & UI Designer",
-    
-    challenges: [
-      "Making complex security concepts visually understandable",
-      "Optimizing 3D performance for different devices",
-      "Creating flexible components that work for various use cases",
-      "Balancing visual appeal with professional credibility"
-    ],
-    
-    learnings: [
-      "Good visualization makes technical work accessible",
-      "Security professionals appreciate design quality",
-      "Templates need flexibility without complexity",
-      "Performance matters for interactive features"
-    ]
-  },
-  {
-    id: "mavenclaw",
-    title: "MavenClaw",
-    image: "/mavenclaw.webp",
-    link: "https://github.com/icecoffie/mavenclaw",
-    preview: "https://mavenclaw.vercel.app",
-    status: "Beta",
-    tier: "S",
-    tagline: "AI-powered knowledge base for developers",
-    description: "A personal knowledge management system that helps developers save code snippets, document solutions, and find exactly what they need using AI-powered search.",
-    
-    why: "I kept solving the same problems repeatedly because I couldn't remember where I saved the solution. I needed an external brain for code that was searchable, organized, and actually useful.",
-    
-    how: "Built with Next.js and Supabase for data storage, integrated OpenAI for semantic search that understands context, not just keywords. Added automatic tagging, syntax highlighting, and version history.",
-    
-    what: "A knowledge base that learns from your code. Save snippets, document solutions, and let AI help you find them later. Works like a second brain that actually remembers things.",
-    
-    impact: "Saves me 10+ hours monthly. Now used by 50+ developers in closed beta.",
-    
-    techStack: ["Next.js", "TypeScript", "Supabase", "OpenAI API", "Tailwind CSS", "PostgreSQL"],
-    
-    features: [
-      "AI-powered semantic search across snippets",
-      "Automatic tagging and categorization",
-      "Code syntax highlighting for 50+ languages",
-      "Version history for snippets",
-      "Team collaboration features",
-      "Browser extension for quick saves",
-      "Markdown support",
-      "Code execution preview"
-    ],
-    
-    problem: "Developers waste time re-solving problems they've already solved because they can't find their previous solutions.",
-    
-    solution: "Built a knowledge base with AI-powered search that understands context and finds relevant code even when you don't remember the exact keywords.",
-    
-    results: [
-      { metric: "Time Saved Monthly", value: "10+ hours" },
-      { metric: "Beta Users", value: "50+" },
-      { metric: "Snippets Saved", value: "2,000+" },
-      { metric: "Search Accuracy", value: "92%" }
-    ],
-    
-    timeline: "3 months (ongoing)",
-    role: "Full-stack Developer",
-    
-    challenges: [
-      "Building accurate semantic search with AI",
-      "Organizing code snippets without rigid categories",
-      "Making search fast with large datasets",
-      "Balancing features with simplicity"
-    ],
-    
-    learnings: [
-      "AI search is powerful but needs good data structure",
-      "Developers want quick access over perfect organization",
-      "Version history is more important than I thought",
-      "Browser extensions increase usage significantly"
     ]
   }
 ];
