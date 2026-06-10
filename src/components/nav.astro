@@ -179,9 +179,6 @@ const scrollProgress = document.getElementById("scroll-progress");
 const maxScroll = 1000;
 let rafId = null;
 
-// =============================
-// Update navbar and scroll progress on scroll
-// =============================
 function updateNav() {
   if (!nav) return;
   
@@ -214,9 +211,6 @@ window.addEventListener("scroll", () => {
   if (!rafId) rafId = requestAnimationFrame(updateNav);
 }, { passive: true });
 
-// =============================
-// Dot indicator activation
-// =============================
 const navLinks = document.querySelectorAll("nav a");
 const navIndicators = document.querySelectorAll(".nav-indicator");
 
@@ -236,9 +230,6 @@ function activateDot(targetHref: string) {
   }
 }
 
-// =============================
-// Smooth scroll + click aktivasi dot
-// =============================
 navLinks.forEach(link => {
   link.addEventListener("click", e => {
     e.preventDefault();

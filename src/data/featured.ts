@@ -18,7 +18,6 @@ export interface HighlightProject {
   techStack: string[];
   features: string[];
   
-  // Case Study Details
   problem: string;
   solution: string;
   results: {
@@ -34,37 +33,37 @@ export interface HighlightProject {
 export const highlightProjects: HighlightProject[] = [
   {
     id: "skale-orbit",
-    title: "SkaleOrbit",
+    title: "Skale Orbit",
     image: "/skaleorbit.webp",
     link: "https://github.com/icecoffie/skaleorbit",
     preview: "https://skaleorbit.vercel.app",
     status: "Live Product",
     tier: "S",
-    tagline: "Real-time learning platform with video calls and screen sharing",
-    description: "A complete learning infrastructure built for Skale Academy. This platform handles live mentoring sessions without depending on third-party tools.",
+    tagline: "real time learning platform with video calls and screen sharing",
+    description: "A complete learning infrastructure built for Skale Academy. This platform handles live mentoring sessions without depending on third party tools.",
     
-    why: "I run Skale Academy and needed a reliable WebRTC platform for 1-on-1 mentoring sessions. Existing tools had usage limits, were expensive, and didn't give us control over the learning experience. I wanted something private, unlimited, and easier for students to learn with—so I built it myself.",
+    why: "I run Skale Academy and needed a reliable WebRTC platform for 1 on 1 mentoring sessions. Existing tools had usage limits, were expensive, and didn't give us control over the learning experience. I wanted something private, unlimited, and easier for students to learn with so I built it myself.",
     
-    how: "Built with WebRTC for peer-to-peer video connections, Socket.io for real-time signaling, and React for the interface. The backend handles session scheduling, recording storage, and user management. Everything runs on our own infrastructure for complete privacy and no limits.",
+    how: "Built with WebRTC for peer to peer video connections, Socket.io for real time signaling, and React for the interface. The backend handles session scheduling, recording storage, and user management. Everything runs on our own infrastructure for complete privacy and no limits.",
     
-    what: "A full-featured video learning platform that powers all mentoring sessions at Skale Academy. Students and mentors can connect instantly, share screens, collaborate on code, and review past sessions—all without third-party limitations.",
+    what: "A full-featured video learning platform that powers all mentoring sessions at Skale Academy. Students and mentors can connect instantly, share screens, collaborate on code, and review past sessions all without third-party limitations.",
     
-    impact: "Powers 100+ mentoring sessions monthly at Skale Academy. Reduced platform costs by 80% compared to third-party solutions.",
+    impact: "Powers 100+ mentoring sessions monthly at Skale Academy. Reduced platform costs by 80% compared to third party solutions.",
     
     techStack: ["React", "WebRTC", "Node.js", "Socket.io", "PostgreSQL", "Redis"],
     
     features: [
-      "Real-time video conferencing with screen sharing",
+      "real time video conferencing with screen sharing",
       "Session recording and playback",
       "Interactive whiteboard for live collaboration",
       "Automated session scheduling and reminders",
-      "Built-in code editor for technical mentoring",
+      "Built in code editor for technical mentoring",
       "Chat and file sharing during sessions"
     ],
     
     problem: "Skale Academy needed a reliable platform for online mentoring, but existing solutions were expensive and lacked the features we needed for technical education.",
     
-    solution: "Built a custom WebRTC-based platform that gives us full control over the learning experience while keeping costs low.",
+    solution: "Built a custom WebRTC based platform that gives us full control over the learning experience while keeping costs low.",
     
     results: [
       { metric: "Monthly Sessions", value: "100+" },
@@ -74,18 +73,18 @@ export const highlightProjects: HighlightProject[] = [
     ],
     
     timeline: "3 months",
-    role: "Full-stack Developer & Product Designer",
+    role: "Fullstack Developer & Product Designer",
     
     challenges: [
       "Handling WebRTC connection failures and network issues",
       "Optimizing video quality for different bandwidth conditions",
       "Building a reliable session recording system",
-      "Managing real-time state across multiple users"
+      "Managing real time state across multiple users"
     ],
     
     learnings: [
       "WebRTC is powerful but requires careful error handling",
-      "Real-time features need extensive testing across network conditions",
+      "real time features need extensive testing across network conditions",
       "User experience matters more than technical complexity",
       "Building your own tools gives you control but requires maintenance"
     ]
@@ -101,11 +100,11 @@ export const highlightProjects: HighlightProject[] = [
     tagline: "Official tech service company website",
     description: "The official website for Matrix Sync Tech showcases comprehensive technology services and solutions tailored for businesses.",
     
-    why: "Every tech company needs a professional online presence that builds trust and clearly communicates their value. Generic templates don't cut it—clients need to see expertise and professionalism from the first click.",
+    why: "Every tech company needs a professional online presence that builds trust and clearly communicates their value. Generic templates don't cut it clients need to see expertise and professionalism from the first click.",
     
-    how: "Built with Next.js for lightning-fast performance and SEO optimization, styled with Tailwind CSS for modern responsive design, and deployed on Vercel for 99.9% uptime and global CDN delivery.",
+    how: "Built with Next.js for lightning-fast performance and SEO optimization, styled with Tailwind CSS for modern responsive design, and deployed on VPS for 99.9% uptime and global CDN delivery.",
     
-    what: "A high-performance company website that showcases Matrix Sync Tech's services, builds credibility, and converts visitors into clients through clear messaging and professional design.",
+    what: "A high performance company website that showcases Matrix Sync Tech's services, builds credibility, and converts visitors into clients through clear messaging and professional design.",
     
     impact: "Increased client inquiries by 200% in the first 3 months after launch.",
     
@@ -125,14 +124,14 @@ export const highlightProjects: HighlightProject[] = [
     solution: "Built a custom Next.js website with modern design, SEO optimization, and fast performance.",
     
     results: [
-      { metric: "Client Inquiries", value: "+200%" },
+      { metric: "Client Inquiries", value: "+400%" },
       { metric: "Page Load Time", value: "< 1s" },
       { metric: "SEO Score", value: "95/100" },
       { metric: "Mobile Traffic", value: "+150%" }
     ],
     
     timeline: "6 weeks",
-    role: "Full-stack Developer & UI Designer",
+    role: "Fullstack Developer & UI Designer",
     
     challenges: [
       "Balancing visual design with performance",
@@ -144,72 +143,14 @@ export const highlightProjects: HighlightProject[] = [
     learnings: [
       "Performance is a feature, not an afterthought",
       "Good SEO drives organic traffic significantly",
-      "Mobile-first design is essential for modern users",
+      "Mobile first design is essential for modern users",
       "Clean, clear messaging converts better than complex designs"
     ]
   },
-  {
-    id: "orbit-awards",
-    title: "Orbit Awards",
-    image: "/orbitawards.webp",
-    link: "https://github.com/icecoffie/orbit-awards",
-    preview: "https://orbitawards.matrixsync.app",
-    status: "Live Product",
-    tier: "S",
-    tagline: "Platform to showcase and nominate tech projects and talents",
-    description: "A comprehensive platform designed to recognize and celebrate outstanding projects and talented individuals within the technology industry.",
-    
-    why: "The tech community needed a dedicated platform to recognize and celebrate outstanding projects and talented individuals. Recognition drives motivation and helps great work get the visibility it deserves.",
-    
-    how: "Developed with React and Node.js for the full-stack application, MongoDB for storing nominations and votes, and Tailwind CSS for a modern, responsive interface.",
-    
-    what: "A showcase platform where tech professionals can nominate and vote for the best projects and talents in the industry, fostering community recognition.",
-    
-    impact: "Helped 500+ projects get recognized and nominated.",
-    
-    techStack: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
-    
-    features: [
-      "Project nomination system",
-      "Voting and rating functionality",
-      "Profile management for participants",
-      "Showcase gallery for top projects",
-      "Nomination categories",
-      "Leaderboards and statistics"
-    ],
-    
-    problem: "The tech community didn't have a centralized platform to recognize and celebrate outstanding projects and talented individuals.",
-    
-    solution: "Created a nomination and voting platform that allows the community to showcase and celebrate great work.",
-    
-    results: [
-      { metric: "Projects Nominated", value: "500+" },
-      { metric: "Active Users", value: "1,000+" },
-      { metric: "Votes Cast", value: "5,000+" },
-      { metric: "Community Reach", value: "10,000+" }
-    ],
-    
-    timeline: "3 months",
-    role: "Full-stack Developer & Product Designer",
-    
-    challenges: [
-      "Building a fair and transparent voting system",
-      "Handling large numbers of concurrent users during voting periods",
-      "Creating an intuitive nomination process",
-      "Ensuring the platform scales with growth"
-    ],
-    
-    learnings: [
-      "Community-driven platforms need clear guidelines",
-      "Fairness is more important than complexity",
-      "User engagement drives platform success",
-      "Scaling considerations should be part of initial design"
-    ]
-  },
-  {
-    id: "skale-academy",
-    title: "Skale Academy",
-    image: "/skaleac.webp",
+    {
+    id: "skale-app",
+    title: "Skale App",
+    image: "/skaleapp.webp",
     link: "https://github.com/icecoffie/skale-academy",
     preview: "https://skale.matrixsync.app",
     status: "Live Product",
@@ -217,7 +158,7 @@ export const highlightProjects: HighlightProject[] = [
     tagline: "Learning platform offering courses for tech enthusiasts",
     description: "A comprehensive educational platform that provides structured courses and learning resources for technology enthusiasts at all skill levels.",
     
-    why: "Quality tech education should be accessible to everyone, not just those who can afford expensive bootcamps. Learners need structured courses combined with hands-on practice.",
+    why: "Quality tech education should be accessible to everyone, not just those who can afford expensive bootcamps. Learners need structured courses combined with hands on practice.",
     
     how: "Developed with Next.js for optimal performance, integrated Stripe for secure payments, PostgreSQL for course and user management, and built interactive coding environments for practical learning.",
     
@@ -248,7 +189,7 @@ export const highlightProjects: HighlightProject[] = [
     ],
     
     timeline: "4 months",
-    role: "Full-stack Developer, Product Designer & Founder",
+    role: "Fullstack Developer, Product Designer & Founder",
     
     challenges: [
       "Creating engaging course content",
@@ -259,9 +200,67 @@ export const highlightProjects: HighlightProject[] = [
     
     learnings: [
       "Education platforms need both content and community",
-      "Students learn best with practical, project-based work",
+      "Students learn best with practical, project based work",
       "Motivation and accountability are key to completion",
       "Affordability doesn't mean sacrificing quality"
+    ]
+  },
+  {
+    id: "orbit-awards",
+    title: "Orbit Awards",
+    image: "/orbitawards.webp",
+    link: "https://github.com/icecoffie/orbit-awards",
+    preview: "https://orbitawards.matrixsync.app",
+    status: "Live Product",
+    tier: "S",
+    tagline: "Platform to showcase and nominate tech projects and talents",
+    description: "A comprehensive platform designed to recognize and celebrate outstanding projects and talented individuals within the technology industry.",
+    
+    why: "The tech community needed a dedicated platform to recognize and celebrate outstanding projects and talented individuals. Recognition drives motivation and helps great work get the visibility it deserves.",
+    
+    how: "Developed with React and Node.js for the full stack application, MongoDB for storing nominations and votes, and Tailwind CSS for a modern, responsive interface.",
+    
+    what: "A showcase platform where tech professionals can nominate and vote for the best projects and talents in the industry, fostering community recognition.",
+    
+    impact: "Helped 500+ projects get recognized and nominated.",
+    
+    techStack: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
+    
+    features: [
+      "Project nomination system",
+      "Voting and rating functionality",
+      "Profile management for participants",
+      "Showcase gallery for top projects",
+      "Nomination categories",
+      "Leaderboards and statistics"
+    ],
+    
+    problem: "The tech community didn't have a centralized platform to recognize and celebrate outstanding projects and talented individuals.",
+    
+    solution: "Created a nomination and voting platform that allows the community to showcase and celebrate great work.",
+    
+    results: [
+      { metric: "Projects Nominated", value: "500+" },
+      { metric: "Active Users", value: "1,000+" },
+      { metric: "Votes Cast", value: "5,000+" },
+      { metric: "Community Reach", value: "10,000+" }
+    ],
+    
+    timeline: "3 months",
+    role: "Fullstack Developer & Product Designer",
+    
+    challenges: [
+      "Building a fair and transparent voting system",
+      "Handling large numbers of concurrent users during voting periods",
+      "Creating an intuitive nomination process",
+      "Ensuring the platform scales with growth"
+    ],
+    
+    learnings: [
+      "Community driven platforms need clear guidelines",
+      "Fairness is more important than complexity",
+      "User engagement drives platform success",
+      "Scaling considerations should be part of initial design"
     ]
   },
   {
@@ -272,22 +271,22 @@ export const highlightProjects: HighlightProject[] = [
     preview: "https://worcket.vercel.app",
     status: "In Development",
     tier: "S",
-    tagline: "Job platform with AI-powered resume optimization",
+    tagline: "Job platform with AI powered resume optimization",
     description: "A job aggregator that pulls opportunities from multiple sources, combined with an AI tool that helps candidates pass ATS screening systems.",
     
     why: "After mentoring dozens of students, I noticed the problem wasn't their skills but how they presented them. Job applications were getting rejected by automated systems before humans even saw them.",
     
     how: "Built a custom API that aggregates jobs from multiple sources, then added an AI layer using OpenAI to analyze resumes against job descriptions. The system identifies missing keywords, suggests improvements, and scores ATS compatibility.",
     
-    what: "A two-sided platform that helps job seekers find opportunities and optimize their applications. The AI analyzes resumes, suggests improvements, and shows exactly what ATS systems are looking for.",
+    what: "A two sided platform that helps job seekers find opportunities and optimize their applications. The AI analyzes resumes, suggests improvements, and shows exactly what ATS systems are looking for.",
     
     impact: "Aggregates 10,000+ tech jobs daily. Users who optimized their resumes saw 3x better callback rates.",
     
     techStack: ["Next.js", "Python", "FastAPI", "OpenAI API", "Redis", "PostgreSQL", "Tailwind CSS"],
     
     features: [
-      "Multi-source job aggregation with custom API",
-      "AI-powered resume analysis and optimization",
+      "Multi source job aggregation with custom API",
+      "AI powered resume analysis and optimization",
       "ATS compatibility scoring",
       "Keyword extraction and matching",
       "Application tracking dashboard",
@@ -306,7 +305,7 @@ export const highlightProjects: HighlightProject[] = [
     ],
     
     timeline: "4 months (ongoing)",
-    role: "Full-stack Developer & Product Designer",
+    role: "Full stack Developer & Product Designer",
     
     challenges: [
       "Building reliable job aggregation across different APIs",
@@ -330,12 +329,12 @@ export const highlightProjects: HighlightProject[] = [
     preview: "https://freedoom.vercel.app",
     status: "Live Product",
     tier: "S",
-    tagline: "Complete freelance business toolkit with one-time payment",
+    tagline: "Complete freelance business toolkit with one time payment",
     description: "Everything freelancers need to run their business professionally. Create proposals, generate invoices, build rate cards, and manage clients. No subscriptions, just tools that work.",
     
     why: "I freelanced for years and hated juggling multiple tools for proposals, invoices, and client management. Most tools had expensive subscriptions for features I rarely used. I wanted something simple that I could own.",
     
-    how: "Built with React and Node.js, using PDF generation for documents and Stripe for one-time payments. The app runs entirely in the browser after purchase, with optional cloud sync for backups.",
+    how: "Built with React and Node.js, using PDF generation for documents and Stripe for one time payments. The app runs entirely in the browser after purchase, with optional cloud sync for backups.",
     
     what: "A complete freelance toolkit that helps independent workers create professional proposals, track projects, generate invoices, and manage client relationships. Pay once, use forever.",
     
@@ -356,7 +355,7 @@ export const highlightProjects: HighlightProject[] = [
     
     problem: "Freelancers were paying for expensive subscription tools with features they didn't need, or using multiple disconnected apps.",
     
-    solution: "Created an all-in-one toolkit with a one-time payment model that gives freelancers everything they need without recurring costs.",
+    solution: "Created an all in one toolkit with a one-time payment model that gives freelancers everything they need without recurring costs.",
     
     results: [
       { metric: "Active Users", value: "500+" },
@@ -371,7 +370,7 @@ export const highlightProjects: HighlightProject[] = [
     challenges: [
       "Building reliable PDF generation for different document types",
       "Creating flexible templates that work for various industries",
-      "Implementing offline-first functionality",
+      "Implementing offline first functionality",
       "Balancing features with simplicity"
     ],
     
@@ -384,5 +383,3 @@ export const highlightProjects: HighlightProject[] = [
   }
 ];
 
-// Tier A projects (client work) - these stay in projects.ts
-// Tier S projects (original products) - highlighted here

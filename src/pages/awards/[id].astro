@@ -57,22 +57,71 @@ if (!award) {
         </div>
 
         <!-- Award Certificate Image - Main Focus -->
-        <div class="mb-12 flex justify-center">
-          <div class="relative w-full max-w-2xl">
-            <div class="rounded-2xl overflow-hidden border-4 border-[var(--sec)]/50 bg-[#111] shadow-2xl">
-              <img
-                src={award.image}
-                alt={`${award.title} Certificate`}
-                class="w-full h-auto object-cover animate-float"
-                loading="lazy"
-              />
-            </div>
+        <div class="mb-24 flex justify-center">
+          <div class="relative w-full max-w-2xl px-8">
+            {award.certificates && award.certificates.length > 0 ? (
+              <!-- Certificate Stack View -->
+              <div id="certificate-stack" class="relative w-full">
+                {award.certificates.map((cert, index) => (
+                  <div
+                    class="certificate-card absolute w-full transition-all duration-500 cursor-pointer"
+                    data-index={index}
+                    style={`
+                      top: ${index * 10}px;
+                      left: 0;
+                      z-index: ${award.certificates!.length - index};
+                      opacity: ${index === 0 ? 1 : 0.7};
+                    `}
+                  >
+                    <div class="rounded-2xl overflow-hidden border-4 border-[var(--sec)]/60 bg-[#0a0a0a] shadow-2xl hover:border-[var(--sec)] transition-all duration-300">
+                      <img
+                        src={cert}
+                        alt={`${award.title} Certificate ${index + 1}`}
+                        class="w-full h-auto object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                ))}
+                
+                <!-- Spacer for stack height -->
+                <div style="height: 500px;"></div>
+                
+                <!-- Counter Display -->
+                <div class="absolute -bottom-20 left-1/2 transform -translate-x-1/2 z-[1000]">
+                  <div class="flex items-center gap-3 bg-[#111] border border-[var(--sec)]/50 rounded-full px-6 py-3 shadow-lg">
+                    <span class="text-[var(--sec)] font-bold text-base">
+                      <span id="current-cert">1</span> / {award.certificates.length}
+                    </span>
+                    <div class="flex gap-1.5">
+                      {award.certificates.map((_, idx) => (
+                        <div 
+                          class="cert-dot w-2 h-2 rounded-full transition-all duration-300"
+                          data-dot-index={idx}
+                          style={idx === 0 ? 'background: var(--sec);' : 'background: rgba(255,255,255,0.3);'}
+                        ></div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <!-- Single Certificate View (fallback) -->
+              <div class="rounded-2xl overflow-hidden border-4 border-[var(--sec)]/50 bg-[#111] shadow-2xl">
+                <img
+                  src={award.image}
+                  alt={`${award.title} Certificate`}
+                  class="w-full h-auto object-cover animate-float"
+                  loading="lazy"
+                />
+              </div>
+            )}
             <!-- Trophy Icon Decoration -->
             <div
-              class="absolute -top-6 -right-6 w-20 h-20 bg-[var(--sec)]/30 rounded-full blur-3xl"
+              class="absolute -top-6 -right-6 w-20 h-20 bg-[var(--sec)]/30 rounded-full blur-3xl pointer-events-none"
             ></div>
             <div
-              class="absolute -bottom-6 -left-6 w-20 h-20 bg-[var(--sec)]/20 rounded-full blur-3xl"
+              class="absolute -bottom-6 -left-6 w-20 h-20 bg-[var(--sec)]/20 rounded-full blur-3xl pointer-events-none"
             ></div>
           </div>
         </div>
@@ -183,6 +232,72 @@ if (!award) {
   </main>
 </Layout>
 
+<script>
+  // Certificate Stack Interaction
+  document.addEventListener('DOMContentLoaded', () => {
+    const stack = document.getElementById('certificate-stack');
+    if (!stack) return;
+
+    const cards = Array.from(stack.querySelectorAll('.certificate-card')) as HTMLElement[];
+    const dots = Array.from(document.querySelectorAll('.cert-dot')) as HTMLElement[];
+    const currentCertSpan = document.getElementById('current-cert');
+    
+    let currentIndex = 0;
+
+    const updateStack = () => {
+      cards.forEach((card: HTMLElement, index: number) => {
+        const relativeIndex = (index - currentIndex + cards.length) % cards.length;
+        
+        card.style.top = `${relativeIndex * 10}px`;
+        card.style.left = '0';
+        card.style.zIndex = String(cards.length - relativeIndex);
+        card.style.opacity = relativeIndex === 0 ? '1' : '0.7';
+        card.style.pointerEvents = relativeIndex === 0 ? 'auto' : 'none';
+      });
+
+      // Update dots
+      dots.forEach((dot: HTMLElement, index: number) => {
+        if (index === currentIndex) {
+          dot.style.background = 'var(--sec)';
+          dot.style.width = '10px';
+          dot.style.height = '10px';
+        } else {
+          dot.style.background = 'rgba(255,255,255,0.3)';
+          dot.style.width = '6px';
+          dot.style.height = '6px';
+        }
+      });
+
+      // Update counter
+      if (currentCertSpan) {
+        currentCertSpan.textContent = String(currentIndex + 1);
+      }
+    };
+
+    // Click handler - move clicked card to back
+    cards.forEach((card: HTMLElement) => {
+      card.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % cards.length;
+        updateStack();
+      });
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        currentIndex = (currentIndex + 1) % cards.length;
+        updateStack();
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+        updateStack();
+      }
+    });
+
+    // Initial setup
+    updateStack();
+  });
+</script>
+
 <style>
   @keyframes float {
     0%,
@@ -200,5 +315,30 @@ if (!award) {
 
   .animate-float {
     animation: float 3s ease-in-out infinite;
+  }
+
+  /* Certificate Stack Styles */
+  .certificate-card {
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .certificate-card:hover {
+    transform: translateY(-3px) scale(1.01) !important;
+  }
+
+  .cert-dot {
+    transition: all 0.3s ease;
+  }
+
+  #certificate-stack {
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+  }
+
+  @media (max-width: 768px) {
+    #certificate-stack {
+      min-height: 400px;
+    }
   }
 </style>

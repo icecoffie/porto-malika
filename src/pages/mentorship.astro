@@ -1,0 +1,548 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { testimonials, screenshots } from "../data/testimonials";
+
+// Group testimonials by category
+const jobPlacements = testimonials.filter(t => t.category === "job-placement");
+const competitionWinners = testimonials.filter(t => t.category === "competition-winner");
+const generalMentorship = testimonials.filter(t => t.category === "general-mentorship");
+---
+
+<Layout 
+  title="Mentorship - Malik Akbar Hashemi Rafsanjani"
+  description="Empowering the next generation of developers and designers through personalized mentorship, career guidance, and technical expertise."
+  ogImage="/me.webp"
+>
+  <main class="min-h-screen bg-[var(--background)] text-[var(--white)]">
+    <!-- Navigation Back -->
+    <nav class="py-6 border-b border-[#ffffff10]">
+      <div class="max-w-7xl mx-auto px-4">
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 text-[var(--sec)] hover:text-[var(--sec-dark)] transition"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            class="w-5 h-5"
+          >
+            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+          </svg>
+          Back to Home
+        </a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 text-center">
+        <h1 class="text-5xl md:text-7xl font-bold mb-6">
+          Mentorship Program
+        </h1>
+        <p class="text-xl md:text-2xl text-[var(--white-icon)] mb-8 max-w-4xl mx-auto">
+          Empowering the next generation of developers and designers through personalized guidance, 
+          career coaching, and hands-on technical expertise.
+        </p>
+        
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 p-8 rounded-2xl bg-gradient-to-r from-[var(--sec)]/10 to-transparent border border-[var(--sec)]/30">
+          <div class="text-center">
+            <div class="text-4xl md:text-5xl font-bold text-[var(--sec)] mb-2">150+</div>
+            <div class="text-sm text-[var(--white-icon)]">Students Mentored</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl md:text-5xl font-bold text-[var(--sec)] mb-2">95%</div>
+            <div class="text-sm text-[var(--white-icon)]">Success Rate</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl md:text-5xl font-bold text-[var(--sec)] mb-2">4.9★</div>
+            <div class="text-sm text-[var(--white-icon)]">Average Rating</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl md:text-5xl font-bold text-[var(--sec)] mb-2">2+</div>
+            <div class="text-sm text-[var(--white-icon)]">Years Experience</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screenshots Gallery Section -->
+    <section class="py-16 border-t border-[#ffffff10]">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">
+          📸 Behind the Scenes
+        </h2>
+        <p class="text-lg text-[var(--white-icon)] text-center mb-12 max-w-3xl mx-auto">
+          Get a glimpse into our mentorship sessions, workshops, and student achievements
+        </p>
+        
+        <div id="screenshots-carousel" class="relative max-w-5xl mx-auto">
+          <div class="screenshot-container overflow-hidden rounded-2xl">
+            <div class="screenshot-track flex transition-transform duration-500 ease-in-out">
+              {screenshots.map((screenshot, index) => (
+                <div class="screenshot-slide flex-shrink-0 w-full px-2">
+                  <div class="relative group">
+                    <div class="aspect-video bg-[#111] border border-[#ffffff10] rounded-xl overflow-hidden hover:border-[var(--sec)]/50 transition-all duration-300">
+                      <img
+                        src={screenshot.image}
+                        alt={screenshot.title}
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                      
+                      <!-- Overlay with content -->
+                      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-0 left-0 right-0 p-6">
+                          <span class="inline-block px-3 py-1 bg-[var(--sec)] text-white text-xs font-semibold rounded-full mb-2">
+                            {screenshot.category}
+                          </span>
+                          <h3 class="text-xl font-bold text-white mb-2">{screenshot.title}</h3>
+                          <p class="text-gray-300 text-sm">{screenshot.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          <!-- Navigation -->
+          <button id="screenshots-prev" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-[var(--sec)] text-white w-12 h-12 rounded-full flex items-center justify-center transition backdrop-blur-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+            </svg>
+          </button>
+          <button id="screenshots-next" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-[var(--sec)] text-white w-12 h-12 rounded-full flex items-center justify-center transition backdrop-blur-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+              <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
+            </svg>
+          </button>
+          
+          <!-- Indicators -->
+          <div class="flex justify-center mt-6 gap-2">
+            {screenshots.map((_, index) => (
+              <button 
+                class="screenshot-indicator w-3 h-3 rounded-full transition-all duration-300"
+                data-index={index}
+                style={index === 0 ? 'background: var(--sec);' : 'background: rgba(255,255,255,0.3);'}
+              ></button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Success Stories Section -->
+    <section class="py-16 border-t border-[#ffffff10]">
+      <div class="max-w-7xl mx-auto px-4">
+        
+        <!-- Job Placements -->
+        <div class="mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">
+            🚀 Career Success Stories
+          </h2>
+          <p class="text-lg text-[var(--white-icon)] text-center mb-12 max-w-3xl mx-auto">
+            Students who landed their dream jobs with significant salary increases through our mentorship program
+          </p>
+          
+          <div id="job-carousel" class="relative">
+            <div class="testimonial-container overflow-hidden">
+              <div class="testimonial-track flex transition-transform duration-500 ease-in-out">
+                {jobPlacements.map((testimonial) => (
+                  <div class="testimonial-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-3">
+                    <div class="bg-[#111] border border-[#ffffff10] rounded-2xl p-6 hover:border-[var(--sec)]/50 transition-all duration-300 h-full">
+                      <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-gradient-to-br from-[var(--sec)] to-blue-500 rounded-full flex items-center justify-center mr-4">
+                          <span class="text-2xl font-bold text-white">{testimonial.name.charAt(0)}</span>
+                        </div>
+                        <div>
+                          <h3 class="font-semibold text-white">{testimonial.name}</h3>
+                          <p class="text-[var(--white-icon)] text-sm">{testimonial.role}</p>
+                          {testimonial.company && <p class="text-[var(--sec)] text-sm">{testimonial.company}</p>}
+                        </div>
+                      </div>
+                      
+                      <blockquote class="text-[var(--white-icon)] mb-4 italic">
+                        "{testimonial.quote}"
+                      </blockquote>
+                      
+                      <div class="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/50 rounded-lg p-3">
+                        <p class="text-green-400 font-semibold text-sm">✅ {testimonial.achievement}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            <!-- Navigation -->
+            <button id="job-prev" class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-[var(--sec)] hover:bg-[var(--sec-dark)] text-white w-12 h-12 rounded-full flex items-center justify-center transition shadow-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+              </svg>
+            </button>
+            <button id="job-next" class="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-[var(--sec)] hover:bg-[var(--sec-dark)] text-white w-12 h-12 rounded-full flex items-center justify-center transition shadow-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+                <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Competition Winners -->
+        <div class="mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">
+            🏆 Competition Champions
+          </h2>
+          <p class="text-lg text-[var(--white-icon)] text-center mb-12 max-w-3xl mx-auto">
+            Students who won programming competitions and design contests after our intensive training
+          </p>
+          
+          <div id="competition-carousel" class="relative">
+            <div class="testimonial-container overflow-hidden">
+              <div class="testimonial-track flex transition-transform duration-500 ease-in-out">
+                {competitionWinners.map((testimonial) => (
+                  <div class="testimonial-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-3">
+                    <div class="bg-[#111] border border-[#ffffff10] rounded-2xl p-6 hover:border-[var(--sec)]/50 transition-all duration-300 h-full">
+                      <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mr-4">
+                          <span class="text-2xl font-bold text-white">{testimonial.name.charAt(0)}</span>
+                        </div>
+                        <div>
+                          <h3 class="font-semibold text-white">{testimonial.name}</h3>
+                          <p class="text-[var(--white-icon)] text-sm">{testimonial.role}</p>
+                          {testimonial.company && <p class="text-yellow-500 text-sm">{testimonial.company}</p>}
+                        </div>
+                      </div>
+                      
+                      <blockquote class="text-[var(--white-icon)] mb-4 italic">
+                        "{testimonial.quote}"
+                      </blockquote>
+                      
+                      <div class="bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/50 rounded-lg p-3">
+                        <p class="text-yellow-400 font-semibold text-sm">🏆 {testimonial.achievement}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            <!-- Navigation -->
+            <button id="competition-prev" class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-yellow-500 hover:bg-yellow-600 text-white w-12 h-12 rounded-full flex items-center justify-center transition shadow-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+              </svg>
+            </button>
+            <button id="competition-next" class="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-yellow-500 hover:bg-yellow-600 text-white w-12 h-12 rounded-full flex items-center justify-center transition shadow-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+                <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- General Mentorship -->
+        <div class="mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">
+            📈 Growth & Development
+          </h2>
+          <p class="text-lg text-[var(--white-icon)] text-center mb-12 max-w-3xl mx-auto">
+            Students who achieved significant career growth and personal development milestones
+          </p>
+          
+          <div id="general-carousel" class="relative">
+            <div class="testimonial-container overflow-hidden">
+              <div class="testimonial-track flex transition-transform duration-500 ease-in-out">
+                {generalMentorship.map((testimonial) => (
+                  <div class="testimonial-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-3">
+                    <div class="bg-[#111] border border-[#ffffff10] rounded-2xl p-6 hover:border-[var(--sec)]/50 transition-all duration-300 h-full">
+                      <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mr-4">
+                          <span class="text-2xl font-bold text-white">{testimonial.name.charAt(0)}</span>
+                        </div>
+                        <div>
+                          <h3 class="font-semibold text-white">{testimonial.name}</h3>
+                          <p class="text-[var(--white-icon)] text-sm">{testimonial.role}</p>
+                          {testimonial.company && <p class="text-purple-400 text-sm">{testimonial.company}</p>}
+                        </div>
+                      </div>
+                      
+                      <blockquote class="text-[var(--white-icon)] mb-4 italic">
+                        "{testimonial.quote}"
+                      </blockquote>
+                      
+                      <div class="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/50 rounded-lg p-3">
+                        <p class="text-purple-400 font-semibold text-sm">📈 {testimonial.achievement}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            <!-- Navigation -->
+            <button id="general-prev" class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-purple-500 hover:bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center transition shadow-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+              </svg>
+            </button>
+            <button id="general-next" class="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-purple-500 hover:bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center transition shadow-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+                <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-[var(--sec)]/10 to-transparent border-t border-[#ffffff10]">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">
+          Ready to Start Your Journey?
+        </h2>
+        <p class="text-xl text-[var(--white-icon)] mb-8">
+          Join Skale Academy for personalized mentorship, private lessons, or group classes. 
+          Transform your career with expert guidance and hands-on learning.
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          <div class="p-6 rounded-2xl bg-[#111] border border-[#ffffff10]">
+            <h3 class="text-2xl font-bold mb-3 text-[var(--sec)]">🎯 Private Mentorship</h3>
+            <p class="text-[var(--white-icon)] mb-4">
+              One-on-one personalized guidance tailored to your specific goals and learning pace.
+            </p>
+            <ul class="text-left text-[var(--white-icon)] space-y-2">
+              <li>• Custom learning roadmap</li>
+              <li>• Portfolio review & optimization</li>
+              <li>• Interview preparation</li>
+              <li>• Career strategy planning</li>
+            </ul>
+          </div>
+          
+          <div class="p-6 rounded-2xl bg-[#111] border border-[#ffffff10]">
+            <h3 class="text-2xl font-bold mb-3 text-[var(--sec)]">👥 Group Classes</h3>
+            <p class="text-[var(--white-icon)] mb-4">
+              Collaborative learning environment with fellow aspiring developers and designers.
+            </p>
+            <ul class="text-left text-[var(--white-icon)] space-y-2">
+              <li>• Interactive group sessions</li>
+              <li>• Peer learning & networking</li>
+              <li>• Cost-effective pricing</li>
+              <li>• Group projects & challenges</li>
+            </ul>
+          </div>
+        </div>
+
+        <a
+          href="https://skaleacademy.matrixsync.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-3 px-10 py-5 rounded-2xl bg-gradient-to-r from-[var(--sec)] to-blue-500 text-white font-bold text-xl hover:shadow-xl hover:shadow-[var(--sec)]/50 transition-all duration-300 hover:scale-105"
+        >
+          <span>Join Skale Academy</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"/>
+          </svg>
+        </a>
+        
+        <p class="text-sm text-[var(--white-icon)] mt-4">
+          Start your transformation today • Private lessons & group classes available
+        </p>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<script>
+  // Carousel functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    // Initialize all carousels
+    initCarousel('job', 3);
+    initCarousel('competition', 3);
+    initCarousel('general', 3);
+    initScreenshotCarousel();
+  });
+
+  function initScreenshotCarousel() {
+    const track = document.querySelector('.screenshot-track') as HTMLElement;
+    const prevBtn = document.getElementById('screenshots-prev');
+    const nextBtn = document.getElementById('screenshots-next');
+    const indicators = document.querySelectorAll('.screenshot-indicator');
+    
+    if (!track || !prevBtn || !nextBtn) return;
+
+    const slides = track.children;
+    const totalSlides = slides.length;
+    let currentIndex = 0;
+    
+    const updateCarousel = () => {
+      const slideWidth = 100;
+      const translateX = -(currentIndex * slideWidth);
+      track.style.transform = `translateX(${translateX}%)`;
+      
+      // Update indicators
+      indicators.forEach((indicator, index) => {
+        const btn = indicator as HTMLElement;
+        if (index === currentIndex) {
+          btn.style.background = 'var(--sec)';
+          btn.style.transform = 'scale(1.2)';
+        } else {
+          btn.style.background = 'rgba(255,255,255,0.3)';
+          btn.style.transform = 'scale(1)';
+        }
+      });
+      
+      // Update button states
+      prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
+      nextBtn.style.opacity = currentIndex >= totalSlides - 1 ? '0.5' : '1';
+    };
+
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateCarousel();
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentIndex < totalSlides - 1) {
+        currentIndex++;
+        updateCarousel();
+      }
+    });
+
+    // Indicator clicks
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => {
+        currentIndex = index;
+        updateCarousel();
+      });
+    });
+
+    // Auto-play (optional)
+    setInterval(() => {
+      if (currentIndex >= totalSlides - 1) {
+        currentIndex = 0;
+      } else {
+        currentIndex++;
+      }
+      updateCarousel();
+    }, 5000);
+    
+    // Initial update
+    updateCarousel();
+  }
+
+  function initCarousel(prefix: string, itemsToShow: number) {
+    const track = document.querySelector(`#${prefix}-carousel .testimonial-track`) as HTMLElement;
+    const prevBtn = document.getElementById(`${prefix}-prev`);
+    const nextBtn = document.getElementById(`${prefix}-next`);
+    
+    if (!track || !prevBtn || !nextBtn) return;
+
+    const slides = track.children;
+    const totalSlides = slides.length;
+    let currentIndex = 0;
+    
+    // Calculate items to show based on screen size
+    const getItemsToShow = () => {
+      const width = window.innerWidth;
+      if (width < 768) return 1;
+      if (width < 1024) return 2;
+      return itemsToShow;
+    };
+
+    const updateCarousel = () => {
+      const items = getItemsToShow();
+      const slideWidth = 100 / items;
+      const maxIndex = Math.max(0, totalSlides - items);
+      
+      // Ensure currentIndex is within bounds
+      currentIndex = Math.min(currentIndex, maxIndex);
+      
+      const translateX = -(currentIndex * slideWidth);
+      track.style.transform = `translateX(${translateX}%)`;
+      
+      // Update button states
+      prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
+      nextBtn.style.opacity = currentIndex >= maxIndex ? '0.5' : '1';
+    };
+
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateCarousel();
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const items = getItemsToShow();
+      const maxIndex = Math.max(0, totalSlides - items);
+      if (currentIndex < maxIndex) {
+        currentIndex++;
+        updateCarousel();
+      }
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', updateCarousel);
+    
+    // Initial update
+    updateCarousel();
+  }
+</script>
+
+<style>
+  .testimonial-container {
+    max-width: 100%;
+  }
+  
+  .testimonial-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .testimonial-slide {
+    flex: 0 0 auto;
+  }
+  
+  .screenshot-container {
+    max-width: 100%;
+  }
+  
+  .screenshot-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .screenshot-slide {
+    flex: 0 0 100%;
+  }
+  
+  .screenshot-indicator {
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .screenshot-indicator:hover {
+    transform: scale(1.1);
+  }
+  
+  @media (min-width: 768px) {
+    .testimonial-slide {
+      width: 50%;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .testimonial-slide {
+      width: 33.333%;
+    }
+  }
+</style>
