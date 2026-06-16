@@ -17,7 +17,7 @@
     "@types/react": "^19.1.13",
     "@types/react-dom": "^19.1.9",
     "@types/three": "^0.184.1",
-    "astro": "^5.13.10",
+    "astro": "^6.4.2",
     "firebase": "^12.3.0",
     "firebase-admin": "^13.5.0",
     "lucide-react": "^1.17.0",
