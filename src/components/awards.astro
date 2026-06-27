@@ -10,7 +10,7 @@ import { awards } from "../data/awards";
     {/* Awards tags with hover effects */}
     <div class="awards flex flex-wrap gap-3 mb-8">
       {
-        awards.slice(0, 7).map((award) => (
+        awards.slice(0, 6).map((award) => (
           <a
             href={`/awards/${award.id}`}
             class="tag trophy relative border border-[rgba(59,130,246,.5)] bg-[rgba(59,130,246,0.2)] text-white px-4 py-3 rounded-full font-semibold transition-all duration-250 ease-in-out backdrop-blur-sm hover:bg-[rgba(59,130,246,0.4)] hover:shadow-[0_0_16px_rgba(59,130,246,0.75)] hover:-translate-y-1"

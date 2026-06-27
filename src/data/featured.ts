@@ -8,8 +8,7 @@ export interface HighlightProject {
   tier: "S" | "A";
   tagline: string;
   description: string;
-  
-  // Why-How-What Circle
+
   why: string;
   how: string;
   what: string;
@@ -31,6 +30,66 @@ export interface HighlightProject {
 }
 
 export const highlightProjects: HighlightProject[] = [
+  {
+    id: "safe-route",
+    title: "Safe Route",
+    image: "/saferoute.webp",
+    link: "https://github.com/icecoffie/safe-route",
+    preview: "https://saferoute.vercel.app",
+    status: "Hackathon Project",
+    tier: "S",
+    tagline: "Real-time safety map that routes you away from crime, riots, and danger",
+    description: "Safe Route is a React Native mobile app that maps real-time risk levels across streets and neighborhoods. It routes users away from muggers, riots, and criminal hotspots — and fires an SOS via WhatsApp and Telegram the moment danger strikes.",
+
+    why: "Street crime in Indonesian cities is unpredictable and underreported. Existing maps only care about speed, not safety. Our team at MATA wanted an app that actively protects people before something bad happens, not after.",
+
+    how: "Built with React Native for cross-platform mobile. Integrated crowd-sourced incident reporting and real-time risk scoring. The SOS button sends your live location and a distress message instantly to pre-set emergency contacts via WhatsApp and Telegram APIs, with zero setup needed mid-crisis.",
+
+    what: "A safety navigation app that shows street-level risk tiers in real time, suggests safer alternative routes, and lets you send an emergency SOS to trusted contacts with one tap — all without needing to type anything when you're in danger.",
+
+    impact: "Won 2nd Place at Hackathon 2026 (Innovating Beyond The Code). Judged against 50+ teams. Built and shipped end-to-end within the hackathon window by Team MATA.",
+
+    techStack: ["React Native", "Node.js", "Google Maps API", "WhatsApp API", "Telegram Bot API", "Firebase"],
+
+    features: [
+      "Real-time road risk level visualization on map",
+      "Safer alternative route suggestions",
+      "One-tap SOS button — no typing required",
+      "Instant location sharing via WhatsApp & Telegram",
+      "Crowd-sourced incident reporting",
+      "Emergency contact management",
+      "Offline mode for last known risk data",
+      "Night-time safety alerts"
+    ],
+
+    problem: "People navigating unfamiliar or dangerous areas have no way to know if a street is currently risky — until it is too late. Standard maps prioritize speed, not safety.",
+
+    solution: "Built a mobile-first safety layer on top of maps that aggregates real-time incident data and gives users a one-tap emergency broadcast when they feel threatened.",
+
+    results: [
+      { metric: "Hackathon Placement", value: "2nd Place" },
+      { metric: "Teams Competed", value: "50+" },
+      { metric: "SOS Response Time", value: "< 2s" },
+      { metric: "Risk Zones Mapped", value: "Real-time" }
+    ],
+
+    timeline: "48 hours (Hackathon)",
+    role: "Lead Developer & UI/UX Designer — Team MATA (Malika, Aisyah, Tohari, Ali)",
+
+    challenges: [
+      "Aggregating real-time crime data with low latency",
+      "Ensuring SOS delivery when internet is slow or spotty",
+      "Designing a UI that works under stress with one thumb",
+      "Shipping a full working app within 48 hours"
+    ],
+
+    learnings: [
+      "Safety UX must be idiot-proof — complexity costs lives",
+      "WhatsApp API is more reliable than SMS in Indonesian networks",
+      "Hackathon pressure is the best product design accelerator",
+      "Real problems motivate teams far more than fake ones"
+    ]
+  },
   {
     id: "skale-orbit",
     title: "Skale Orbit",
@@ -152,7 +211,7 @@ export const highlightProjects: HighlightProject[] = [
     title: "Skale App",
     image: "/skaleapp.webp",
     link: "https://github.com/icecoffie/skale-academy",
-    preview: "https://skale.matrixsync.app",
+    preview: "https://skale.web.id",
     status: "Live Product",
     tier: "S",
     tagline: "Learning platform offering courses for tech enthusiasts",
@@ -321,65 +380,5 @@ export const highlightProjects: HighlightProject[] = [
       "AI works best when combined with human judgment"
     ]
   },
-  {
-    id: "freedoom",
-    title: "Freedoom",
-    image: "/freedoom.webp",
-    link: "https://github.com/icecoffie/freedoom",
-    preview: "https://freedoom.vercel.app",
-    status: "Live Product",
-    tier: "S",
-    tagline: "Complete freelance business toolkit with one time payment",
-    description: "Everything freelancers need to run their business professionally. Create proposals, generate invoices, build rate cards, and manage clients. No subscriptions, just tools that work.",
-    
-    why: "I freelanced for years and hated juggling multiple tools for proposals, invoices, and client management. Most tools had expensive subscriptions for features I rarely used. I wanted something simple that I could own.",
-    
-    how: "Built with React and Node.js, using PDF generation for documents and Stripe for one time payments. The app runs entirely in the browser after purchase, with optional cloud sync for backups.",
-    
-    what: "A complete freelance toolkit that helps independent workers create professional proposals, track projects, generate invoices, and manage client relationships. Pay once, use forever.",
-    
-    impact: "Used by 500+ freelancers. Average time saved per proposal is 2 hours. No subscription fatigue.",
-    
-    techStack: ["React", "Node.js", "Stripe", "MongoDB", "PDF Generation API", "Tailwind CSS"],
-    
-    features: [
-      "Professional proposal templates",
-      "Dynamic rate card calculator",
-      "Automated invoice generation",
-      "Client brief questionnaire builder",
-      "Contract template library",
-      "Payment tracking dashboard",
-      "Expense tracking",
-      "Time tracking integration"
-    ],
-    
-    problem: "Freelancers were paying for expensive subscription tools with features they didn't need, or using multiple disconnected apps.",
-    
-    solution: "Created an all in one toolkit with a one-time payment model that gives freelancers everything they need without recurring costs.",
-    
-    results: [
-      { metric: "Active Users", value: "500+" },
-      { metric: "Time Saved per Proposal", value: "2 hours" },
-      { metric: "User Retention", value: "85%" },
-      { metric: "Revenue Generated", value: "$15k+" }
-    ],
-    
-    timeline: "2 months",
-    role: "Full-stack Developer & Product Designer",
-    
-    challenges: [
-      "Building reliable PDF generation for different document types",
-      "Creating flexible templates that work for various industries",
-      "Implementing offline first functionality",
-      "Balancing features with simplicity"
-    ],
-    
-    learnings: [
-      "Freelancers value simplicity over features",
-      "One-time payment models build trust",
-      "Good templates save more time than customization options",
-      "Users prefer ownership over subscriptions"
-    ]
-  }
 ];
 

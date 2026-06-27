@@ -12,11 +12,17 @@ export default defineConfig({
     mode: 'standalone'
   }),
   vite: {
+    optimizeDeps: {
+      exclude: ['@dimforge/rapier3d-compat'],
+    },
     resolve: {
       alias: {
         "@": "/src",
         "@components": "/src/components",
       },
+    },
+    ssr: {
+      external: ['three', 'meshline', '@react-three/fiber', '@react-three/drei', '@react-three/rapier'],
     },
   },
   output: "server",

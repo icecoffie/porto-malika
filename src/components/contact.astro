@@ -1,191 +1,105 @@
+---
+import ContactFolders from "../React/ContactFolders.tsx";
+---
+
+<!-- overflow-visible lets folder papers fly upward without being clipped -->
 <section
   id="contact"
-  class="w-full py-12 border-t border-[#ffffff10] relative overflow-hidden"
+  class="w-full py-12 sm:py-16 border-t border-[#ffffff10] text-[var(--white)] overflow-visible"
 >
-  <!-- Canvas container (Three.js) -->
-  <div id="three-container" class="absolute inset-0 w-full h-full z-0"></div>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
 
-  <div class="relative z-10 max-w-5xl mx-auto px-4">
-    <div class="flex flex-col md:flex-row md:items-start gap-8">
-      <!-- Left Info -->
-      <div class="md:w-1/2 text-[var(--white-icon)] space-y-4">
-        <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">Let's talk</h2>
-        <h3 class="text-4xl md:text-5xl font-medium text-[var(--white)] mb-4">
-          Contact
-        </h3>
-        <p>
-          Any questions? I won’t bite, I promise 🧍🏻‍♀️
-        </p>
-        <div class="flex flex-col md:flex-row md:items-center gap-2">
-          <span class="font-semibold">Location:</span>
-          <span class="text-[var(--white)]">Bekasi, Indonesia</span>
-        </div>
+    <!-- Header -->
+    <h2 class="text-base sm:text-lg text-[var(--sec)] mb-2 shiny-sec">Let's talk</h2>
+    <h3 class="text-2xl sm:text-3xl md:text-4xl font-medium text-[var(--white)] mb-8 sm:mb-10">Contact</h3>
+
+    <!-- Two-column on desktop, stacked on mobile -->
+    <div class="flex flex-col md:flex-row gap-6 md:gap-16 items-center">
+
+      <!-- LEFT: folder — scaled down & centered on mobile so it doesn't overlap -->
+      <div class="w-full md:w-60 md:flex-shrink-0 flex justify-center scale-75 sm:scale-90 md:scale-100 origin-top">
+        <ContactFolders client:visible />
       </div>
 
-      <!-- Right Form -->
-      <div class="md:w-1/2">
+      <!-- RIGHT: form -->
+      <div class="w-full md:flex-1 min-w-0">
         <form
           id="contact-form"
           action="https://formspree.io/f/xjkrorey"
           method="POST"
-          class="flex flex-col gap-10 bg-[#141414d9] p-6 rounded-xl shadow-lg w-full"
+          class="flex flex-col gap-5 sm:gap-6 bg-[#141414d9] p-5 sm:p-6 rounded-xl shadow-lg border border-[#ffffff08]"
         >
-          <input
-            type="text"
-            name="from_name"
-            placeholder="Name"
-            required
-            class="px-4 py-2 bg-[#1414149c] text-[var(--white)] border border-[var(--white-icon-tr)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--sec)] transition-shadow hover:shadow-md w-full"
-          />
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+            <input
+              type="text"
+              name="first_name"
+              placeholder="First Name"
+              required
+              class="px-4 py-2 bg-[#1414149c] text-[var(--white)] border border-[var(--white-icon-tr)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--sec)] transition-shadow w-full"
+            />
+            <input
+              type="text"
+              name="last_name"
+              placeholder="Last Name"
+              required
+              class="px-4 py-2 bg-[#1414149c] text-[var(--white)] border border-[var(--white-icon-tr)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--sec)] transition-shadow w-full"
+            />
+          </div>
           <input
             type="email"
             name="reply_to"
             placeholder="Email"
             required
-            class="px-4 py-2 bg-[#1414149c] text-[var(--white)] border border-[var(--white-icon-tr)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--sec)] transition-shadow hover:shadow-md w-full"
+            class="px-4 py-2 bg-[#1414149c] text-[var(--white)] border border-[var(--white-icon-tr)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--sec)] transition-shadow w-full"
           />
           <textarea
             name="message"
             placeholder="Message"
-            rows="6"
+            rows={5}
             required
-            class="px-4 py-2 bg-[#1414149c] text-[var(--white)] border border-[var(--white-icon-tr)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--sec)] resize-none transition-shadow hover:shadow-md w-full"
+            class="px-4 py-2 bg-[#1414149c] text-[var(--white)] border border-[var(--white-icon-tr)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--sec)] resize-none transition-shadow w-full"
           ></textarea>
           <button
             type="submit"
-            class="px-4 py-2 bg-[var(--sec-dark)] text-[var(--white)] rounded-lg border border-[var(--sec-dark)] transition-all hover:bg-white hover:text-[var(--sec-dark)] hover:border-[var(--sec-dark)] w-full"
+            class="px-6 py-3 bg-gradient-to-r from-[var(--sec)] to-blue-400 text-white rounded-lg font-medium hover:shadow-lg hover:shadow-[var(--sec)]/50 hover:scale-105 transition-all duration-300"
           >
-            Submit
+            Send Message
           </button>
         </form>
-
-        <!-- Status Message -->
         <div
           id="form-status"
-          class="hidden mt-4 px-4 py-2 rounded-lg text-[var(--white)] bg-green-600/80 w-full text-center"
+          class="hidden mt-4 px-4 py-2 rounded-lg text-[var(--white)] bg-green-600/80 text-center text-sm"
         >
-          Thanks! Your message has been sent successfully.
+          Thanks! Message sent successfully.
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<script type="module">
-  const form = document.getElementById("contact-form");
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
   const formStatus = document.getElementById("form-status");
 
-  form.addEventListener("submit", async (e) => {
+  form?.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const formData = new FormData(form);
-
     try {
-      const response = await fetch(form.action, {
+      const res = await fetch(form.action, {
         method: "POST",
-        body: formData,
+        body: new FormData(form),
         headers: { Accept: "application/json" },
       });
-
-      if (response.ok) {
+      if (res.ok) {
         form.reset();
-        formStatus.classList.remove("hidden");
-        formStatus.classList.remove("bg-red-600/80");
+        formStatus?.classList.remove("hidden");
       } else {
-        const data = await response.json();
-        console.error("Error response:", data);
-        formStatus.textContent = "There was a problem sending your message. Please try again.";
-        formStatus.classList.remove("hidden");
-        formStatus.classList.add("bg-red-600/80");
+        if (formStatus) formStatus.textContent = "Problem sending. Try again.";
+        formStatus?.classList.remove("hidden");
       }
-    } catch (error) {
-      console.error("Error:", error);
-      formStatus.textContent = "There was a problem sending your message. Please try again.";
-      formStatus.classList.remove("hidden");
-      formStatus.classList.add("bg-red-600/80");
+    } catch {
+      if (formStatus) formStatus.textContent = "Problem sending. Try again.";
+      formStatus?.classList.remove("hidden");
     }
   });
-
-  // ===========================
-  // Lazy load Three.js ketika section contact terlihat
-  // ===========================
-  const contactSection = document.getElementById("contact");
-  let threeLoaded = false;
-
-  const loadThree = async () => {
-    if (threeLoaded) return;
-    threeLoaded = true;
-
-    const { Scene, PerspectiveCamera, WebGLRenderer, SphereGeometry, MeshStandardMaterial, Mesh, PointLight, AmbientLight, Clock } = await import(
-      'https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js'
-    );
-
-    const container = document.getElementById("three-container");
-    const canvas = document.createElement("canvas");
-    container.appendChild(canvas);
-
-    const secColor = getComputedStyle(document.documentElement).getPropertyValue('--sec').trim();
-    const secColorHex = parseInt(secColor.replace(/^#/, ''), 16);
-
-    const scene = new Scene();
-    const camera = new PerspectiveCamera(65, canvas.offsetWidth / canvas.offsetHeight, 0.1, 1000);
-    camera.position.z = 6;
-
-    const renderer = new WebGLRenderer({ canvas, alpha: true });
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(canvas.offsetWidth, canvas.offsetHeight, false);
-
-    const sphere = new Mesh(
-      new SphereGeometry(2, 32, 32),
-      new MeshStandardMaterial({
-        color: secColorHex,
-        metalness: 0.6,
-        roughness: 0.1,
-        transparent: true,
-        opacity: 0.9,
-        wireframe: true
-      })
-    );
-    scene.add(sphere);
-
-    const light = new PointLight(0xffffff, 2.5);
-    light.position.set(5, 5, 5);
-    scene.add(light);
-
-    const ambient = new AmbientLight(0xffffff, 1.5);
-    scene.add(ambient);
-
-    let targetX = 0, targetY = 0;
-    window.addEventListener("mousemove", (e) => {
-      targetX = (e.clientX / window.innerWidth - 0.5) * Math.PI * 0.3;
-      targetY = (e.clientY / window.innerHeight - 0.5) * Math.PI * 0.3;
-    });
-
-    const clock = new Clock();
-    const animate = () => {
-      requestAnimationFrame(animate);
-      const t = clock.getElapsedTime();
-      sphere.position.y = Math.sin(t) * 0.3;
-      sphere.rotation.x += (targetY - sphere.rotation.x) * 0.05;
-      sphere.rotation.y += (targetX - sphere.rotation.y) * 0.05;
-      renderer.render(scene, camera);
-    };
-    animate();
-
-    window.addEventListener("resize", () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-      renderer.setSize(canvas.offsetWidth, canvas.offsetHeight, false);
-      camera.aspect = canvas.offsetWidth / canvas.offsetHeight;
-      camera.updateProjectionMatrix();
-    });
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) {
-      loadThree();
-      observer.disconnect();
-    }
-  }, { threshold: 0.1 });
-
-  observer.observe(contactSection);
 </script>

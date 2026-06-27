@@ -1,31 +1,33 @@
 ---
-import { projects } from "../data/projects";
-import { highlightProjects } from "../data/featured";
+import { projects, type Project } from "../data/projects";
+import { highlightProjects, type HighlightProject } from "../data/featured";
+
+type AnyProject = Project | HighlightProject;
 
 // Define specific projects to show in detail
 const detailedProjectIds = [
+  "safe-route",
   "matrix-sync-tech",
   "skale-app",
   "nobar-kuy",
   "worcket",
   "orbit-awards",
   "skale-orbit",
-  "freedoom"
 ];
 
 // Get detailed projects, sorted to match the order we want
-const detailedProjects = [
+const detailedProjects: AnyProject[] = [
   ...highlightProjects.filter(p => detailedProjectIds.includes(p.id)),
   ...projects.filter(p => detailedProjectIds.includes(p.id))
-].filter((v, i, a) => a.findIndex(t => t.id === v.id) === i); // Remove duplicates
+].filter((v, i, a) => a.findIndex(t => t.id === v.id) === i);
 
 // Sort them to match the exact order specified
-const sortedDetailedProjects = detailedProjectIds.map(id => 
-  detailedProjects.find(p => p.id === id)
-).filter(Boolean);
+const sortedDetailedProjects: AnyProject[] = detailedProjectIds
+  .map(id => detailedProjects.find(p => p.id === id))
+  .filter((p): p is AnyProject => p != null);
 
 // Get all other projects for the list
-const otherProjects = [
+const otherProjects: AnyProject[] = [
   ...highlightProjects.filter(p => !detailedProjectIds.includes(p.id)),
   ...projects.filter(p => !detailedProjectIds.includes(p.id))
 ].filter((v, i, a) => a.findIndex(t => t.id === v.id) === i);
@@ -283,14 +285,14 @@ const otherProjects = [
     const overlay = document.getElementById("projects-overlay");
 
     const openPanel = () => {
-      panel.classList.remove("translate-x-full");
-      overlay.classList.remove("opacity-0", "pointer-events-none");
+      panel?.classList.remove("translate-x-full");
+      overlay?.classList.remove("opacity-0", "pointer-events-none");
       document.body.style.overflow = "hidden";
     };
 
     const closePanel = () => {
-      panel.classList.add("translate-x-full");
-      overlay.classList.add("opacity-0", "pointer-events-none");
+      panel?.classList.add("translate-x-full");
+      overlay?.classList.add("opacity-0", "pointer-events-none");
       document.body.style.overflow = "";
     };
 

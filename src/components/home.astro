@@ -1,11 +1,10 @@
 ---
-import LetterGlitch from "../React/LetterGlitch.tsx";
-import LogoWall from "../components/logoWall.astro";
+import Lanyard from "../React/Lanyard.tsx";
 import SkillsList from "../React/SkillsList.tsx";
 ---
 
 <section class="text-[var(--white)] mt-12 md:mt-0" id="home">
-  <div class="max-w-5xl mx-auto space-y-8 md:py-36 pb-14">
+  <div class="max-w-5xl mx-auto space-y-8 md:pt-36 pb-0">
     <div class="text-left space-y-4">
       <!-- Intro -->
       <p class="text-md md:text-lg text-[var(--white-icon)]">
@@ -109,22 +108,22 @@ import SkillsList from "../React/SkillsList.tsx";
       </div>
     </div>
 
-    <!-- Logo Wall -->
-    <LogoWall />
-
-    <!-- Skills + Glitch Effect -->
-    <div class="flex flex-col lg:flex-row items-center gap-8">
-      <SkillsList client:load />
-      <div
-        class="flex justify-center md:w-full md:h-[292px] size-[290px] pt-3 md:pt-9 md:ml-16"
-      >
-        <LetterGlitch
-          client:load
-          dominantColor="blue"
-          glitchSpeed={33}
-          centerVignette={false}
-          outerVignette={true}
-          smooth={true}
+    <!-- Skills + Lanyard -->
+    <div class="flex flex-col lg:flex-row items-start gap-8">
+      <SkillsList client:visible />
+      <div class="w-full h-[560px] lg:h-[620px]">
+        <Lanyard
+          client:only="react"
+          position={[0, 0, 18]}
+          gravity={[0, -40, 0]}
+          fov={20}
+          transparent={true}
+          frontImage="/malika-photo.webp"
+          backImage="/logo.webp"
+          lanyardImage="/lanyard.png"
+          imageFit="cover"
+          lanyardWidth={1}
+          lanyardRepeat={-4}
         />
       </div>
     </div>
