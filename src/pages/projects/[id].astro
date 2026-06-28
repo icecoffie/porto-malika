@@ -157,7 +157,7 @@ const isHighlight = project.isHighlight || false;
           <!-- Results -->
           {project.results && project.results.length > 0 && (
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-              {project.results.map((result) => (
+              {project.results.map((result: { value: string; metric: string }) => (
                 <div class="p-6 rounded-2xl bg-gradient-to-br from-[var(--sec)]/10 to-[#1a1a1a] border border-[var(--sec)]/30 text-center">
                   <div class="text-3xl font-bold text-[var(--sec)] mb-2">{result.value}</div>
                   <div class="text-sm text-[var(--white-icon)]">{result.metric}</div>
@@ -192,7 +192,7 @@ const isHighlight = project.isHighlight || false;
               <div>
                 <h3 class="text-2xl font-semibold mb-6">Challenges</h3>
                 <ul class="space-y-4">
-                  {project.challenges.map((challenge) => (
+                  {project.challenges.map((challenge: string) => (
                     <li class="flex items-start gap-3 p-4 rounded-xl bg-[#1a1a1a] border border-[#ffffff10]">
                       <span class="text-yellow-400 mt-1 flex-shrink-0">⚠</span>
                       <span class="text-[var(--white-icon)]">{challenge}</span>
@@ -205,7 +205,7 @@ const isHighlight = project.isHighlight || false;
               <div>
                 <h3 class="text-2xl font-semibold mb-6">Key Learnings</h3>
                 <ul class="space-y-4">
-                  {project.learnings.map((learning) => (
+                  {project.learnings.map((learning: string) => (
                     <li class="flex items-start gap-3 p-4 rounded-xl bg-[#1a1a1a] border border-[#ffffff10]">
                       <span class="text-green-400 mt-1 flex-shrink-0">✓</span>
                       <span class="text-[var(--white-icon)]">{learning}</span>
@@ -231,7 +231,7 @@ const isHighlight = project.isHighlight || false;
         <section class="mb-12">
           <h2 class="text-2xl font-semibold mb-6">Tech Stack</h2>
           <div class="flex flex-wrap gap-3">
-            {project.techStack.map((tech) => (
+            {project.techStack.map((tech: string) => (
               <span class="px-4 py-2 rounded-lg bg-[#1a1a1a] border border-[#ffffff10] text-[var(--white-icon)] hover:border-[var(--sec)] hover:text-[var(--sec)] transition">
                 {tech}
               </span>
@@ -245,7 +245,7 @@ const isHighlight = project.isHighlight || false;
         <section class="mb-12">
           <h2 class="text-2xl font-semibold mb-6">Key Features</h2>
           <div class="grid md:grid-cols-2 gap-4">
-            {project.features.map((feature) => (
+            {project.features.map((feature: string) => (
               <div class="flex items-start gap-3 p-4 rounded-xl bg-[#1a1a1a] border border-[#ffffff10]">
                 <span class="text-[var(--sec)] mt-1 flex-shrink-0">✓</span>
                 <span class="text-[var(--white-icon)]">{feature}</span>
@@ -260,7 +260,7 @@ const isHighlight = project.isHighlight || false;
         <section class="mb-12">
           <h2 class="text-2xl font-semibold mb-6">Use Cases</h2>
           <ul class="space-y-3">
-            {project.useCases.map((useCase) => (
+            {project.useCases.map((useCase: string) => (
               <li class="flex items-start gap-3">
                 <span class="text-[var(--sec)] mt-1">✓</span>
                 <span class="text-[var(--white-icon)]">{useCase}</span>

@@ -1,12 +1,14 @@
 {
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "module": "ES2020",
+    "module": "ESNext",
+    "target": "ES2020",
     "allowImportingTsExtensions": true,
     "noEmit": true,
     "types": [
       "astro/client"
     ],
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {

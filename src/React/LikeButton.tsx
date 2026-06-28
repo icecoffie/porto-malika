@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const LikeButton = () => {
   const [likes, setLikes] = useState(0);

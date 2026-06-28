@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { 
   Code2, Database, Palette, Zap, Globe, Lock, 
-  Cpu, Cloud, Terminal, Smartphone 
+  Cpu, Cloud, Terminal
 } from 'lucide-react';
 
 interface Card {

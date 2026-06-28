@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const CategoryIcons = {
   "UI/UX Design & Prototyping": (
@@ -87,7 +87,7 @@ const SkillsList = () => {
               aria-controls={`panel-${category}`}
               className="md:w-[400px] w-full bg-[#1414149c] rounded-2xl text-left hover:bg-opacity-80 transition border border-[var(--white-icon-tr)] flex items-center gap-3 p-4"
             >
-              {CategoryIcons[category]}
+              {CategoryIcons[category as keyof typeof CategoryIcons]}
               <span className="flex-grow text-[var(--white)] text-lg truncate">
                 {category}
               </span>

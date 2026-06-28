@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(echo \"=== Exit: $? ===\")",
+      "Bash(echo \"Build exit code: $?\")"
+    ]
+  }
+}

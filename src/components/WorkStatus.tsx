@@ -137,22 +137,3 @@ export default function WorkStatus() {
   );
 }
 
-
-
-// Add this CSS to your global styles or in a <style> tag
-const styles = `
-  @keyframes slideDown {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  .animate-slideDown {
-    animation: slideDown 0.2s ease-out;
-  }
-`;

@@ -172,7 +172,7 @@ const hamburger = document.getElementById("hamburger");
 const navMenu = document.getElementById("nav-menu");
 const scrollProgress = document.getElementById("scroll-progress");
 const maxScroll = 1000;
-let rafId = null;
+let rafId: number | null = null;
 
 function updateNav() {
   if (!nav) return;

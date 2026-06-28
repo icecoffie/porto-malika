@@ -11,7 +11,6 @@ export interface Project {
   useCases?: string[];
   problemSolving?: string;
   
-  // Why-How-What for all projects
   why?: string;
   how?: string;
   what?: string;
