@@ -35,7 +35,7 @@ export const highlightProjects: HighlightProject[] = [
     title: "Safe Route",
     image: "/saferoute.webp",
     link: "https://github.com/icecoffie/safe-route",
-    preview: "https://saferoute.vercel.app",
+    preview: "https://github.com/icecoffie/safe-route",
     status: "Hackathon Project",
     tier: "S",
     tagline: "Real-time safety map that routes you away from crime, riots, and danger",

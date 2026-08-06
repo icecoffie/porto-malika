@@ -70,7 +70,20 @@ export const awards: Award[] = [
     link: "https://github.com/icecoffie/safe-route",
     date: "2026",
     issuer: "Himtif — Hackathon Committee",
-    certificates: ["/sertifikat-hackathon.webp"],
+    certificates: [
+      "/sertifikat-hackathon2.webp",
+      "/sertifikat-hackathon.webp"
+    ],
+  },
+  {
+    id: "motivational-speaker-women-empowerment",
+    title: "Motivational Speaker - Women's Empowerment & Independence",
+    image: "/sertifikat-narasumber.webp",
+    description: "Recognition as a motivational speaker dedicated to inspiring young women to become empowered figures and promoting the spirit of emancipation and independence for women. This certificate acknowledges contributions to women's empowerment through motivational speaking and community engagement.",
+    link: "#",
+    date: "2026",
+    issuer: "Women Empowerment Foundation",
+    certificates: ["/sertifikat-narasumber.webp"],
   },
   {
     id: "javascript-mastery",
