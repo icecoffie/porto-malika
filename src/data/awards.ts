@@ -26,13 +26,14 @@ export const awards: Award[] = [
     ] 
   },
   {
-    id: "best-design-structure",
-    title: "Top 1 - Best Design Structure For Web App",
-    image: "/sertifikat-bestdesign.webp",
-    description: "Recognition for outstanding web app design structure, acknowledging expertise in frontend architecture and user experience design.",
-    link: "https://www.linkedin.com/feed/update/urn:li:activity:7365386417952215040/",
-    date: "2025",
-    issuer: "Tech Competition",
+    id: "emergent-building-competition",
+    title: "Finalist - Emergent Building Indonesia & France Competition",
+    image: "/emergent.webp",
+    description: "Ranked in the top 10 most upvoted projects in both Emergent Building Indonesia and Emergent Building France competitions, competing against innovative startups and tech projects from across Indonesia and France with the Trace digital footprint tracker.",
+    link: "https://app.emergent.sh/showcase/building-indonesia/28caa09d-9fd1-4f73-a257-5096c565c8a5?utm_source=share",
+    date: "2026",
+    issuer: "Emergent Building Community",
+    certificates: ["/emergent.webp", "/emergent2.webp"],
   },
   {
     id: "top-global-othello",
@@ -86,6 +87,16 @@ export const awards: Award[] = [
     certificates: ["/sertifikat-narasumber.webp"],
   },
   {
+    id: "ibm-ai-agent-builder",
+    title: "Build an AI Agent",
+    image: "/sertifikat-ibm.webp",
+    description: "IBM certification for successfully building and implementing an AI Agent, demonstrating expertise in artificial intelligence development, machine learning integration, and intelligent system architecture.",
+    link: "https://www.credly.com/badges/229c47db-82cc-40f3-99b7-ea6beef68e02/public_url",
+    date: "2026",
+    issuer: "IBM",
+    certificates: ["/sertifikat-ibm.webp"],
+  },
+  {
     id: "javascript-mastery",
     title: "JavaScript Programming Mastery",
     image: "/sertifikat-js.webp",
@@ -102,6 +113,15 @@ export const awards: Award[] = [
     link: "https://uxunicornio.com.br/",
     date: "2024",
     issuer: "Design Awards",
+  },
+  {
+    id: "best-design-structure",
+    title: "Top 1 - Best Design Structure For Web App",
+    image: "/sertifikat-bestdesign.webp",
+    description: "Recognition for outstanding web app design structure, acknowledging expertise in frontend architecture and user experience design.",
+    link: "https://www.linkedin.com/feed/update/urn:li:activity:7365386417952215040/",
+    date: "2025",
+    issuer: "Tech Competition",
   },
   {
     id: "frontend-development",
@@ -136,7 +156,7 @@ export const awards: Award[] = [
     image: "/sertifikat-design.webp",
     description: "Advanced certification in creating and maintaining scalable design systems for enterprise applications.",
     link: "#",
-    date: "2024",
+    date: "2025",
     issuer: "Design Systems Institute",
   },
   {
@@ -149,3 +169,4 @@ export const awards: Award[] = [
     issuer: "Tech Leadership Council",
   },
 ];
+

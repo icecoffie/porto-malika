@@ -1,0 +1,38 @@
+<script>
+// Create placeholder images dynamically
+const items = [
+  { name: 'hackathon-1', color: '#3B82F6' },
+  { name: 'mentoring-1', color: '#8B5CF6' },
+  { name: 'teaching-1', color: '#EC4899' },
+  { name: 'workshop-1', color: '#F59E0B' },
+  { name: 'event-1', color: '#10B981' },
+  { name: 'competition-1', color: '#EF4444' }
+];
+
+items.forEach(item => {
+  const canvas = document.createElement('canvas');
+  canvas.width = 600;
+  canvas.height = 400;
+  const ctx = canvas.getContext('2d');
+  
+  // Gradient background
+  const gradient = ctx.createLinearGradient(0, 0, 600, 400);
+  gradient.addColorStop(0, item.color);
+  gradient.addColorStop(1, '#0a0a0a');
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, 600, 400);
+  
+  // Text
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 48px Arial';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(item.name, 300, 200);
+  
+  // Download
+  const link = document.createElement('a');
+  link.href = canvas.toDataURL('image/jpeg', 0.8);
+  link.download = `${item.name}.jpg`;
+  link.click();
+});
+</script>

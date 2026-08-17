@@ -4,18 +4,18 @@ import { highlightProjects, type HighlightProject } from "../data/featured";
 
 type AnyProject = Project | HighlightProject;
 
-// Define specific projects to show in detail
 const detailedProjectIds = [
   "safe-route",
   "matrix-sync-tech",
+  "trace",
   "skale-app",
+  "krumb",
   "nobar-kuy",
   "worcket",
   "orbit-awards",
   "skale-orbit",
 ];
 
-// Get detailed projects, sorted to match the order we want
 const detailedProjects: AnyProject[] = [
   ...highlightProjects.filter(p => detailedProjectIds.includes(p.id)),
   ...projects.filter(p => detailedProjectIds.includes(p.id))

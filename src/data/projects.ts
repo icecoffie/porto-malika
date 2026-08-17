@@ -18,6 +18,22 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "trace",
+    title: "Trace",
+    image: "/trace.webp",
+    link: "https://github.com/icecoffie/trace",
+    preview: "https://traceker.dev",
+    status: "Deployed",
+    description: "Digital footprint tracker that checks if your email or phone number has been exposed in data breaches, provides exposure risk score, and offers concrete security recommendations.",
+    summary: "Trace is a sophisticated digital privacy and security monitoring platform that empowers users to take control of their online identity and personal information security. The application scans multiple databases to detect if your email address or phone number has been compromised in data breaches, provides a personalized exposure risk score, and delivers actionable security recommendations tailored to your specific vulnerabilities. With Trace, users gain unprecedented visibility into their digital footprint and receive guidance to strengthen their personal cybersecurity posture.",
+    techStack: ["React", "Node.js", "PostgreSQL", "Security APIs", "Machine Learning"],
+    useCases: ["Data Breach Monitoring", "Personal Security Audit", "Risk Assessment", "Cybersecurity Education"],
+    problemSolving: "This platform addresses the critical need for personal data security awareness by providing users with real-time insights into their digital exposure and practical recommendations to mitigate security risks.",
+    why: "Most people don't realize their personal information has been compromised until it's too late. Trace provides early warning and actionable guidance to help users protect themselves before their data is exploited.",
+    how: "Built with React for an intuitive user interface, Node.js for backend services, integrated with multiple security databases and APIs to check for breaches, and implemented machine learning algorithms to calculate personalized risk scores.",
+    what: "A comprehensive digital security platform that monitors your digital footprint across multiple databases, alerts you of any breaches involving your email or phone, calculates your exposure risk score, and provides concrete security recommendations.",
+  },
+  {
     id: "mavenclaw",
     title: "MavenClaw",
     image: "/mavenclaw.webp",
@@ -38,7 +54,7 @@ export const projects: Project[] = [
     title: "Krumb",
     image: "/krumb.webp",
     link: "https://github.com/icecoffie/krumb",
-    preview: "https://krumb.web.id",
+    preview: "https://krumb.my.id",
     status: "Deployed",
     description: "Web builder for creator to create their link, file and digital product in one page with integrated SEO optimization.",
     summary: "Krumb is a versatile web builder platform that empowers creators to consolidate their online presence by creating a single page that hosts links, files, and digital products. The platform is designed with integrated SEO optimization to enhance discoverability and reach, allowing creators to effectively showcase their work and engage with their audience.",

@@ -14,10 +14,10 @@ import ContactFolders from "../React/ContactFolders.tsx";
     <h3 class="text-2xl sm:text-3xl md:text-4xl font-medium text-[var(--white)] mb-8 sm:mb-10">Contact</h3>
 
     <!-- Two-column on desktop, stacked on mobile -->
-    <div class="flex flex-col md:flex-row gap-6 md:gap-16 items-center">
+    <div class="flex flex-col md:flex-row gap-4 sm:gap-8 md:gap-12 lg:gap-16 items-stretch md:items-center">
 
       <!-- LEFT: folder — scaled down & centered on mobile so it doesn't overlap -->
-      <div class="w-full md:w-60 md:flex-shrink-0 flex justify-center scale-75 sm:scale-90 md:scale-100 origin-top">
+      <div class="w-full md:w-48 lg:w-60 md:flex-shrink-0 flex justify-center scale-60 sm:scale-75 md:scale-90 lg:scale-100 origin-top md:origin-left -my-6 sm:-my-4 md:my-0">
         <ContactFolders client:visible />
       </div>
 
