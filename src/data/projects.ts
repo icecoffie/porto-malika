@@ -18,6 +18,19 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "cosmic",
+    title: "cosmic Agency",
+    image: "/cosmic.webp",
+    link: "https://cosmicagency.web.id",
+    preview: "/#contact",
+    status: "Independent Agency",
+    description: "Social media creative agency for brands that need engaging digital content.",
+    summary: "Cosmic Agency helps businesses build a stronger social media presence through thoughtful creative work. The agency provides short form video reels, Instagram carousel content, graphic design, and other visual assets tailored to each brand's communication goals.",
+    techStack: ["Social Media Strategy", "Video Reels", "Instagram Carousels", "Graphic Design", "Content Creation"],
+    useCases: ["Social Media Content", "Brand Design", "Short-form Video", "Instagram Marketing"],
+    problemSolving: "Cosmic gives businesses a focused creative partner for planning and producing consistent social media content without the overhead of building an in house team.",
+  },
+  {
     id: "trace",
     title: "Trace",
     image: "/trace.webp",

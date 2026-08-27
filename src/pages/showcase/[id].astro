@@ -1,0 +1,107 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { showcaseItems } from "../../data/showcase";
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return showcaseItems.map((item) => ({
+    params: { id: item.id },
+    props: { item },
+  }));
+}
+
+interface Props {
+  item: (typeof showcaseItems)[number];
+}
+
+const { item } = Astro.props;
+
+if (!item) {
+  return Astro.redirect("/#showcase");
+}
+---
+
+<Layout
+  title={`${item.text} - Showcase`}
+  description={item.description}
+  ogImage={item.image}
+>
+  <main class="min-h-screen bg-[var(--background)] text-[var(--white)]">
+    <nav class="border-b border-[#ffffff10] py-5">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-4">
+        <a href="/#showcase" class="inline-flex items-center gap-2 text-sm text-[var(--sec)] transition hover:text-[var(--sec-dark)]">
+          <span aria-hidden="true">&#8592;</span>
+          Back to Showcase
+        </a>
+        <span class="text-xs uppercase tracking-[0.2em] text-[var(--white-icon)]">Selected Moment</span>
+      </div>
+    </nav>
+
+    <div class="mx-auto max-w-6xl px-4 py-10 md:py-16">
+      <header class="mb-12 grid items-end gap-8 lg:grid-cols-[1fr_280px]">
+        <div>
+          <div class="mb-5 flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--sec)]">
+            <span>{item.category}</span>
+            {item.date && <span class="text-[var(--white-icon)]">{item.date}</span>}
+          </div>
+          <h1 class="max-w-4xl text-4xl font-bold leading-tight md:text-7xl">{item.text}</h1>
+        </div>
+        <p class="border-l border-[var(--sec)] pl-5 text-base leading-relaxed text-[var(--white-icon)] md:text-lg">{item.description}</p>
+      </header>
+
+      <figure class="showcase-image mb-16 overflow-hidden rounded-2xl border border-[#ffffff18] bg-[#111] shadow-2xl">
+        <img src={item.image} alt={item.text} class="block h-auto max-h-[78vh] w-full object-contain" />
+      </figure>
+
+      <section class="grid gap-8 border-t border-[#ffffff10] py-10 md:grid-cols-[180px_1fr] md:gap-12">
+        <div>
+          <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--sec)]">01</p>
+          <h2 class="text-xl font-semibold">The Moment</h2>
+        </div>
+        <p class="max-w-3xl text-xl leading-relaxed text-[var(--white)] md:text-2xl">{item.description}</p>
+      </section>
+
+      <section class="grid gap-8 border-y border-[#ffffff10] py-10 md:grid-cols-[180px_1fr] md:gap-12">
+        <div>
+          <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--sec)]">02</p>
+          <h2 class="text-xl font-semibold">My Role</h2>
+        </div>
+        <div class="max-w-3xl">
+          <p class="text-lg leading-relaxed text-[var(--white-icon)]">
+            {item.category === "Hackathon" && "I contributed as part of Team MATA, turning the idea into a working product while the team handled product decisions, development, and presentation under pressure."}
+            {item.category === "Competition" && "I took part as a competitor, applying my coding skills to solve problems and deliver a strong result in a faculty-level competition."}
+            {item.category === "Project" && "I collaborated with my teammates to shape the product experience and build an e-commerce solution for its intended academic community."}
+            {item.category === "Mentoring" && "I introduced myself as a UI/UX mentor and made the session a starting point for students who wanted direction, feedback, and practical design guidance."}
+            {item.category === "Teaching" && "I led the learning session, explained UI/UX fundamentals, and helped students connect design principles with real digital products."}
+            {item.category === "Event" && "I represented my experience in front of an audience, sharing practical lessons and engaging directly with people through conversation."}
+            {item.category === "Workshop" && "I participated actively by asking a focused question, using the discussion to clarify the speaker's material and deepen my understanding."}
+          </p>
+        </div>
+      </section>
+
+      <section class="mt-10 flex flex-col justify-between gap-5 rounded-2xl border border-[var(--sec)]/25 bg-[var(--sec)]/5 p-6 md:flex-row md:items-center md:p-8">
+        <div>
+          <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--sec)]">Keep exploring</p>
+          <h2 class="text-2xl font-semibold">More moments from my work</h2>
+        </div>
+        <a href="/#showcase" class="inline-flex items-center gap-2 text-[var(--sec)] transition hover:text-[var(--sec-dark)]">
+          View all showcase items <span aria-hidden="true">&#8594;</span>
+        </a>
+      </section>
+
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .showcase-image {
+    background:
+      linear-gradient(135deg, rgba(0, 123, 255, 0.1), transparent 42%),
+      #111;
+  }
+
+  .showcase-image img {
+    margin-inline: auto;
+  }
+</style>

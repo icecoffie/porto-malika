@@ -31,40 +31,96 @@ export interface HighlightProject {
 
 export const highlightProjects: HighlightProject[] = [
   {
+    id: "cosmic",
+    title: "Cosmic Agency",
+    image: "/cosmic.webp",
+    link: "https://cosmicagency.web.id",
+    preview: "https://cosmicagency.web.id",
+    status: "MVP Project",
+    tier: "A",
+    tagline: "A creative social media agency built for brands ready to stand out",
+    description: "Cosmic Agency is an MVP for a social media creative studio that helps businesses turn ideas into content people want to watch, save, and share. It brings short-form video reels, Instagram carousel design, campaign visuals, and brand-focused creative direction into one focused service.",
+
+    why: "Many businesses know they need to show up consistently on social media, but lack the time, creative direction, or in-house team to keep producing content that feels intentional. Cosmic was created to make high-quality social media support more accessible and collaborative.",
+
+    how: "I shaped Cosmic as a focused agency experience that presents the services clearly, communicates a distinct creative point of view, and gives potential clients an easy path to understand how the agency can support their brand.",
+
+    what: "A social media creative agency offering video reels, Instagram carousels, graphic design, and other digital assets tailored to a brand's voice, audience, and communication goals.",
+
+    impact: "Cosmic turns my experience in design, frontend development, and digital storytelling into a practical creative service for businesses that want a stronger social media presence.",
+
+    techStack: ["Social Media Strategy", "Video Reels", "Instagram Carousels", "Graphic Design", "Content Creation"],
+
+    features: [
+      "Short form video reels for social media campaigns",
+      "Instagram carousel design for educational and promotional content",
+      "Branded visual assets tailored to each client",
+      "Creative direction for consistent social media communication",
+      "Clear service presentation for potential clients",
+      "Flexible content support for growing businesses"
+    ],
+
+    problem: "Businesses often struggle to maintain a consistent, recognizable, and engaging presence across social media while focusing on their core operations.",
+
+    solution: "Cosmic provides a focused creative partner that helps plan and produce social media content without requiring businesses to build a full in-house creative team.",
+
+    results: [
+      { metric: "Project Type", value: "MVP" },
+      { metric: "Creative Services", value: "5+" },
+      { metric: "Primary Channel", value: "Social" },
+      { metric: "Focus", value: "Brand Growth" }
+    ],
+
+    timeline: "MVP development",
+    role: "Founder, Creative Director & Product Designer",
+
+    challenges: [
+      "Defining a clear agency offer without making the service feel generic",
+      "Balancing creative personality with a professional client experience",
+      "Designing a flexible content service that works across different industries"
+    ],
+
+    learnings: [
+      "A strong creative service starts with a clear point of view",
+      "Good social content needs both visual craft and strategic intent",
+      "An MVP is useful when it makes the value easy to understand"
+    ]
+  },
+  {
     id: "safe-route",
     title: "Safe Route",
     image: "/saferoute.webp",
-    link: "https://github.com/icecoffie/safe-route",
+    link: "https://saferoutebymata.web.id",
     preview: "https://github.com/icecoffie/safe-route",
     status: "Hackathon Project",
     tier: "S",
     tagline: "Real-time safety map that routes you away from crime, riots, and danger",
-    description: "Safe Route is a React Native mobile app that maps real-time risk levels across streets and neighborhoods. It routes users away from muggers, riots, and criminal hotspots — and fires an SOS via WhatsApp and Telegram the moment danger strikes.",
+    description: "Safe Route is a React Native mobile app that maps real time risk levels across streets and neighborhoods. It routes users away from muggers, riots, and criminal hotspots and fires an SOS via WhatsApp and Telegram the moment danger strikes.",
 
     why: "Street crime in Indonesian cities is unpredictable and underreported. Existing maps only care about speed, not safety. Our team at MATA wanted an app that actively protects people before something bad happens, not after.",
 
-    how: "Built with React Native for cross-platform mobile. Integrated crowd-sourced incident reporting and real-time risk scoring. The SOS button sends your live location and a distress message instantly to pre-set emergency contacts via WhatsApp and Telegram APIs, with zero setup needed mid-crisis.",
+    how: "Built with React Native for cross platform mobile. Integrated crowd sourced incident reporting and real time risk scoring. The SOS button sends your live location and a distress message instantly to pre set emergency contacts via WhatsApp and Telegram APIs, with zero setup needed mid crisis.",
 
-    what: "A safety navigation app that shows street-level risk tiers in real time, suggests safer alternative routes, and lets you send an emergency SOS to trusted contacts with one tap — all without needing to type anything when you're in danger.",
+    what: "A safety navigation app that shows street level risk tiers in real time, suggests safer alternative routes, and lets you send an emergency SOS to trusted contacts with one tap all without needing to type anything when you're in danger.",
 
     impact: "Won 2nd Place at Hackathon 2026 (Innovating Beyond The Code). Judged against 50+ teams. Built and shipped end-to-end within the hackathon window by Team MATA.",
 
     techStack: ["React Native", "Node.js", "Google Maps API", "WhatsApp API", "Telegram Bot API", "Firebase"],
 
     features: [
-      "Real-time road risk level visualization on map",
+      "Real time road risk level visualization on map",
       "Safer alternative route suggestions",
-      "One-tap SOS button — no typing required",
+      "One tap SOS button no typing required",
       "Instant location sharing via WhatsApp & Telegram",
-      "Crowd-sourced incident reporting",
+      "Crowd sourced incident reporting",
       "Emergency contact management",
       "Offline mode for last known risk data",
-      "Night-time safety alerts"
+      "Night time safety alerts"
     ],
 
-    problem: "People navigating unfamiliar or dangerous areas have no way to know if a street is currently risky — until it is too late. Standard maps prioritize speed, not safety.",
+    problem: "People navigating unfamiliar or dangerous areas have no way to know if a street is currently risky until it is too late. Standard maps prioritize speed, not safety.",
 
-    solution: "Built a mobile-first safety layer on top of maps that aggregates real-time incident data and gives users a one-tap emergency broadcast when they feel threatened.",
+    solution: "Built a mobile first safety layer on top of maps that aggregates real-time incident data and gives users a one tap emergency broadcast when they feel threatened.",
 
     results: [
       { metric: "Hackathon Placement", value: "2nd Place" },
@@ -77,14 +133,14 @@ export const highlightProjects: HighlightProject[] = [
     role: "Lead Developer & UI/UX Designer — Team MATA (Malika, Aisyah, Tohari, Ali)",
 
     challenges: [
-      "Aggregating real-time crime data with low latency",
+      "Aggregating real time crime data with low latency",
       "Ensuring SOS delivery when internet is slow or spotty",
       "Designing a UI that works under stress with one thumb",
       "Shipping a full working app within 48 hours"
     ],
 
     learnings: [
-      "Safety UX must be idiot-proof — complexity costs lives",
+      "Safety UX must be idiot proof complexity costs lives",
       "WhatsApp API is more reliable than SMS in Indonesian networks",
       "Hackathon pressure is the best product design accelerator",
       "Real problems motivate teams far more than fake ones"
@@ -105,7 +161,7 @@ export const highlightProjects: HighlightProject[] = [
     
     how: "Built with WebRTC for peer to peer video connections, Socket.io for real time signaling, and React for the interface. The backend handles session scheduling, recording storage, and user management. Everything runs on our own infrastructure for complete privacy and no limits.",
     
-    what: "A full-featured video learning platform that powers all mentoring sessions at Skale Academy. Students and mentors can connect instantly, share screens, collaborate on code, and review past sessions all without third-party limitations.",
+    what: "A full featured video learning platform that powers all mentoring sessions at Skale Academy. Students and mentors can connect instantly, share screens, collaborate on code, and review past sessions all without third-party limitations.",
     
     impact: "Powers 100+ mentoring sessions monthly at Skale Academy. Reduced platform costs by 80% compared to third party solutions.",
     

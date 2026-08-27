@@ -1,6 +1,7 @@
 ---
 import Lanyard from "../React/Lanyard.tsx";
 import SkillsList from "../React/SkillsList.tsx";
+import HoverPreview from "./ui/hover-preview";
 ---
 
 <section class="text-[var(--white)] mt-12 md:mt-0" id="home">
@@ -22,14 +23,8 @@ import SkillsList from "../React/SkillsList.tsx";
         Frontend <br /> Engineer
       </h1>
 
-        <p class="text-md md:text-2xl text-[var(--white-icon)]">
-          Transforming concepts into engaging digital journeys, powered by modern
-          <span
-            class="bg-gradient-to-r from-[var(--sec)] via-white to-[var(--sec)] bg-[length:200%_auto] bg-clip-text text-transparent animate-shine"
-          >
-            frontend
-          </span>
-          development and tech in our orbit.
+        <p class="text-md max-w-3xl md:text-2xl text-[var(--white-icon)] leading-relaxed">
+          <HoverPreview client:load />
         </p>
       </div>
 

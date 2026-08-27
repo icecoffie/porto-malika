@@ -34,7 +34,6 @@ const navItems: NavItem[] = [
   >
     <div class="container mx-auto flex items-center justify-between p-3">
 
-      <!-- Profile with Greeting (left on mobile, right on desktop) -->
     <div class="relative group flex-shrink-0 order-1 md:order-3">
       <a href="#contact" class="block">
         <div class="relative">
@@ -227,9 +226,10 @@ function activateDot(targetHref: string) {
 
 navLinks.forEach(link => {
   link.addEventListener("click", e => {
-    e.preventDefault();
     const href = link.getAttribute("href");
-    if (!href) return;
+    if (!href || !href.startsWith("#")) return;
+
+    e.preventDefault();
 
     activateDot(href);
 
