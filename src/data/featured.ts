@@ -34,9 +34,9 @@ export const highlightProjects: HighlightProject[] = [
     id: "cosmic",
     title: "Cosmic Agency",
     image: "/cosmic.webp",
-    link: "https://cosmicagency.web.id",
-    preview: "https://cosmicagency.web.id",
-    status: "MVP Project",
+    link: "https://cosmicagency.biz.id",
+    preview: "https://cosmicagency.biz.id",
+    status: "AI Agency",
     tier: "A",
     tagline: "A creative social media agency built for brands ready to stand out",
     description: "Cosmic Agency is an MVP for a social media creative studio that helps businesses turn ideas into content people want to watch, save, and share. It brings short-form video reels, Instagram carousel design, campaign visuals, and brand-focused creative direction into one focused service.",
@@ -94,7 +94,7 @@ export const highlightProjects: HighlightProject[] = [
     preview: "https://github.com/icecoffie/safe-route",
     status: "Hackathon Project",
     tier: "S",
-    tagline: "Real-time safety map that routes you away from crime, riots, and danger",
+    tagline: "Real time safety map that routes you away from crime, riots, and danger",
     description: "Safe Route is a React Native mobile app that maps real time risk levels across streets and neighborhoods. It routes users away from muggers, riots, and criminal hotspots and fires an SOS via WhatsApp and Telegram the moment danger strikes.",
 
     why: "Street crime in Indonesian cities is unpredictable and underreported. Existing maps only care about speed, not safety. Our team at MATA wanted an app that actively protects people before something bad happens, not after.",
@@ -120,7 +120,7 @@ export const highlightProjects: HighlightProject[] = [
 
     problem: "People navigating unfamiliar or dangerous areas have no way to know if a street is currently risky until it is too late. Standard maps prioritize speed, not safety.",
 
-    solution: "Built a mobile first safety layer on top of maps that aggregates real-time incident data and gives users a one tap emergency broadcast when they feel threatened.",
+    solution: "Built a mobile first safety layer on top of maps that aggregates real time incident data and gives users a one tap emergency broadcast when they feel threatened.",
 
     results: [
       { metric: "Hackathon Placement", value: "2nd Place" },
