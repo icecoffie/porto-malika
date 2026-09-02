@@ -59,9 +59,6 @@ interface InlineAnimatedIconProps {
 }
 
 function InlineAnimatedIcon({ src, alt, size = 34 }: InlineAnimatedIconProps) {
-  // "replayToken" dipakai buat maksa remount <img>, biar animasi avif-nya
-  // main ulang dari frame pertama + animasi rotate-nya ke-trigger ulang
-  // tiap kali diklik.
   const [replayToken, setReplayToken] = useState(0);
 
   const handleClick = useCallback(() => {
