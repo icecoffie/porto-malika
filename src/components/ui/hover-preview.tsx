@@ -310,7 +310,7 @@ export default function HoverPreview() {
       <HeroPreviewStyles />
 
       <span>
-        As a software engineer <InlineAnimatedIcon src="/mug.avif" alt="mug" />,
+        As a frontend engineer <InlineAnimatedIcon src="/mug.avif" alt="mug" />,
         UI/UX designer, and owner who blends{" "}
         <PreviewLink previewKey="chaotic_code" onStart={handleStart} onMove={updatePosition} onEnd={handleEnd}>
           chaotic code,

@@ -28,12 +28,12 @@ export const awards: Award[] = [
   {
     id: "emergent-building-competition",
     title: "Finalist - Emergent Building Indonesia & France Competition",
-    image: "/emergent.webp",
+    image: "/emergent1.webp",
     description: "Ranked in the top 10 most upvoted projects in both Emergent Building Indonesia and Emergent Building France competitions, competing against innovative startups and tech projects from across Indonesia and France with the Trace digital footprint tracker.",
     link: "https://app.emergent.sh/showcase/building-indonesia/28caa09d-9fd1-4f73-a257-5096c565c8a5?utm_source=share",
     date: "2026",
     issuer: "Emergent Building Community",
-    certificates: ["/emergent.webp", "/emergent2.webp"],
+    certificates: ["/emergent1.png", "/emergent-indo.webp", "/emergent-france.webp", "/emergent-kevin.webp"],
   },
   {
     id: "top-global-othello",

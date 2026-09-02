@@ -9,7 +9,7 @@ interface Props {
 
 const {
   title,
-  description = "Malika Shakila is a software engineer, UI/UX designer, mentor, and founder building thoughtful digital products, creative web experiences, and technology driven businesses from idea to launch.",
+  description = "Malika Shakila is a frontend engineer, UI/UX designer, mentor, and founder building thoughtful digital products, creative web experiences, and technology driven businesses from idea to launch.",
   canonical,
   ogImage = "https://malika.engineer/preview.png",
   ogType = "website",
@@ -72,8 +72,8 @@ const canonicalUrl = canonical ?? new URL(Astro.url.pathname, site).toString();
       "alternateName": ["Malsky"],
       "url": "https://malika.engineer",
       "image": "https://malika.engineer/me.webp",
-      "jobTitle": "Software Engineer",
-      "description": "Software Engineer & UI/UX Mentor building modern web applications with Astro, React, and Next.js.",
+      "jobTitle": "Frontend Engineer",
+      "description": "Frontend Engineer & UI/UX Mentor building modern web applications with Astro, React, and Next.js.",
       "sameAs": [
         "https://github.com/icecoffie",
         "https://linkedin.com/in/malikashkl",
@@ -125,22 +125,21 @@ const canonicalUrl = canonical ?? new URL(Astro.url.pathname, site).toString();
   }
 
   ::-webkit-scrollbar {
-    width: 15px;
+    width: 0;
+    height: 0;
   }
   ::-webkit-scrollbar-track {
-    background: var(--container);
-    border-radius: 30px;
+    background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--background);
-    border-radius: 10px;
+    background: transparent;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--sec);
+    background: transparent;
   }
 
   * {
-    scrollbar-width: thin;
-    scrollbar-color: var(--line) var(--container);
+    scrollbar-width: none;
+    scrollbar-color: transparent transparent;
   }
 </style>
