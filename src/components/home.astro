@@ -24,7 +24,7 @@ import HoverPreview from "./ui/hover-preview";
       </h1>
 
         <p class="text-md max-w-3xl md:text-2xl text-[var(--white-icon)] leading-relaxed">
-          <HoverPreview client:load />
+          <HoverPreview client:visible />
         </p>
       </div>
 
@@ -108,7 +108,7 @@ import HoverPreview from "./ui/hover-preview";
       <SkillsList client:visible />
       <div class="w-full h-[560px] lg:h-[620px]">
         <Lanyard
-          client:only="react"
+          client:idle
           position={[0, 0, 18]}
           gravity={[0, -40, 0]}
           fov={20}

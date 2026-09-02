@@ -10,9 +10,17 @@ export interface ShowcaseItem {
 
 export const showcaseItems: ShowcaseItem[] = [
   {
+    id: "saferoute-komdigi",
+    link: "/showcase/saferoute2",
+    text: "Safe Route at Garuda Sparks",
+    image: "/saferoute2.webp",
+    category: "Event",
+    description: "Team MATA was officially invited by Komdigi to showcase Safe Route at the Garuda Sparks booth as part of the Techno Science Park program.",
+  },
+  {
     id: "hackathon-team",
     link: "/showcase/hackathon-team",
-    text: "Safe Route Hackathon Team",
+    text: "Hackathon Team",
     image: "/hackathon-team.webp",
     category: "Hackathon",
     description: "I competed in the Innovating Beyond the Code hackathon with Team MATA and won second place. We built Safe Route, a mobile safety navigation app that visualizes real-time risk levels, suggests safer routes, and sends an SOS with the user's location through WhatsApp and Telegram.",
@@ -53,7 +61,7 @@ export const showcaseItems: ShowcaseItem[] = [
   {
     id: "mentor3",
     link: "/showcase/mentor3",
-    text: "UI/UX Class",
+    text: "ISC UI/UX Class",
     image: "/mentor3.webp",
     category: "Teaching",
     description: "This was a UI/UX class where I taught students the fundamentals of designing clear, useful, and user-centered digital experiences.",
@@ -64,15 +72,7 @@ export const showcaseItems: ShowcaseItem[] = [
     text: "Safe Route Hackathon in Progress",
     image: "/saferoute1.webp",
     category: "Hackathon",
-    description: "A behind-the-scenes moment from the hackathon while Team MATA was actively developing and refining Safe Route under a tight deadline.",
-  },
-  {
-    id: "saferoute2",
-    link: "/showcase/saferoute2",
-    text: "Safe Route at Garuda Sparks",
-    image: "/saferoute2.webp",
-    category: "Event",
-    description: "Team MATA was officially invited by Komdigi to showcase Safe Route at the Garuda Sparks booth as part of the Techno Science Park program.",
+    description: "A behind the scenes moment from the hackathon while Team MATA was actively developing and refining Safe Route under a tight deadline.",
   },
   {
     id: "workshop",
