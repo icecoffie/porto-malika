@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "malika-engineer",
+  "name": "malika",
   "main": "./dist/_worker.js/index.js",
   "compatibility_date": "2026-09-03",
   "compatibility_flags": ["nodejs_compat"],
