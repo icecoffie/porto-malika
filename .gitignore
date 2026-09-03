@@ -4,6 +4,7 @@ dist/
 # generated types
 .astro/
 .claude
+.wrangler/
 
 # dependencies
 node_modules/
