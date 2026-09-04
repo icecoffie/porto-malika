@@ -10,12 +10,12 @@ export interface ShowcaseItem {
 
 export const showcaseItems: ShowcaseItem[] = [
   {
-    id: "saferoute-komdigi",
+    id: "saferoute2",
     link: "/showcase/saferoute2",
-    text: "Safe Route at Garuda Sparks",
+    text: "Team MATA at Komdigi Event",
     image: "/saferoute2.webp",
     category: "Event",
-    description: "Team MATA was officially invited by Komdigi to showcase Safe Route at the Garuda Sparks booth as part of the Techno Science Park program.",
+    description: "From hundreds of teams that submitted projects, only four were selected to receive a booth at the Komdigi event as part of the Techno Science Park program. Safe Route, built by Team MATA, was one of the four projects chosen to be showcased at the Garuda Sparks booth.",
   },
   {
     id: "hackathon-team",
