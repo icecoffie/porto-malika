@@ -167,30 +167,38 @@ function Band({
   const fileTexture = useTexture(lanyardImage ?? DEFAULT_LANYARD);
   const frontTex = useTexture(frontImage ?? BLANK_PIXEL);
 
-  // Rainbow (mejikuhibiniu) canvas texture — used when no lanyardImage is provided
-  const rainbowTexture = useMemo(() => {
-    if (lanyardImage) return null;
-    const canvas = document.createElement('canvas');
-    canvas.width = 512;
-    canvas.height = 16;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return null;
-    const grad = ctx.createLinearGradient(0, 0, 512, 0);
-    grad.addColorStop(0 / 6, '#ff0000');
-    grad.addColorStop(1 / 6, '#ff7f00');
-    grad.addColorStop(2 / 6, '#ffff00');
-    grad.addColorStop(3 / 6, '#00cc00');
-    grad.addColorStop(4 / 6, '#0000ff');
-    grad.addColorStop(5 / 6, '#4b0082');
-    grad.addColorStop(6 / 6, '#8b00ff');
-    ctx.fillStyle = grad;
-    ctx.fillRect(0, 0, 512, 16);
-    const tex = new THREE.CanvasTexture(canvas);
-    tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
-    return tex;
-  }, [lanyardImage]);
+  const monochromeTexture = useMemo(() => {
+    const image = fileTexture.image as HTMLImageElement;
+    if (!image) return fileTexture;
 
-  const bandTexture = lanyardImage ? fileTexture : (rainbowTexture ?? fileTexture);
+    const canvas = document.createElement('canvas');
+    canvas.width = image.width;
+    canvas.height = image.height;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return fileTexture;
+    ctx.drawImage(image, 0, 0);
+
+    const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    for (let index = 0; index < pixels.data.length; index += 4) {
+      const luminance =
+        0.299 * pixels.data[index] +
+        0.587 * pixels.data[index + 1] +
+        0.114 * pixels.data[index + 2];
+      const contrast = Math.max(0, Math.min(255, (luminance - 128) * 1.18 + 128));
+      pixels.data[index] = contrast;
+      pixels.data[index + 1] = contrast;
+      pixels.data[index + 2] = contrast;
+    }
+    ctx.putImageData(pixels, 0, 0);
+
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.colorSpace = THREE.SRGBColorSpace;
+    texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+    texture.needsUpdate = true;
+    return texture;
+  }, [fileTexture]);
+
+  const bandTexture = monochromeTexture;
   const backTex = useTexture(backImage ?? BLANK_PIXEL);
 
   const cardMap = useMemo(() => {
